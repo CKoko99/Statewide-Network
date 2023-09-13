@@ -17,7 +17,7 @@ const PATHCONSTANTS = {
         HOME: '/products/home',
         MEXICO: '/products/mexico',
         MOTORCYCLE: '/products/motorcycle',
-        RENTER: '/products/renter',
+        RENTERS: '/products/renter',
         SURETY: '/products/surety-bond',
         SR22: '/products/sr22',
     },

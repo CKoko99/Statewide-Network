@@ -75,7 +75,7 @@ function SimpleMenu(props) {
                     color: props.item.main ? "white" : "primary.main",
                 }}
             >
-                <Link href={props.item.link} style={{ color: "inherit", textDecoration: "none" }}>
+                <Link href={props.item.link || ""} style={{ color: "inherit", textDecoration: "none" }}>
                     <Typography variant="h6"
                         style={{ fontSize: "1.1rem", fontWeight: props.item.bold ? "bold" : "normal" }}
                     >
@@ -109,7 +109,7 @@ function SimpleMenu(props) {
                                 }}
                             >
                                 {props.item.menuItems.map((item, index) => (
-                                    <Link href={item.link} style={{ color: "inherit", textDecoration: "none" }}
+                                    <Link href={item.link || ""} style={{ color: "inherit", textDecoration: "none" }}
                                     >
 
                                         <MenuItem
@@ -121,7 +121,7 @@ function SimpleMenu(props) {
                                                 color: "black",
                                             }}
                                         >
-                                            {item.title}
+                                            {item.title} {item.link}
                                         </MenuItem>
                                     </Link>
                                 ))}

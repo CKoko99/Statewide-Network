@@ -99,7 +99,7 @@ function DrawerAppBar(props: any) {
       <List sx={{ textAlign: "left" }}>
         {navItems.map((item) => (
           item.menuItems.length === 0 ? (
-            <Link key={item.label} href={item.link} style={{ color: "inherit", textDecoration: "none" }}>
+            <Link key={item.label} href={item.link || ""} style={{ color: "inherit", textDecoration: "none" }}>
               <ListItem disablePadding>
                 <ListItemButton
                   sx={{ textAlign: "center" }}
@@ -138,7 +138,7 @@ function DrawerAppBar(props: any) {
               <Collapse in={openItem === item.label} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {item.menuItems.map((menu) => (
-                    <Link key={menu.title} href={menu.link} style={{ color: "inherit", textDecoration: "none" }}>
+                    <Link key={menu.title} href={menu.link || ""} style={{ color: "inherit", textDecoration: "none" }}>
                       <ListItem >
                         <ListItemText
                           primary={

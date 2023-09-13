@@ -34,7 +34,7 @@ const section3content = {
     { text: "Auto Insurance", link: PATHCONSTANTS.PRODUCTS.AUTO },
     { text: "Motorcycle Insurance", link: PATHCONSTANTS.PRODUCTS.MOTORCYCLE },
     { text: "Home Insurance", link: PATHCONSTANTS.PRODUCTS.HOME },
-    { text: "Renters Insurance", link: PATHCONSTANTS.PRODUCTS.RENTER },
+    { text: "Renters Insurance", link: PATHCONSTANTS.PRODUCTS.RENTERS },
     { text: "Mexico Insruance", link: PATHCONSTANTS.PRODUCTS.MEXICO },
     { text: "SR-22", link: PATHCONSTANTS.PRODUCTS.SR22 },
     { text: "Surety Bonds", link: PATHCONSTANTS.PRODUCTS.SURETY },
