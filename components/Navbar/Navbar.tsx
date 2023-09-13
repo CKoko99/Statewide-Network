@@ -43,16 +43,15 @@ const navItems = [
     label: 'Our Products',
     link: '/products',
     menuItems: [
-      { title: "Auto Insurance", link: "/limited-lines/auto-insurance" },
-      { title: "Motorcycle Insurance", link: "/limited-lines/motorcycle-insurance" },
-      { title: "Mexico Insurance", link: "/limited-lines/mexico-insurance" },
-      { title: "Home Insurance", link: "/limited-lines/home-insurance" },
-      { title: "Renters Insurance", link: "/limited-lines/renters-insurance" },
-      { title: "SR-22 Insurance", link: "/limited-lines/sr-22-insurance" },
-      { title: "Surety Bonds", link: "/limited-lines/surety-bonds" },
+      { title: "Auto Insurance", link: PATHCONSTANTS.PRODUCTS.AUTO },
+      { title: "Motorcycle Insurance", link: PATHCONSTANTS.PRODUCTS.MOTORCYCLE },
+      { title: "Mexico Insurance", link: PATHCONSTANTS.PRODUCTS.MEXICO },
+      { title: "Home Insurance", link: PATHCONSTANTS.PRODUCTS.HOME },
+      { title: "Renters Insurance", link: PATHCONSTANTS.PRODUCTS.RENTERS },
+      { title: "SR-22 Insurance", link: PATHCONSTANTS.PRODUCTS.SR22 },
+      { title: "Surety Bonds", link: PATHCONSTANTS.PRODUCTS.SURETY },
     ]
   },
-
   {
     label: 'Learn More',
     link: PATHCONSTANTS.ABOUT.INDEX,
@@ -63,8 +62,6 @@ const navItems = [
       { title: "Reviews", link: PATHCONSTANTS.ABOUT.REVIEWS },
     ]
   },
-
-
 ];
 
 function DrawerAppBar(props: any) {

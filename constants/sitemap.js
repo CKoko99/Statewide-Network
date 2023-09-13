@@ -6,7 +6,7 @@ const PATHCONSTANTS = {
         HOME: '/quotes/home',
         MEXICO: '/quotes/mexico',
         MOTORCYCLE: '/quotes/motorcycle',
-        RENTER: '/quotes/renter',
+        RENTERS: '/quotes/renter',
         SURETY: '/quotes/surety-bond',
         SR22: '/quotes/sr22',
         LIABILITY: '/quotes/liability',
