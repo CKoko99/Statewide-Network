@@ -121,7 +121,7 @@ function SimpleMenu(props: any) {
                                                 color: "black",
                                             }}
                                         >
-                                            {item.title} {item.link}
+                                            {item.title}
                                         </MenuItem>
                                     </Link>
                                 ))}
