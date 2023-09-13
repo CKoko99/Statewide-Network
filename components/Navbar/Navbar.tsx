@@ -13,7 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import NavbarItem from './NavbarItem';
-import LogoImg from '../../public/assets/images/ai-logo-white.png';
+import LogoImg from '../../public/assets/images/statewide_logo.png';
 import { styled } from '@mui/system';
 import { Collapse } from '@mui/material';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -22,6 +22,8 @@ import { useState } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import MainNavbarItem from './MainNavbarItem';
+import PATHCONSTANTS from '../../constants/sitemap';
 
 
 
@@ -50,36 +52,18 @@ const navItems = [
       { title: "Surety Bonds", link: "/limited-lines/surety-bonds" },
     ]
   },
-  {
-    label: 'Find a Store',
-    link: '/locations',
-    menuItems: [
-      { title: "All Locations", link: "/locations" },
-      { title: "Austin", link: "/locations/austin" },
-      { title: "Houston", link: "/locations/houston" },
-      { title: "San Antonio", link: "/locations/san-antonio" },
-      { title: "Corpus Christi", link: "/locations/corpus-christi" },
-      { title: "Dallas/ Fort Worth", link: "/locations/dallas-fort-worth" },
-      { title: "Victoria", link: "/locations/victoria" },
-    ]
 
-  },
   {
-    label: 'About Us',
-    link: '/about',
+    label: 'Learn More',
+    link: PATHCONSTANTS.ABOUT.INDEX,
     menuItems: [
-      { title: "Contact Us", link: "/about/contact" },
-      { title: "Available Jobs", link: "/about/jobs" },
-      { title: "Now Hiring", link: "/about/now-hiring" },
-      { title: "Reviews", link: "/about/reviews" },
-      { title: "Facebook", link: "/about/facebook" },
+      { title: "About Us", link: PATHCONSTANTS.ABOUT.INDEX },
+      { title: "Contact Us", link: PATHCONSTANTS.ABOUT.CONTACT },
+      { title: "Careers", link: PATHCONSTANTS.ABOUT.CAREERS },
+      { title: "Reviews", link: PATHCONSTANTS.ABOUT.REVIEWS },
     ]
   },
-  {
-    label: 'Payments',
-    link: '/payments',
-    menuItems: []
-  },
+
 
 ];
 
@@ -189,18 +173,13 @@ function DrawerAppBar(props: any) {
 
   return (<>
     <Box
-      sx={{
-        bgcolor: "secondary.main"
-      }}
+      sx={{ bgcolor: "secondary.main" }}
     >
-
       <Box sx={{
         display: 'flex',
         width: { xs: "92%", sm: "95%", md: "90%", lg: "80%" }, flexDirection: "row", justifyContent: "space-between", alignItems: "center",
         margin: "auto"
       }}>
-
-
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -238,12 +217,16 @@ function DrawerAppBar(props: any) {
           "@media (max-width: 880px)": {
             display: "none",
           }
-          , alignItems: 'center'
+          , alignItems: 'center',
+          gap: "1.5rem"
         }}>
           {navItems.map((item, index) => (
-            <NavbarItem key={index}
-              item={item}
-            />
+            <>{
+              item.main ? (<MainNavbarItem item={item} />) : (
+                <NavbarItem key={index}
+                  item={item}
+                />)
+            }</>
           ))}
         </Box>
 
