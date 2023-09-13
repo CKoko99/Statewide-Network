@@ -20,7 +20,7 @@ const transitionStyles = {
     exited: { opacity: 0 },
 };
 
-function SimpleMenu(props) {
+function SimpleMenu(props: any) {
     let currentlyHovering = false;
     //const history = useHistory();
 
@@ -28,7 +28,7 @@ function SimpleMenu(props) {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    function handleClick(event) {
+    function handleClick(event: any) {
         if (anchorEl !== event.currentTarget) {
             setAnchorEl(event.currentTarget);
         }
@@ -51,7 +51,7 @@ function SimpleMenu(props) {
         }, 50);
     }
 
-    function handleMenuClick(link) {
+    function handleMenuClick(link: string) {
         handleClose();
         // history.push(link);
         window.scrollTo(0, 0);
@@ -98,7 +98,7 @@ function SimpleMenu(props) {
                                     onMouseLeave: handleCloseHover,
                                     style: { pointerEvents: "auto" },
                                 }}
-                                getContentAnchorEl={null}
+
                                 anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
 
                                 style={{

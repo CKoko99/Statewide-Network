@@ -32,7 +32,7 @@ const styles = {
     },
 }
 
-export default function MainNavbarItem(props) {
+export default function MainNavbarItem(props: any) {
     const [openModal, setOpenModal] = useState(false);
     return (
         <>
