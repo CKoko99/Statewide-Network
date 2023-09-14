@@ -14,7 +14,7 @@ let theme = createTheme({
 
   },
   typography: {
-    fontFamily: ["Gustavo", "Poppins"]
+    fontFamily: ["Gustavo", "Poppins"].join(','),
   },
 
   components: {
