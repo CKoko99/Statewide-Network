@@ -38,7 +38,6 @@ const bannerContent = {
     text: "Get a Quote!",
     link: "/quote"
   },
-  image: BannerImage
 }
 const Home: NextPage = () => {
   return (
