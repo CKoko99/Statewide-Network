@@ -14,6 +14,10 @@ interface BannerProps {
 }
 const styles = {
     root: {
+    },
+    mainHeading: {
+    },
+    subHeading: {
     }
 }
 export default function MainBanner(props: BannerProps) {
