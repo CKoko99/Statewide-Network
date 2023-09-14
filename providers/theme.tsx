@@ -1,5 +1,6 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { yellow } from '@mui/material/colors';
+import GustavoFont from '../public/fonts/Gustavo/GustavoFont';
 let theme = createTheme({
   palette: {
     primary: {
@@ -11,6 +12,9 @@ let theme = createTheme({
       main: "#EDEDED", // Yellow color
     }
 
+  },
+  typography: {
+    fontFamily: ["Gustavo", "Poppins"]
   },
 
   components: {

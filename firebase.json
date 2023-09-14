@@ -1,6 +1,7 @@
 {
   "hosting": {
     "source": ".",
+    "site": "statewide-insurance",
     "ignore": [
       "firebase.json",
       "**/.*",

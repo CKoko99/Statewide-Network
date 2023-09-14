@@ -6,7 +6,6 @@ const Layout = ({ children }: JSX.ElementChildrenAttribute) => {
     <>
       <Navbar />
       {children}
-      <Footer />
     </>
   )
 }
