@@ -12,7 +12,10 @@ interface BannerProps {
         icon: StaticImageData;
     }[];
 }
-const styles = {}
+const styles = {
+    root: {
+    }
+}
 export default function MainBanner(props: BannerProps) {
     console.log(typeof props.image)
     return (<>
