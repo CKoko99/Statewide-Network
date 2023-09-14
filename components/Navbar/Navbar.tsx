@@ -219,7 +219,7 @@ function DrawerAppBar(props: any) {
         }}>
           {navItems.map((item, index) => (
             <>{
-              item.main ? (<MainNavbarItem item={item} />) : (
+              item.main ? (<MainNavbarItem item={item} key={index} />) : (
                 <NavbarItem key={index}
                   item={item}
                 />)
