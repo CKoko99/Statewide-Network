@@ -1,4 +1,5 @@
 import { Box } from "@mui/material"
+import { forwardRef } from "react"
 
 const styles = {
     modal: {
@@ -19,8 +20,10 @@ const styles = {
     },
 }
 
-export default function Base({ children }) {
+function Base({ children }, ref) {
     return (
         <Box sx={{ ...styles.modal }}>{children}</Box>
     )
 }
+
+export default forwardRef(Base)

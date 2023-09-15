@@ -10,12 +10,16 @@ const myFont = localFont({ src: '../fonts/Gustavo/Gustavo-Bold.ttf' })
 // then pass that array to the theme
 const GustavoFonts = []
 for (let i = 0; i < Gustavo.length; i++) {
+  console.log(Gustavo[i])
   GustavoFonts.push(Gustavo[i].style.fontFamily)
 }
 const PoppinFonts = []
 for (let i = 0; i < Poppins.length; i++) {
+  console.log(Poppins[i])
   PoppinFonts.push(Poppins[i].style.fontFamily)
 }
+console.log(GustavoFonts)
+const Poppin = PoppinFonts[0]
 
 let theme = createTheme({
   palette: {
@@ -57,5 +61,5 @@ let theme = createTheme({
 
 });
 theme = responsiveFontSizes(theme);
-
+export { Poppin }
 export default theme;

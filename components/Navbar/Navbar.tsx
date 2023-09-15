@@ -218,12 +218,12 @@ function DrawerAppBar(props: any) {
           gap: "1.5rem"
         }}>
           {navItems.map((item, index) => (
-            <>{
-              item.main ? (<MainNavbarItem item={item} key={index} />) : (
-                <NavbarItem key={index}
+            <React.Fragment key={index}>{
+              item.main ? (<MainNavbarItem item={item} />) : (
+                <NavbarItem
                   item={item}
                 />)
-            }</>
+            }</React.Fragment>
           ))}
         </Box>
 

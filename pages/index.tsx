@@ -5,7 +5,7 @@ import BannerImage from "../public/assets/images/home/CarHug.png";
 import PATHCONSTANTS from '../constants/sitemap';
 
 const bannerContent = {
-  mainHeading: "Simplify Your Coverage and Save Money Today",
+  mainHeading: "Insurance Savings the Size of Texas",
   subHeading: "Your One-Stop Insurance Destination: Fast, Easy, and Affordable Coverages for All Your Needs",
   image: BannerImage,
   ctaItems: [
