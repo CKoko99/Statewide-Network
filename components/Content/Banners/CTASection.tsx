@@ -69,7 +69,6 @@ const itemStyles = {
         width: "6rem",
     },
     imageHover: {
-        transform: 'scale(1.1)', // Increase the scale factor for a larger image on hover
         //tilt will add a slight rotation
         transform: 'scale(1.1) rotate(5deg)',
     },
