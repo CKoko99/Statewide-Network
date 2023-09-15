@@ -1,25 +1,28 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { yellow } from '@mui/material/colors';
 import localFont from '@next/font/local'
-import Gustavo from '../fonts/Gustavo/GustavoFont'
-import Poppins from '../fonts/Poppins/PoppinsFont'
+import GustavoFont from '../fonts/Gustavo/GustavoFont'
+import PoppinsFont from '../fonts/Poppins/PoppinsFont'
 const myFont = localFont({ src: '../fonts/Gustavo/Gustavo-Bold.ttf' })
 
 
 // do a for loop of Gustavo and push all font.style to an array
 // then pass that array to the theme
 const GustavoFonts = []
-for (let i = 0; i < Gustavo.length; i++) {
-  console.log(Gustavo[i])
-  GustavoFonts.push(Gustavo[i].style.fontFamily)
+for (let i = 0; i < GustavoFont.length; i++) {
+  console.log(GustavoFont[i])
+  GustavoFonts.push(GustavoFont[i].style.fontFamily)
 }
 const PoppinFonts = []
-for (let i = 0; i < Poppins.length; i++) {
-  console.log(Poppins[i])
-  PoppinFonts.push(Poppins[i].style.fontFamily)
+for (let i = 0; i < PoppinsFont.length; i++) {
+  console.log(PoppinsFont[i])
+  PoppinFonts.push(PoppinsFont[i].style.fontFamily)
 }
 console.log(GustavoFonts)
-const Poppin = PoppinFonts[0]
+const CustomFonts = {
+  Gustavo: GustavoFonts[0],
+  Poppin: PoppinFonts[0]
+}
 
 let theme = createTheme({
   palette: {
@@ -35,6 +38,22 @@ let theme = createTheme({
   },
   typography: {
     fontFamily: [GustavoFonts.join(','), PoppinFonts.join(',')].join(','),
+    h1: {
+      fontSize: '3.1rem',
+      fontWeight: 'bold',
+    },
+    h2: {
+      fontFamily: [PoppinFonts.join(',')].join(','),
+    },
+    h3: {
+      fontFamily: [PoppinFonts.join(',')].join(','),
+    },
+    h4: {
+      fontFamily: [PoppinFonts.join(',')].join(','),
+    },
+    subtitle1: {
+      fontFamily: [PoppinFonts.join(',')].join(','),
+    },
   },
 
   components: {
@@ -61,5 +80,5 @@ let theme = createTheme({
 
 });
 theme = responsiveFontSizes(theme);
-export { Poppin }
+export { CustomFonts }
 export default theme;
