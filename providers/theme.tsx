@@ -1,24 +1,14 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { yellow } from '@mui/material/colors';
-import localFont from '@next/font/local'
 import GustavoFont from '../fonts/Gustavo/GustavoFont'
 import PoppinsFont from '../fonts/Poppins/PoppinsFont'
-const myFont = localFont({ src: '../fonts/Gustavo/Gustavo-Bold.ttf' })
 
 
 // do a for loop of Gustavo and push all font.style to an array
 // then pass that array to the theme
-const GustavoFonts = []
-for (let i = 0; i < GustavoFont.length; i++) {
-  console.log(GustavoFont[i])
-  GustavoFonts.push(GustavoFont[i].style.fontFamily)
-}
-const PoppinFonts = []
-for (let i = 0; i < PoppinsFont.length; i++) {
-  console.log(PoppinsFont[i])
-  PoppinFonts.push(PoppinsFont[i].style.fontFamily)
-}
-console.log(GustavoFonts)
+const GustavoFonts = [GustavoFont[0].style.fontFamily]
+
+const PoppinFonts = [PoppinsFont[0].style.fontFamily]
+
 const CustomFonts = {
   Gustavo: GustavoFonts[0],
   Poppin: PoppinFonts[0]
