@@ -6,7 +6,10 @@ import CTASection from "./CTASection";
 interface BannerProps {
     mainHeading: string;
     subHeading: string;
-    image: StaticImageData;
+    image: {
+        src: StaticImageData;
+        alt: string;
+    };
     ctaItems?: {
         mainText: string;
         subText: string;
@@ -107,7 +110,7 @@ export default function MainBanner(props: BannerProps) {
                 </Box>
                 <Box sx={{ ...styles.bannerRight }}>
                     <Box sx={{ ...styles.mainImageContainer }}>
-                        <Image src={props.image} />
+                        <Image alt={props.image.alt} src={props.image.src} />
                     </Box>
                 </Box>
 

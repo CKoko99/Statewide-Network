@@ -103,7 +103,7 @@ function CTAItem(props) {
                     ...itemStyles.iconContainer,
                 }
             }>
-                < Image src={props.icon} />
+                < Image alt={props.mainText} src={props.icon} />
             </Box>
             <Box sx={
                 isHovered ?

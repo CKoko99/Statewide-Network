@@ -205,7 +205,7 @@ function DrawerAppBar(props: any) {
           <Image onClick={handleLogoClick}
             //style={{ maxWidth: '120px', height: 'auto', cursor: 'pointer' }}
             src={LogoImg}
-            alt="logo" />
+            alt="Statewide Insurance" />
         </Box>
         <Box sx={{
           "@media (min-width: 880px)": {

@@ -10,7 +10,10 @@ import RentersIcon from "../public/assets/images/home/icons/rent.png"
 const bannerContent = {
   mainHeading: "Insurance Savings the Size of Texas",
   subHeading: "A Better Tomorrow Starts Today",
-  image: BannerImage,
+  image: {
+    src: BannerImage,
+    alt: "Car Hug"
+  },
   ctaItems: [
     {
       mainText: "Auto",
