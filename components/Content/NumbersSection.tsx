@@ -24,8 +24,8 @@ interface SectionItemProps {
 }
 //forward ref
 function returnRandomTime(number) {
-    if (number < 1000) return Math.floor(Math.random() * 1000) + 500;
-    return Math.floor(Math.random() * 3000) + 1000;
+    if (number < 5) return Math.floor(Math.random() * 1000) + 500;
+    return Math.floor(Math.random() * 2500) + 1000;
 }
 
 const SectionItem = forwardRef((props: SectionItemProps, ref) => {
