@@ -13,6 +13,7 @@ import QuickIcon from "../public/assets/images/home/icons/quick.png"
 import TailoredIcon from "../public/assets/images/home/icons/tailored.png"
 import ContentSlider from '../components/Content/ContentSlider';
 import NumbersSection from '../components/Content/NumbersSection';
+import { Box } from '@mui/material';
 const bannerContent = {
   mainHeading: "Insurance Savings the Size of Texas",
   subHeading: "A Better Tomorrow Starts Today",
@@ -124,10 +125,18 @@ const Home: NextPage = () => {
   return (
     <>
       <HeadComponent title={'Statewide Insurance'} metaData={'Statewide Insurance'} />
-      <MainBanner {...bannerContent} />
-      <TextSection {...textSectionContent} />
-      <ContentSlider {...sliderContent} />
-      <NumbersSection {...numberSection} />
+      <Box
+        sx={{
+          maxWidth: "2560px", margin: "auto", borderLeft: "1px solid #b1b1b1",
+          borderRight: "1px solid #b1b1b1"
+        }}
+      >
+
+        <MainBanner {...bannerContent} />
+        <TextSection {...textSectionContent} />
+        <ContentSlider {...sliderContent} />
+        <NumbersSection {...numberSection} />
+      </Box>
     </>
   )
 }

@@ -28,9 +28,11 @@ const styles = {
     bannerContainer: {
         display: 'flex',
         width: '100%',
+        justifyContent: "flex-end",
     },
     bannerLeft: {
         margin: { xs: "auto", md: "1rem  -0 2rem 4vw", },
+
         width: { xs: "90%", sm: "85%", md: "60%", lg: "60%" },
         textAlign: { xs: "center", sm: "center", md: "left", lg: "left" },
         zIndex: 1,
@@ -38,12 +40,15 @@ const styles = {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-around",
+        maxWidth: "1200px",
     },
     mainText: {
-        marginRight: { xs: "auto", sm: "auto", md: "-3rem", lg: "-5rem" },
+        marginLeft: { xs: "auto", sm: "auto", md: "3rem", lg: "5rem", },
+        width: "100%"
     },
     bannerRight: {
-        width: '55%',
+        width: '50%',
+        textAlign: 'right',
         display: { xs: "none", md: "block" },
     },
     mainImageContainer: {
