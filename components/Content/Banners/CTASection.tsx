@@ -42,7 +42,7 @@ const itemStyles = {
         alignItems: "center",
         padding: "1rem",
         margin: { xs: ".7rem", sm: ".7rem", md: "0 .7rem .7rem 0" },
-        minWidth: { xs: "", md: "18vw" },
+        minWidth: { xs: "", md: "18vw", xl: "25rem" },
         cursor: "pointer",
         transition: 'transform 0.2s',
 
