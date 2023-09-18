@@ -14,17 +14,28 @@ interface NumbersSectionProps {
         body: string;
     }[];
 }
+interface SectionItemProps {
+    beforeNumber: string;
+    beforeNumberGap: boolean;
+    number: number;
+    afterNumber: string;
+    afterNumberGap: boolean;
+    body: string;
+}
 //forward ref
 function returnRandomTime(number) {
     if (number < 1000) return Math.floor(Math.random() * 1000) + 500;
     return Math.floor(Math.random() * 3000) + 1000;
 }
 
-const SectionItem = forwardRef((props, ref) => {
+const SectionItem = forwardRef((props: SectionItemProps, ref) => {
     const [displayedNumber, setDisplayedNumber] = useState(null);
     //end time will be a random number between 1 and 5 seconds
     const randomTime = Math.floor(Math.random() * 3000) + 1000;
-    const [endTime, setEndTime] = useState(returnRandomTime(props.number));
+    const [endTime, setEndTime] = useState(0);
+    useEffect(() => {
+        setEndTime(returnRandomTime(props.number));
+    }, []);
     useEffect(() => {
         let startTime;
         let animationFrame;
