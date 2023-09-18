@@ -53,7 +53,7 @@ const navItems = [
     ]
   },
   {
-    label: 'Learn More',
+    label: 'About Statewide',
     link: PATHCONSTANTS.ABOUT.INDEX,
     menuItems: [
       { title: "About Us", link: PATHCONSTANTS.ABOUT.INDEX },

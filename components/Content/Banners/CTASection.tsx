@@ -121,7 +121,7 @@ function CTAItem(props) {
                     { ...itemStyles.ctaText }
             }>
                 <Typography variant="h5" fontFamily={CustomFonts.Gustavo} >{props.mainText}</Typography>
-                <Typography variant="subtitle1">{props.subText}</Typography>
+                <Typography variant="h6" fontWeight={400} fontFamily={CustomFonts.Poppin} >{props.subText}</Typography>
             </Box>
         </Box>
     )
@@ -195,11 +195,10 @@ export default function CTASection(props: Props) {
             <Box
                 sx={{
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" },
                     alignItems: "center",
                     justifyContent: "space-around",
                     width: "100%",
-                    marginTop: "rem",
                 }}
             >
                 <CTASubLink>

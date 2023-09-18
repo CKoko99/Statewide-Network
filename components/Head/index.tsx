@@ -5,7 +5,7 @@ type HeadComponentPropsType = {
   metaData: string;
 }
 
-const HeadComponent = ({title, metaData}: HeadComponentPropsType) => {
+const HeadComponent = ({ title, metaData }: HeadComponentPropsType) => {
   return (
     <Head>
       <title>{title}</title>

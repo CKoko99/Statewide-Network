@@ -41,6 +41,12 @@ let theme = createTheme({
     h4: {
       fontFamily: [PoppinFonts.join(',')].join(','),
     },
+    h5: {
+      fontFamily: [PoppinFonts.join(',')].join(','),
+    },
+    h6: {
+      fontFamily: [PoppinFonts.join(',')].join(','),
+    },
     subtitle1: {
       fontFamily: [PoppinFonts.join(',')].join(','),
     },
