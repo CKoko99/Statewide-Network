@@ -65,7 +65,7 @@ function SectionItem(props) {
                         marginRight: props.beforeNumberGap ? ".3rem" : "0"
                     }}
                 >{props.beforeNumber}</Typography>
-                <Typography fontWeight={"500"} variant="h3">{displayedNumber || props.number}</Typography>
+                <Typography fontWeight={"500"} variant="h3">{displayedNumber}</Typography>
                 <Typography fontWeight={"500"} variant="h3"
                     sx={{ marginLeft: props.afterNumberGap ? ".3rem" : "0" }}
                 >{props.afterNumber}</Typography>
@@ -85,12 +85,14 @@ export default function NumbersSection(props) {
                 <Typography variant="h2" gutterBottom fontFamily={CustomFonts.Gustavo}>{props.title}</Typography>
                 <Box
                     sx={{
-                        display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around",
-                        margin: "1rem"
+                        display: "flex", flexDirection: { xs: "column", sm: "row" }, alignItems: "center", justifyContent: "space-around",
+                        margin: "1rem", gap: "1.5rem"
                     }}
                 >
                     {props.menuContent.map((item, index) => {
-                        return <SectionItem key={index} {...item} />
+                        return <InViewWrapper key={index}>
+                            <SectionItem {...item} />
+                        </InViewWrapper>
                     }
                     )}
                 </Box>
