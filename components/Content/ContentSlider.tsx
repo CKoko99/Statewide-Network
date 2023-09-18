@@ -52,30 +52,30 @@ function NonSlideContent(props) {
     return <>
         {
             props.menuContent.map((item, index) => {
-                return <>
+                return
+                <Box
+                    sx={{ ...styles.contentItem }}
+                    key={index}
+                >
                     <Box
-                        sx={{ ...styles.contentItem }}
-                        key={index}
+                        sx={{
+                            ...styles.contentImage,
+                        }}
                     >
-                        <Box
-                            sx={{
-                                ...styles.contentImage,
-                            }}
-                        >
-                            <Image fill objectFit="contain" src={item.img.src} alt={item.img.alt} />
-                        </Box>
-                        <Typography variant="h4"
-                            sx={{
-                                ...styles.contentTitle,
-                            }}
-                        >
-                            {item.title}
-                        </Typography>
-                        <Typography variant="h6">
-                            {item.body}
-                        </Typography>
+                        <Image fill objectFit="contain" src={item.img.src} alt={item.img.alt} />
                     </Box>
-                </>
+                    <Typography variant="h4"
+                        sx={{
+                            ...styles.contentTitle,
+                        }}
+                    >
+                        {item.title}
+                    </Typography>
+                    <Typography variant="h6">
+                        {item.body}
+                    </Typography>
+                </Box>
+
             }
             )
         }

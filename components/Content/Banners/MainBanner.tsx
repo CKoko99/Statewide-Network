@@ -99,7 +99,6 @@ const styles = {
     },
 }
 export default function MainBanner(props: BannerProps) {
-    console.log(props.image)
 
     return (<>
         <Box sx={{ ...styles.root }}>

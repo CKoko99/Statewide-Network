@@ -174,7 +174,9 @@ function DrawerAppBar(props: any) {
     >
       <Box sx={{
         display: 'flex',
-        width: { xs: "92%", sm: "95%", md: "90%", lg: "80%" }, flexDirection: "row", justifyContent: "space-between", alignItems: "center",
+        width: { xs: "92%", sm: "95%", md: "90%", lg: "80%" },
+        maxWidth: "1800px",
+        flexDirection: "row", justifyContent: "space-between", alignItems: "center",
         margin: "auto"
       }}>
         <IconButton

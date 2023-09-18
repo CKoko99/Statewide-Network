@@ -62,7 +62,6 @@ const styles = {
     }
 }
 export default function Card(props: CardProps) {
-    console.log(props.content)
     return (<>
         <Box
             sx={{ ...styles.root }}

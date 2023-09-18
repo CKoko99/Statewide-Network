@@ -8,8 +8,8 @@ const Layout = ({ children }: JSX.ElementChildrenAttribute) => {
       <Navbar />
       <Box
         sx={{
-          maxWidth: "2560px", margin: "auto", borderLeft: "1px solid #b1b1b1",
-          borderRight: "1px solid #b1b1b1"
+          maxWidth: "2560px", margin: "auto", borderLeft: "1px solid #dfdfdf",
+          borderRight: "1px solid #dfdfdf"
         }}
       >
         {children}
