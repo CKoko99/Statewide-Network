@@ -41,6 +41,9 @@ const SectionItem = forwardRef((props: SectionItemProps, ref) => {
         setEndTime(returnRandomTime(props.number));
     }, []);
     useEffect(() => {
+        if (endTime < 100) {
+            return
+        }
         let startTime;
         let animationFrame;
 
@@ -67,7 +70,7 @@ const SectionItem = forwardRef((props: SectionItemProps, ref) => {
                 cancelAnimationFrame(animationFrame);
             }
         };
-    }, [props.number]);
+    }, [props.number, endTime]);
 
     return <>
         <Box
