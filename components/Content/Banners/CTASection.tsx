@@ -1,8 +1,9 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, LinearProgress, Typography } from "@mui/material";
 import Image, { StaticImageData } from "next/legacy/image";
 import { CustomFonts } from "../../../providers/theme";
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useState } from "react";
+import Link from "next/link";
 
 interface Props {
     ctaItems?: {
@@ -36,13 +37,20 @@ const itemStyles = {
     ctaButtonBanner: {
         display: "flex",
         flexDirection: "row",
-        border: "1px solid black",
+        border: "2px solid #b1b1b1",
         flex: 1,
         alignItems: "center",
         padding: "1rem",
         margin: { xs: ".7rem", sm: ".7rem", md: "0 .7rem .7rem 0" },
         minWidth: { xs: "", md: "18vw" },
         cursor: "pointer",
+        transition: 'transform 0.2s',
+
+        "&:hover": {
+            transform: 'scale(1.01)', // Increase the scale factor for a larger image on hover
+            border: "2px solid #5c5c5c",
+
+        },
     },
     ctaButtonOutside: {
         cursor: "pointer",
@@ -85,7 +93,6 @@ function CTAItem(props) {
 
     const handleHover = () => {
         setIsHovered(true);
-
     };
 
     const handleMouseLeave = () => {
@@ -96,7 +103,10 @@ function CTAItem(props) {
         <Box
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
-            sx={props.isBanner ? { ...itemStyles.ctaButtonBanner, } : { ...itemStyles.ctaButtonOutside }}>
+            sx={props.isBanner ? { ...itemStyles.ctaButtonBanner, } : { ...itemStyles.ctaButtonOutside }}
+
+
+        >
             <Box sx={isHovered ?
                 { ...itemStyles.iconContainer, ...itemStyles.imageHover } :
                 {
@@ -112,6 +122,55 @@ function CTAItem(props) {
             }>
                 <Typography variant="h5" fontFamily={CustomFonts.Gustavo} >{props.mainText}</Typography>
                 <Typography variant="subtitle1">{props.subText}</Typography>
+            </Box>
+        </Box>
+    )
+}
+
+interface CTASubLinkProps {
+    children: React.ReactNode;
+}
+function CTASubLink(props: CTASubLinkProps) {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleHover = () => {
+        setIsHovered(true);
+    };
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
+    return (
+        <Box
+            onMouseEnter={handleHover}
+            onMouseLeave={handleMouseLeave}
+            sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                transition: 'transform 0.2s',
+
+                "&:hover": {
+                    transform: 'scale(1.05)', // Increase the scale factor for a larger image on hover
+                },
+            }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "1rem",
+                }}
+            >
+                {props.children}
+            </Box>
+            <Box
+                sx={{
+                    width: "100%",
+                }}
+            >
+                {
+                    isHovered ? <LinearProgress /> : <Box sx={{ height: "4px" }} />
+                }
             </Box>
         </Box>
     )
@@ -143,24 +202,44 @@ export default function CTASection(props: Props) {
                     marginTop: "rem",
                 }}
             >
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        gap: "1rem",
-                        cursor: "pointer",
-                    }}
-                >
-                    <GridViewOutlinedIcon />
-                    <Typography variant="h6">
-                        View More Products
-                    </Typography>
-                </Box>
-                <Box>
-                    <Typography variant="h6">Or Call Us at 555-555-5555 </Typography>
-                </Box>
-            </Box>
-        </Box>
+                <CTASubLink>
+                    <Box
+                        sx={{
+                            cursor: "pointer",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: "1rem",
+                        }}
+                    >
+                        <GridViewOutlinedIcon />
+                        <Typography variant="h6">
+                            View More Products
+                        </Typography>
+                    </Box>
+                </CTASubLink>
+                <CTASubLink>
+                    <Box
+                        sx={{
+                            gap: ".5rem",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                        }}
+                    >
+                        <Typography variant="h6">
+                            Or Call Us at
+                        </Typography>
+                        <Typography variant="h6" fontWeight={700}
+                            sx={{ textDecoration: "underline", cursor: "pointer" }}
+                        >
+                            <Link href={"tel:5555555555"} variant="text" color="primary" sx={{ textTransform: "none", }}>
+                                (555)-555-5555
+                            </Link>
+                        </Typography>
+                    </Box>
+                </CTASubLink>
+            </Box >
+        </Box >
     )
 }
