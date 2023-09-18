@@ -233,7 +233,7 @@ export default function CTASection(props: Props) {
                         <Typography variant="h6" fontWeight={700}
                             sx={{ textDecoration: "underline", cursor: "pointer" }}
                         >
-                            <Link href={"tel:5555555555"} variant="text" color="primary" sx={{ textTransform: "none", }}>
+                            <Link href={"tel:5555555555"} color="primary">
                                 (555)-555-5555
                             </Link>
                         </Typography>
