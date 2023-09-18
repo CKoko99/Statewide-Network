@@ -52,8 +52,7 @@ function NonSlideContent(props) {
     return <>
         {
             props.menuContent.map((item, index) => {
-                return
-                <Box
+                return <Box
                     sx={{ ...styles.contentItem }}
                     key={index}
                 >
