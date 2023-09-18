@@ -1,7 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { CustomFonts } from "../../providers/theme";
 import InViewWrapper from "../ui/InViewWrapper";
+import FadeWrapper from "../ui/FadeWrapper";
 interface NumbersSectionProps {
     title: string;
     menuContent: {
@@ -13,10 +14,17 @@ interface NumbersSectionProps {
         body: string;
     }[];
 }
-function SectionItem(props) {
+//forward ref
+function returnRandomTime(number) {
+    if (number < 1000) return Math.floor(Math.random() * 1000) + 500;
+    return Math.floor(Math.random() * 3000) + 1000;
+}
+
+const SectionItem = forwardRef((props, ref) => {
     const [displayedNumber, setDisplayedNumber] = useState(null);
     //end time will be a random number between 1 and 5 seconds
-    const [endTime, setEndTime] = useState(Math.floor(Math.random() * 3000) + 1000)
+    const randomTime = Math.floor(Math.random() * 3000) + 1000;
+    const [endTime, setEndTime] = useState(returnRandomTime(props.number));
     useEffect(() => {
         let startTime;
         let animationFrame;
@@ -45,13 +53,13 @@ function SectionItem(props) {
             }
         };
     }, [props.number]);
+
     return <>
-
-
         <Box
             sx={{
                 display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
             }}
+            ref={ref}
         >
             <Box
                 sx={{
@@ -75,6 +83,7 @@ function SectionItem(props) {
 
     </>
 }
+)
 export default function NumbersSection(props) {
 
     return (<>
@@ -82,16 +91,21 @@ export default function NumbersSection(props) {
             <Box
                 sx={{ margin: "2rem auto", width: "90%", textAlign: "center" }}
             >
-                <Typography variant="h2" gutterBottom fontFamily={CustomFonts.Gustavo}>{props.title}</Typography>
+                <FadeWrapper>
+                    <Typography variant="h2" gutterBottom fontFamily={CustomFonts.Gustavo}>{props.title}</Typography>
+                </FadeWrapper>
                 <Box
                     sx={{
                         display: "flex", flexDirection: { xs: "column", sm: "row" }, alignItems: "center", justifyContent: "space-around",
-                        margin: "1rem", gap: "1.5rem"
+                        margin: "1rem", gap: "2rem"
                     }}
                 >
                     {props.menuContent.map((item, index) => {
                         return <InViewWrapper key={index}>
-                            <SectionItem {...item} />
+                            <FadeWrapper>
+                                <SectionItem {...item} />
+                            </FadeWrapper>
+
                         </InViewWrapper>
                     }
                     )}
