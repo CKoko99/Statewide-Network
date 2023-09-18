@@ -1,20 +1,20 @@
 import { Box, Typography } from "@mui/material";
 import { CustomFonts } from "../../providers/theme";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React, { useState } from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import TripOriginIcon from '@mui/icons-material/TripOrigin';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 interface ContentSliderProps {
-    content: {
+    menuContent: {
         title: string;
         body: string;
         img: {
             src: StaticImageData;
             alt: string;
         }
-    }
+    }[]
 }
 const styles = {
     root: {
@@ -48,7 +48,7 @@ const styles = {
     },
 }
 
-function NonSlideContent(props: ContentSliderProps) {
+function NonSlideContent(props) {
     return <>
         {
             props.menuContent.map((item, index) => {
@@ -82,7 +82,7 @@ function NonSlideContent(props: ContentSliderProps) {
 
     </>
 }
-function SlideContent(props: ContentSliderProps) {
+function SlideContent(props) {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     return <>
