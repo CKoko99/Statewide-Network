@@ -179,7 +179,7 @@ export default function Footer() {
           </Box>
         </Box>
         <Box sx={{ ...classes.copyright }}>
-          <Typography variant="h6">Copyright © 2023 Ai United Insurance. All Rights Reserved.</Typography>
+          <Typography variant="h6">Copyright © 2023 Statewide Insurance. All Rights Reserved.</Typography>
         </Box>
       </Box >
     </Box >
