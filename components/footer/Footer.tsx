@@ -1,4 +1,4 @@
-import { Box, } from "@mui/material";
+import { Box, Button, } from "@mui/material";
 import { Typography } from "@mui/material";
 import PATHCONSTANTS from '../../constants/sitemap';
 
@@ -7,7 +7,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Link from "next/link";
-import LogoImg from '../../public/assets/images/ai-logo-white.png';
+import LogoImg from '../../public/assets/images/statewide_logo.png';
 import Image from "next/image";
 
 const section2content = [
@@ -43,13 +43,12 @@ const section3content = {
 
 const classes = {
   root: {
-    backgroundColor: "#0E76BC",
-    color: "white",
+    backgroundColor: "secondary.main",
+
     padding: "1rem",
     textAlign: "center",
     fontSize: "1.5rem",
-    marginTop: "3rem",
-    "& a": { color: "white" },
+    "& a": { color: "black" },
   },
   footer: {
     display: "flex",
@@ -117,9 +116,12 @@ export default function Footer() {
           <Box
             sx={{ ...classes.section1content }}
           >
-            <Box>
+            <Button
+              href={PATHCONSTANTS.PHONE}
+              sx={{ fontSize: "1.3rem" }}
+            >
               {`(555)-555-5555`}
-            </Box>
+            </Button>
             <Box
             >
               <a
