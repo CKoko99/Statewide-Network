@@ -1,4 +1,5 @@
 const PATHCONSTANTS = {
+    PHONE: "tel:555555555",
     HOME: '/',
     QUOTES: {
         INDEX: '/quotes',

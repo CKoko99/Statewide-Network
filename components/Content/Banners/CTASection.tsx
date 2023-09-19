@@ -4,6 +4,7 @@ import { CustomFonts } from "../../../providers/theme";
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useState } from "react";
 import Link from "next/link";
+import PATHCONSTANTS from "../../../constants/sitemap";
 
 interface Props {
     ctaItems?: {
@@ -232,7 +233,7 @@ export default function CTASection(props: Props) {
                         <Typography variant="h6" fontWeight={700}
                             sx={{ textDecoration: "underline", cursor: "pointer" }}
                         >
-                            <Link href={"tel:5555555555"} color="primary">
+                            <Link href={PATHCONSTANTS.PHONE} color="primary">
                                 (555)-555-5555
                             </Link>
                         </Typography>
