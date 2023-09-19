@@ -16,6 +16,8 @@ import NumbersSection from '../components/Content/NumbersSection';
 import { Box } from '@mui/material';
 import Hero from '../components/Content/Banners/Hero';
 import HeroImg from "../public/assets/images/home/Hero.png"
+import HeroImg2 from "../public/assets/images/home/Hero2.png"
+import MultipleContentWImages from '../components/Content/MultipleContentWImages';
 const bannerContent = {
   mainHeading: "Insurance Savings the Size of Texas",
   subHeading: "A Better Tomorrow Starts Today",
@@ -129,20 +131,30 @@ const HeroContent = {
     text: "Explore Reviews",
     link: "/"
   }],
+  image: {
+    src: HeroImg2,
+    alt: "Girl in a field of flowers"
+  }
 }
 const DoubleMenu = {
   title: "Discover Savings",
   menuContent: [
     {
       title: "Shop Online",
-      img: null,
+      image: {
+        src: null,
+        alt: null
+      },
       CTA: {
         text: "Get Started",
       }
     },
     {
       title: "Contact Us",
-      img: null,
+      image: {
+        src: null,
+        alt: null
+      },
       CTA: {
         text: "Give Us a Call",
         type: "LINK",
@@ -181,6 +193,8 @@ const Home: NextPage = () => {
       <TextSection {...textSectionContent} />
       <ContentSlider {...sliderContent} />
       <NumbersSection {...numberSection} />
+      <Hero {...HeroContent} />
+      <MultipleContentWImages {...DoubleMenu} />
       <Hero {...HeroContent2} />
     </>
   )

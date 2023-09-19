@@ -30,9 +30,7 @@ function returnRandomTime(number) {
 
 const SectionItem = forwardRef((props: SectionItemProps, ref) => {
     const [displayedNumber, setDisplayedNumber] = useState(0);
-    useEffect(() => {
-        console.log(displayedNumber);
-    }, [displayedNumber]);
+
     //end time will be a random number between 1 and 5 seconds
     const randomTime = Math.floor(Math.random() * 3000) + 1000;
     const [endTime, setEndTime] = useState(1);
