@@ -14,6 +14,8 @@ import TailoredIcon from "../public/assets/images/home/icons/tailored.png"
 import ContentSlider from '../components/Content/ContentSlider';
 import NumbersSection from '../components/Content/NumbersSection';
 import { Box } from '@mui/material';
+import Hero from '../components/Content/Banners/Hero';
+import HeroImg from "../public/assets/images/home/Hero.png"
 const bannerContent = {
   mainHeading: "Insurance Savings the Size of Texas",
   subHeading: "A Better Tomorrow Starts Today",
@@ -121,22 +123,65 @@ const numberSection = {
     },
   ]
 }
+const HeroContent = {
+  title: `"Statewide Insurance makes it easy to find affordable coverage, so you can quickly get back to doing what you enjoy."`,
+  CTAButtons: [{
+    text: "Explore Reviews",
+    link: "/"
+  }],
+}
+const DoubleMenu = {
+  title: "Discover Savings",
+  menuContent: [
+    {
+      title: "Shop Online",
+      img: null,
+      CTA: {
+        text: "Get Started",
+      }
+    },
+    {
+      title: "Contact Us",
+      img: null,
+      CTA: {
+        text: "Give Us a Call",
+        type: "LINK",
+        link: PATHCONSTANTS.PHONE
+      }
+    }
+  ]
+}
+const HeroContent2 = {
+  title: "Learn More About Statewide Insurance",
+  subtitle: "Founded in 2021 we have helped over 17,00 Texans protect their loved belongings",
+  CTAButtons: [
+    {
+      text: "About Us",
+      link: PATHCONSTANTS.ABOUT.INDEX
+    },
+    {
+      text: "Careers",
+      link: PATHCONSTANTS.ABOUT.CAREERS
+    },
+    {
+      text: "Contact Us",
+      link: PATHCONSTANTS.ABOUT.CONTACT
+    }
+  ],
+  image: {
+    src: HeroImg,
+    alt: "Hero Image"
+  }
+}
 const Home: NextPage = () => {
   return (
     <>
       <HeadComponent title={'Statewide Insurance'} metaData={'Statewide Insurance'} />
-      <Box
-        sx={{
-          maxWidth: "2560px", margin: "auto", borderLeft: "1px solid #b1b1b1",
-          borderRight: "1px solid #b1b1b1"
-        }}
-      >
-
-        <MainBanner {...bannerContent} />
-        <TextSection {...textSectionContent} />
-        <ContentSlider {...sliderContent} />
-        <NumbersSection {...numberSection} />
-      </Box>
+      <MainBanner {...bannerContent} />
+      <TextSection {...textSectionContent} />
+      <ContentSlider {...sliderContent} />
+      <NumbersSection {...numberSection} />
+      <Hero {...HeroContent2} />
     </>
   )
 }
