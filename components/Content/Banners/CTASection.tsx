@@ -5,6 +5,7 @@ import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useState } from "react";
 import Link from "next/link";
 import PATHCONSTANTS from "../../../constants/sitemap";
+import { useRouter } from 'next/router';
 
 interface Props {
     ctaItems?: {
@@ -96,6 +97,7 @@ const itemStyles = {
     },
 }
 function CTAItem(props) {
+    const router = useRouter()
 
     const [isHovered, setIsHovered] = useState(false);
 
@@ -112,7 +114,9 @@ function CTAItem(props) {
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
             sx={props.isBanner ? { ...itemStyles.ctaButtonBanner, } : { ...itemStyles.ctaButtonOutside }}
-
+            onClick={() => {
+                router.push(props.link)
+            }}
 
         >
             <Box sx={isHovered ?
@@ -131,6 +135,7 @@ function CTAItem(props) {
                 <Typography variant="h5" fontFamily={CustomFonts.Gustavo} >{props.mainText}</Typography>
                 <Typography variant="h6" fontWeight={400} fontFamily={CustomFonts.Poppin} >{props.subText}</Typography>
             </Box>
+
         </Box>
     )
 }
