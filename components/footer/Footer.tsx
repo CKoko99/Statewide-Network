@@ -124,28 +124,28 @@ export default function Footer() {
             </Button>
             <Box
             >
-              <a
+              <Link
                 href="https://www.linkedin.com/company/ai-united-insurance"
                 target="_blank" rel="noopener noreferrer"
               >
                 <LinkedInIcon
                   sx={{ ...classes.socialIcon }}
                 />
-              </a>
-              <a href="https://twitter.com/aiunited?lang=en"
+              </Link>
+              <Link href="https://twitter.com/aiunited?lang=en"
                 target="_blank" rel="noopener noreferrer"
               >
                 <TwitterIcon
                   sx={{ ...classes.socialIcon }}
                 />
-              </a>
-              <a href="https://twitter.com/aiunited?lang=en"
+              </Link>
+              <Link href="https://twitter.com/aiunited?lang=en"
                 target="_blank" rel="noopener noreferrer"
               >
                 <FacebookIcon
                   sx={{ ...classes.socialIcon }}
                 />
-              </a>
+              </Link>
             </Box>
           </Box>
         </Box>

@@ -50,6 +50,9 @@ let theme = createTheme({
     subtitle1: {
       fontFamily: [PoppinFonts.join(',')].join(','),
     },
+    body1: {
+      fontSize: '1.2rem',
+    }
   },
 
   components: {
