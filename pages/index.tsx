@@ -17,6 +17,8 @@ import { Box } from '@mui/material';
 import Hero from '../components/Content/Banners/Hero';
 import HeroImg from "../public/assets/images/home/Hero.png"
 import HeroImg2 from "../public/assets/images/home/Hero2.png"
+import LaptopImg from "../public/assets/images/home/Laptop.png"
+import PhoneImg from "../public/assets/images/home/Phone.png"
 import MultipleContentWImages from '../components/Content/MultipleContentWImages';
 const bannerContent = {
   mainHeading: "Insurance Savings the Size of Texas",
@@ -142,24 +144,47 @@ const DoubleMenu = {
     {
       title: "Shop Online",
       image: {
-        src: null,
-        alt: null
+        src: LaptopImg,
+        alt: "Laptop"
       },
       CTA: {
         text: "Get Started",
-      }
+      },
+      subHeading: "Getting a quote online is as easy as 1, 2, 3!",
+      body: [
+        `1. Tell us about yourself and your vehicle`,
+        `2. Select the coverage that fits your needs`,
+        `3. Review your policy and purchase!`
+      ],
+      CTAButtons: [
+        {
+          text: "Get Started",
+        }
+      ]
     },
     {
       title: "Contact Us",
       image: {
-        src: null,
-        alt: null
+        src: PhoneImg,
+        alt: "Phone"
       },
-      CTA: {
+      subHeading: "Our agents are standing by to help you find the best coverage for your needs",
+      body: [
+        `Either fill out our contact form and we will reach out to you at your convenience`,
+        `Or give us a call at (555)-555-5555`
+      ],
+
+      CTAButtons: [{
+        text: "Contact Form",
+        type: "LINK",
+        link: PATHCONSTANTS.ABOUT.CONTACT,
+        color: "secondary"
+      }, {
         text: "Give Us a Call",
         type: "LINK",
-        link: PATHCONSTANTS.PHONE
-      }
+        link: PATHCONSTANTS.PHONE,
+        color: "primary"
+      }]
     }
   ]
 }
