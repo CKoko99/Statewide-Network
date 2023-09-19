@@ -2,8 +2,8 @@ import { Box } from "@mui/material";
 import { StaticImageData } from "next/image";
 
 interface MultipleContentWImagesProps {
-    title: string;
-    menuContent: {
+    title?: string;
+    menuContent?: {
         title: string;
         image: {
             src: StaticImageData;

@@ -3,8 +3,8 @@ import Image, { StaticImageData } from "next/image";
 import { CustomFonts } from "../../../providers/theme";
 
 interface HeroProps {
-    title: string;
-    subtitle: string;
+    title?: string;
+    subtitle?: string;
     image: {
         src: StaticImageData;
         alt: string;
