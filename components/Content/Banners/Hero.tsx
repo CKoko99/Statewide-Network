@@ -30,11 +30,11 @@ const styles = {
         fontFamily: CustomFonts.Gustavo,
     },
     glowText: {
-        textShadow: "0 0 200px #000, 0 0 200px #7a7a7a, 0 0 30px #EDEDED, 0 0 100px #EDEDED, 0 0 20px #EDEDED, 0 0 600px #EDEDED, 0 0 300px #EDEDED;"
+        textShadow: " 0 0 10px #c1c1c1, 0 0 10px #a1a1a1, 0 0 30px #a8a8a8, 0 0 40px #a38d8f, 0 0 50px #b25e65, 0 0 60px #bb4a53, 0 0 70px #e27b83;"
 
     },
     glowTextSub: {
-        textShadow: "0 0 200px #000, 0 0 30px #ff4da6, 0 0 40px #EDEDED, 0 0 50px #EDEDED, 0 0 60px #EDEDED, 0 0 70px #EDEDED, 0 0 80px #EDEDED;        "
+        textShadow: "0 0 10px #fff, 0 0 20px #000, 0 0 30px #a8a8a8, 0 0 40px #a38d8f, 0 0 50px #b25e65, 0 0 60px #bb4a53, 0 0 70px #e27b83;"
     },
     Buttons: {
         display: "flex",
