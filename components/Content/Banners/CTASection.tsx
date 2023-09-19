@@ -63,6 +63,13 @@ const itemStyles = {
         padding: "1rem",
         margin: ".7rem",
         minWidth: { xs: "", md: "33vw" },
+        transition: 'transform 0.2s',
+
+        "&:hover": {
+            transform: 'scale(1.01)', // Increase the scale factor for a larger image on hover
+            border: "2px solid #5c5c5c",
+
+        },
     },
     ctaText: {
         textAlign: "left",
