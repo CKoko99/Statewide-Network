@@ -17,7 +17,7 @@ import { Box } from '@mui/material';
 import Hero from '../components/Content/Banners/Hero';
 import HeroImg from "../public/assets/images/home/Hero.png"
 import HeroImg2 from "../public/assets/images/home/Hero2.png"
-import LaptopImg from "../public/assets/images/home/Laptop.png"
+import LaptopImg from "../public/assets/images/home/laptop.png"
 import PhoneImg from "../public/assets/images/home/Phone.png"
 import MultipleContentWImages from '../components/Content/MultipleContentWImages';
 const bannerContent = {
