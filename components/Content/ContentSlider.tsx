@@ -19,7 +19,7 @@ interface ContentSliderProps {
 const styles = {
     root: {
         textAlign: "center",
-        margin: "2rem auto",
+        margin: "3rem auto 2rem",
     },
     NonSlideContentContainer: {
         display: { xs: "none", md: "flex" },
@@ -41,44 +41,58 @@ const styles = {
     contentImage: {
         height: "5rem",
         position: "relative",
+        transition: 'transform 0.3s',
+
+    },
+    contentImageHover: {
+        //make the image move up 10px
+        transform: 'translateY(-1rem)',
     },
     contentTitle: {
         fontFamily: CustomFonts.Gustavo,
         color: "primary.main",
     },
 }
+function NonSlideContentItem(props) {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return <Box
+        onMouseEnter={() => { setIsHovered(true) }}
+        onMouseLeave={() => { setIsHovered(false) }}
+        sx={{ ...styles.contentItem }}
+    >
+        <Box
+            sx={
+                isHovered ?
+                    { ...styles.contentImage, ...styles.contentImageHover } :
+                    { ...styles.contentImage }
+            }
+        >
+            <Image fill objectFit="contain" src={props.img.src} alt={props.img.alt} />
+        </Box>
+        <Typography variant="h4"
+            sx={{
+                ...styles.contentTitle,
+            }}
+        >
+            {props.title}
+        </Typography>
+        <Typography variant="h6">
+            {props.body}
+        </Typography>
+    </Box >
+
+}
+
 
 function NonSlideContent(props) {
     return <>
         {
             props.menuContent.map((item, index) => {
-                return <Box
-                    sx={{ ...styles.contentItem }}
-                    key={index}
-                >
-                    <Box
-                        sx={{
-                            ...styles.contentImage,
-                        }}
-                    >
-                        <Image fill objectFit="contain" src={item.img.src} alt={item.img.alt} />
-                    </Box>
-                    <Typography variant="h4"
-                        sx={{
-                            ...styles.contentTitle,
-                        }}
-                    >
-                        {item.title}
-                    </Typography>
-                    <Typography variant="h6">
-                        {item.body}
-                    </Typography>
-                </Box>
-
+                return <NonSlideContentItem key={index} {...item} />
             }
             )
         }
-
     </>
 }
 function SlideContent(props) {
