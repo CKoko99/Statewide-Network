@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import React, { useState } from "react";
 import { CustomFonts } from "../../providers/theme";
@@ -44,7 +44,7 @@ const styles = {
     section2: {
         textAlign: "left",
         width: { xs: "100%", md: "40%" },
-        padding: "1.5rem 3rem",
+        padding: { xs: "1.5rem 2rem", md: "1.5rem 3rem" },
         display: "flex",
         flexDirection: "column",
         gap: "1.5rem",
@@ -102,7 +102,9 @@ export default function MultipleContentWImages(props) {
                                             console.log(index === contentIndex)
                                         }
                                     } >{item.title}</Typography>
-                                <Typography variant="h5">{index === props.menuContent.length - 1 ? "" : "|"}</Typography>
+                                {index === props.menuContent.length - 1 ? <></> : <Box sx={{ display: "block", }}>
+                                    <Divider sx={{ border: "black solid 1px", height: "100%", minHeight: "1.3rem" }} orientation="vertical" />
+                                </Box>}
                             </React.Fragment>
                         }
                         )}

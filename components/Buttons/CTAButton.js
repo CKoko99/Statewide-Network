@@ -7,7 +7,7 @@ export default function CTAButton(props) {
             color={props.color ? props.color : "primary"}
             variant="contained"
             href={props.link ? props.link : false}
-            sx={{ fontSize: "1.1rem", fontFamily: CustomFonts.Gustavo }}
+            sx={{ fontSize: "1.1rem", fontFamily: CustomFonts.Gustavo, textAlign: "center", margin: "1rem" }}
         >
             {props.text}
         </Button>
