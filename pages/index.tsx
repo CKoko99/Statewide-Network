@@ -190,7 +190,7 @@ const DoubleMenu = {
 }
 const HeroContent2 = {
   title: "Learn More About Statewide Insurance",
-  subtitle: "Founded in 2021 we have helped over 17,00 Texans protect their loved belongings",
+  subtitle: "Founded in 2021 we have helped over 17,000 Texans protect their loved belongings",
   CTAButtons: [
     {
       text: "About Us",
