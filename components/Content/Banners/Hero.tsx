@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import { CustomFonts } from "../../../providers/theme";
 
+
 interface HeroProps {
     title?: string;
     subtitle?: string;
@@ -14,7 +15,7 @@ interface HeroProps {
         link: string;
     }[];
     opacity?: number;
-    align?: "left" | "center" | "right";
+    align?: string;
 }
 const styles = {
     imageContainer: {

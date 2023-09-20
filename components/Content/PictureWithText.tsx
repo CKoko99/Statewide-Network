@@ -1,15 +1,16 @@
 import { Box, Typography } from "@mui/material";
 import { CustomFonts } from "../../providers/theme";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface PictureWithTextProps {
-    title: string;
-    body: string;
+    title?: string;
+    body?: string;
     image: {
         src: StaticImageData;
         alt: string;
     };
     align?: "left" | "center" | "right";
+    reverse?: boolean;
 }
 const styles = {
     root: {

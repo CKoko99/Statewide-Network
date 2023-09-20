@@ -3,6 +3,7 @@ import { CustomFonts } from "../../providers/theme";
 interface TextSectionProps {
     heading: string;
     subHeading: string;
+    largeText?: boolean;
 }
 const styles = {
     root: {
