@@ -18,7 +18,8 @@ interface HeroProps {
 const styles = {
     imageContainer: {
         width: "100%",
-        minHeight: { xs: "32rem", sm: "28rem", md: "24rem" },
+        minHeight: { xs: "32rem", sm: "29rem", md: "24rem" },
+
         position: "relative",
     },
     textContainer: {
@@ -65,9 +66,10 @@ export default function Hero(props: HeroProps) {
                         sx={{
                             ...styles.imageContainer,
                             opacity: props.opacity ? props.opacity : .5,
-                            backgroundColor: "black"
+                            backgroundColor: "black",
+                            overflow: "hidden",
                         }}>
-                        <Image {...props.image} fill objectFit="cover" />
+                        <Image {...props.image} fill style={{ objectFit: "cover" }} />
                     </Box>
                 </Box>
                 <Box

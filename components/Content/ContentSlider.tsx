@@ -68,7 +68,7 @@ function NonSlideContentItem(props) {
                     { ...styles.contentImage }
             }
         >
-            <Image fill objectFit="contain" src={props.img.src} alt={props.img.alt} />
+            <Image fill style={{ objectFit: "contain" }} src={props.img.src} alt={props.img.alt} />
         </Box>
         <Typography variant="h4"
             sx={{
@@ -122,7 +122,7 @@ function SlideContent(props) {
                                     ...styles.contentImage,
                                 }}
                             >
-                                <Image fill objectFit="contain" src={item.img.src} alt={item.img.alt} />
+                                <Image fill style={{ objectFit: "contain" }} src={item.img.src} alt={item.img.alt} />
                             </Box>
                             <Typography variant="h4"
                                 sx={{

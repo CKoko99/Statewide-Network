@@ -1,5 +1,5 @@
 import { Box, Button, LinearProgress, Typography } from "@mui/material";
-import Image, { StaticImageData } from "next/legacy/image";
+import Image, { StaticImageData } from "next/image";
 import { CustomFonts } from "../../../providers/theme";
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useState } from "react";
@@ -44,7 +44,7 @@ const itemStyles = {
         alignItems: "center",
         padding: "1rem",
         margin: { xs: ".7rem", sm: ".7rem", md: "0 .7rem .7rem 0" },
-        minWidth: { xs: "", md: "18vw", xl: "25rem" },
+        minWidth: { xs: "", md: "20vw", xl: "25rem" },
         cursor: "pointer",
         transition: 'transform 0.2s',
 
@@ -82,7 +82,6 @@ const itemStyles = {
     },
     iconContainer: {
         transition: 'transform 0.3s',
-
         width: "6rem",
     },
     imageHover: {
@@ -125,7 +124,7 @@ function CTAItem(props) {
                     ...itemStyles.iconContainer,
                 }
             }>
-                < Image alt={props.mainText} src={props.icon} />
+                < Image layout="responsive" style={{ objectFit: "contain" }} alt={props.mainText} src={props.icon} />
             </Box>
             <Box sx={
                 isHovered ?

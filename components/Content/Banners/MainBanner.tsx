@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import Image, { StaticImageData } from "next/legacy/image";
+import Image, { StaticImageData } from "next/image";
 import { CustomFonts } from "../../../providers/theme";
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import CTASection from "./CTASection";
@@ -114,7 +114,7 @@ export default function MainBanner(props: BannerProps) {
                 </Box>
                 <Box sx={{ ...styles.bannerRight }}>
                     <Box sx={{ ...styles.mainImageContainer }}>
-                        <Image alt={props.image.alt} src={props.image.src} />
+                        <Image layout="responsive" style={{ objectFit: "contain" }} alt={props.image.alt} src={props.image.src} />
                     </Box>
                 </Box>
 

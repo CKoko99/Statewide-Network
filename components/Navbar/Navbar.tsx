@@ -21,7 +21,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
-import Image from 'next/image';
+import Image from "next/image";
 import MainNavbarItem from './MainNavbarItem';
 import PATHCONSTANTS from '../../constants/sitemap';
 

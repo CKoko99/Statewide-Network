@@ -78,7 +78,7 @@ export default function MultipleContentWImages(props) {
                     <Box
                         sx={{ ...styles.imageContainer }}
                     >
-                        <Image fill objectFit="contain" {...props.menuContent[contentIndex].image} />
+                        <Image fill style={{ objectFit: "contain" }} {...props.menuContent[contentIndex].image} />
                     </Box>
                 </Box>
                 <Box
