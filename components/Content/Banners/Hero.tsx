@@ -14,6 +14,7 @@ interface HeroProps {
         link: string;
     }[];
     opacity?: number;
+    align?: "left" | "center" | "right";
 }
 const styles = {
     imageContainer: {
@@ -75,6 +76,7 @@ export default function Hero(props: HeroProps) {
                 <Box
                     sx={{
                         ...styles.textContainer,
+                        textAlign: props.align ? props.align : "center",
                     }}
                 >
                     <Typography variant="h3"
