@@ -9,7 +9,7 @@ interface HeroProps {
         src: StaticImageData;
         alt: string;
     };
-    CTAButtons: {
+    CTAButtons?: {
         text: string;
         link: string;
     }[];
@@ -102,7 +102,7 @@ export default function Hero(props: HeroProps) {
                         }}
                     >
 
-                        {props.CTAButtons.map((button, index) => {
+                        {props.CTAButtons?.map((button, index) => {
                             return <Button
                                 key={index}
                                 variant="contained"
