@@ -13,7 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Navbar />
       <Box
         sx={{
-          maxWidth: "2560px", margin: "auto", borderLeft: "1px solid #dfdfdf",
+          maxWidth: "2060px", margin: "auto", borderLeft: "1px solid #dfdfdf",
           borderRight: "1px solid #dfdfdf"
         }}
       >
