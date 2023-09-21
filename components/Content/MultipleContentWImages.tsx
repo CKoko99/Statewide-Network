@@ -53,7 +53,7 @@ const styles = {
         cursor: "pointer",
         selected: {
             color: "primary.main",
-            fontWeight: "bold"
+            fontWeight: "900"
         }
     },
     bodySection: {

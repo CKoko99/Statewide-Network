@@ -26,6 +26,7 @@ const styles = {
     section1: {
         width: { xs: "100%", md: "50%" },
         padding: { xs: "1.5rem 2rem", md: "1.5rem 3rem" },
+        margin: "auto 0",
     },
     imageContainer: {
         position: "relative",
@@ -66,12 +67,13 @@ export default function PicturesWithText(props: PictureWithTextProps) {
                 <Box
                     sx={styles.section2}
                 >
-                    <Typography variant="h3" fontFamily={CustomFonts.Gustavo}>
+                    {props.title ? <Typography variant="h3" fontFamily={CustomFonts.Gustavo}>
                         {props.title}
-                    </Typography>
-                    <Typography variant="h5" align="left" fontFamily={CustomFonts.Poppin}>
-                        {props.body}
-                    </Typography>
+                    </Typography> : null}
+                    {props.body ?
+                        <Typography variant="h5" align="left" fontFamily={CustomFonts.Poppin}>
+                            {props.body}
+                        </Typography> : null}
                 </Box>
             </Box>
         </Box>
