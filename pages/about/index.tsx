@@ -4,6 +4,7 @@ import UmbrellaImg from "../../public/assets/images/about/umbrellas.png";
 import HandshakeImg from "../../public/assets/images/about/handshake.png";
 import PictureWithText from "../../components/Content/PictureWithText";
 import TextSection from "../../components/Content/TextSection";
+import ScreenshotTool from "../../components/Screenshot/ScreenshotTool";
 const heroContent = {
     title: "About Us",
     subtitle: "As a part of the OSIX Insurance family we are experts in providing coverage to families all over Texas",
@@ -41,9 +42,11 @@ const contentSection3 = {
 }
 export default function Index() {
     return (<>
+
         <Hero {...heroContent} />
         <PictureWithText {...contentSection1} />
         <TextSection largeText {...contentSection2} />
         <PictureWithText reverse {...contentSection3} />
+
     </>)
 }
