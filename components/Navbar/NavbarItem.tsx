@@ -100,7 +100,7 @@ function SimpleMenu(props: any) {
                                 }}
 
                                 anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
-
+                                disableScrollLock={true}
                                 style={{
                                     ...defaultStyle,
                                     ...transitionStyles[state],
