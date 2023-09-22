@@ -52,6 +52,7 @@ let theme = createTheme({
     },
     body1: {
       fontSize: '1.2rem',
+      fontFamily: [PoppinFonts.join(',')].join(','),
     }
   },
 

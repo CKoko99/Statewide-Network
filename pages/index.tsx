@@ -147,9 +147,6 @@ const DoubleMenu = {
         src: LaptopImg,
         alt: "Laptop"
       },
-      CTA: {
-        text: "Get Started",
-      },
       subHeading: "Getting a quote online is as easy as 1, 2, 3!",
       body: [
         `1. Tell us about yourself and your vehicle`,
@@ -159,6 +156,8 @@ const DoubleMenu = {
       CTAButtons: [
         {
           text: "Get Started",
+          type: "Modal",
+          modal: "GETAQUOTE"
         }
       ]
     },
