@@ -144,7 +144,7 @@ function GetAQuote(props, ref) {
             <Typography sx={{ ...styles.title }} variant="h4">Get a FREE Quote Today</Typography>
             <Box style={{
                 display: "flex", justifyContent: "center", flexWrap: "wrap", marginTop: "2rem",
-                overflow: "scroll"
+                overflow: "scroll", padding: ".5rem",
 
             }}>
                 {quoteItems.map((item, index) => (

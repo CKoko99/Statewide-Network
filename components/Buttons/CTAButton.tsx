@@ -4,7 +4,7 @@ import { useState } from "react";
 import GetAQuote from "../Modals/GetAQuote";
 
 interface CTAButtonProps {
-    color?: string
+    color?: any;
     link?: string;
     text: string;
     type?: string;
