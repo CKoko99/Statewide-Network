@@ -3,12 +3,12 @@ import Base from "./Base";
 import { forwardRef, useState } from "react";
 import { CustomFonts } from "../../providers/theme";
 
-import MotorcycleIcon from "../../public/assets/images/home/icons/motorcycle.png"
-import CarIcon from "../../public/assets/images/home/icons/car.png"
-import HomeIcon from "../../public/assets/images/home/icons/house.png"
-import RentersIcon from "../../public/assets/images/home/icons/rent.png"
+import MotorcycleIcon from "../../public/assets/images/home/icons/motorcycle1.png"
+import CarIcon from "../../public/assets/images/home/icons/car1.png"
+import HomeIcon from "../../public/assets/images/home/icons/house1.png"
+import RentersIcon from "../../public/assets/images/home/icons/rent1.png"
 import MexicoIcon from "../../public/assets/images/home/icons/mexico.png"
-import HandshakeIcon from "../../public/assets/images/home/icons/handshake.png"
+import HandshakeIcon from "../../public/assets/images/home/icons/handshake1.png"
 import CarkeyIcon from "../../public/assets/images/home/icons/carkey.png"
 import Image from "next/image";
 import { useRouter } from "next/router";
