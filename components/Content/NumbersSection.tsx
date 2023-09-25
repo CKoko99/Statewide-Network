@@ -113,7 +113,10 @@ export default function NumbersSection(props) {
                 <Box
                     sx={{
                         display: "flex", flexDirection: { xs: "column", sm: "row" }, alignItems: "center", justifyContent: "space-around",
-                        margin: "1rem", gap: "2rem"
+                        margin: "1rem auto", gap: "3rem",
+                        width: {
+                            md: "85%", lg: "65%", xl: "65%"
+                        },
                     }}
                 >
                     {props.menuContent.map((item, index) => {

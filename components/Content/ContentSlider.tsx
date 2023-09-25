@@ -24,9 +24,12 @@ const styles = {
     NonSlideContentContainer: {
         display: { xs: "none", md: "flex" },
         flexDirection: "row",
-        width: "85%",
+        width: {
+            md: "85%", lg: "65%", xl: "65%"
+        },
         margin: "0 auto",
         justifyContent: "space-between",
+        gap: "3rem",
     },
     SlideContentContainer: {
         display: { xs: "flex", md: "none" },
