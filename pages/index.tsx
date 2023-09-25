@@ -4,10 +4,10 @@ import HeadComponent from "../components/Head";
 import MainBanner from "../components/Content/Banners/MainBanner";
 import BannerImage from "../public/assets/images/home/CarHug.png";
 import PATHCONSTANTS from '../constants/sitemap';
-import MotorcycleIcon from "../public/assets/images/home/icons/motorcycle1.png"
-import CarIcon from "../public/assets/images/home/icons/car1.png"
-import HomeIcon from "../public/assets/images/home/icons/house1.png"
-import RentersIcon from "../public/assets/images/home/icons/rent1.png"
+import MotorcycleIcon from "../public/assets/images/home/icons/keys3.png"
+import CarIcon from "../public/assets/images/home/icons/car3.png"
+import HomeIcon from "../public/assets/images/home/icons/house3.png"
+import RentersIcon from "../public/assets/images/home/icons/rent3.png"
 import TextSection from '../components/Content/TextSection';
 import CompetitveIcon from "../public/assets/images/home/icons/competitive.png"
 import QuickIcon from "../public/assets/images/home/icons/quick.png"

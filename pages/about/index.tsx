@@ -5,6 +5,7 @@ import HandshakeImg from "../../public/assets/images/about/handshake.png";
 import PictureWithText from "../../components/Content/PictureWithText";
 import TextSection from "../../components/Content/TextSection";
 import ScreenshotTool from "../../components/Screenshot/ScreenshotTool";
+import Cards from "../../components/Content/Cards/Cards";
 const heroContent = {
     title: "About Us",
     subtitle: "As a part of the OSIX Insurance family we are experts in providing coverage to families all over Texas",
@@ -32,13 +33,17 @@ const contentSection2 = {
 const contentSection3 = {
     body: `
     At Statewide Insurance, our professionals are dedicated to ongoing research, forging valuable connections, and expanding our array of offerings to deliver exclusive discounts and unparalleled
-     rate ti our clients. Our compregensive coverage options span a wide spectrum, including but not limited to auto, home, renters, and recreational insurance, among others.
+     rate to our clients. Our compregensive coverage options span a wide spectrum, including but not limited to auto, home, renters, and recreational insurance, among others.
       We are committed to safeguarding your assets and providing you with the peace of mind you deserve. 
     `,
     image: {
         src: HandshakeImg,
         alt: "Handshake"
     }
+}
+const cardsSection = {
+    title: "Learn more",
+    subtitle: "Insights, Information, and Beyond"
 }
 export default function Index() {
     return (<>
@@ -47,6 +52,6 @@ export default function Index() {
         <PictureWithText {...contentSection1} />
         <TextSection largeText {...contentSection2} />
         <PictureWithText reverse {...contentSection3} />
-
+        <Cards {...cardsSection} />
     </>)
 }

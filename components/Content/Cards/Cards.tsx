@@ -61,7 +61,7 @@ const styles = {
 
     }
 }
-export default function Card(props: CardProps) {
+export default function Cards(props: CardProps) {
     return (<>
         <Box
             sx={{ ...styles.root }}

@@ -18,7 +18,7 @@ const CustomFonts = {
 let theme = createTheme({
   palette: {
     primary: {
-      main: '#BF2C38',
+      main: '#223289' //'#BF2C38',
     },
 
     secondary: {
