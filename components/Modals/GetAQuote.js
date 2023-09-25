@@ -76,7 +76,7 @@ const quoteItems = [
 const styles = {
     title: {
         textAlign: "center",
-        fontFamily: CustomFonts.Gustavo
+        fontFamily: CustomFonts.Gustavo,
     },
     quoteItem: {
         display: "flex",
@@ -90,7 +90,9 @@ const styles = {
         transition: 'transform 0.3s',
         flex: "1",
         gap: ".5rem",
-        minWidth: { md: "33%" }
+        minWidth: { xs: "45%" },
+        maxWidth: { xs: "400px" },
+        textAlign: "left",
     },
     quoteItemHovered: {
         border: "1px solid #000",
@@ -126,7 +128,7 @@ function QuoteItem(props) {
             onClick={() => router.push(props.link)}
             sx={
                 isHovered ? { ...styles.quoteItem, ...styles.quoteItemHovered } : { ...styles.quoteItem }}>
-            <Typography variant="body1">{props.title}</Typography>
+            <Typography variant="subtitle2">{props.title}</Typography>
             {props.image ? <Box
                 sx={
                     !isHovered ? { ...styles.imageContainer } : {
@@ -141,10 +143,11 @@ function QuoteItem(props) {
 function GetAQuote(props, ref) {
     return (
         <Base ref={ref}>
-            <Typography sx={{ ...styles.title }} variant="h4">Get a FREE Quote Today</Typography>
+            <Typography sx={{ ...styles.title }} variant="h4">Unlock your savings today!</Typography>
+            <Typography sx={{ ...styles.title }} variant="h6">Select a product below</Typography>
             <Box style={{
-                display: "flex", justifyContent: "center", flexWrap: "wrap", marginTop: "2rem",
-                overflow: "scroll", padding: ".5rem",
+                display: "flex", justifyContent: "center", flexWrap: "wrap",
+                overflowY: "scroll", padding: ".5rem", overflowX: "hidden"
 
             }}>
                 {quoteItems.map((item, index) => (

@@ -15,15 +15,21 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         gap: "1rem",
-        padding: { xs: "1rem", sm: "2rem" },
+        padding: { xs: "1rem", sm: " 2rem  " },
         boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
         maxHeight: "90vh",
     },
 }
 
-function Base({ children }, ref) {
+function Base(props, ref) {
+    console.log(props)
+
     return (
-        <Box sx={{ ...styles.modal }}>{children}</Box>
+
+        <Box sx={{ ...styles.modal }}>
+
+            {props.children}</Box>
+
     )
 }
 

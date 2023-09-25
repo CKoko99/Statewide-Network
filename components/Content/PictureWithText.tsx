@@ -67,7 +67,7 @@ export default function PicturesWithText(props: PictureWithTextProps) {
                 <Box
                     sx={styles.section2}
                 >
-                    {props.title ? <Typography variant="h3" fontFamily={CustomFonts.Gustavo}>
+                    {props.title ? <Typography variant="h3" fontWeight={800} fontFamily={CustomFonts.Gustavo}>
                         {props.title}
                     </Typography> : null}
                     {props.body ?

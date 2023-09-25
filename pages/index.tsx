@@ -1,3 +1,4 @@
+`use client`
 import type { NextPage } from 'next'
 import HeadComponent from "../components/Head";
 import MainBanner from "../components/Content/Banners/MainBanner";

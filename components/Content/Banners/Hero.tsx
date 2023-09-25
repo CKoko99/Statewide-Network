@@ -1,6 +1,7 @@
+
 import { Box, Button, Typography } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
-import { CustomFonts } from "../../../providers/theme";
+import { CustomFonts } from '../../../providers/theme';
 
 
 interface HeroProps {

@@ -1,3 +1,4 @@
+'use client'
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import GustavoFont from '../fonts/Gustavo/GustavoFont'
 import PoppinsFont from '../fonts/Poppins/PoppinsFont'

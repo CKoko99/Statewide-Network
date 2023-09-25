@@ -54,7 +54,8 @@ const styles = {
         selected: {
             color: "primary.main",
             fontWeight: "900"
-        }
+        },
+        textAlign: "center",
     },
     bodySection: {
         display: "flex",
@@ -87,7 +88,7 @@ export default function MultipleContentWImages(props) {
                     <Box
                         sx={{
                             display: "flex", gap: ".5rem",
-                            justifyContent: "center", alignItems: "center"
+                            justifyContent: "center", alignItems: "stretch"
                         }}
                     >
                         {props.menuContent?.map((item, index) => {
@@ -99,7 +100,6 @@ export default function MultipleContentWImages(props) {
                                     onClick={
                                         () => {
                                             setContentIndex(index)
-                                            console.log(index === contentIndex)
                                         }
                                     } >{item.title}</Typography>
                                 {index === props.menuContent.length - 1 ? <></> : <Box sx={{ display: "block", }}>
