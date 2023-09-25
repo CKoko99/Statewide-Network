@@ -4,9 +4,9 @@ import Link from "next/link";
 import React from "react";
 
 interface CardProps {
-    title: string;
-    subtitle: string;
-    content: any;
+    title?: string;
+    subtitle?: string;
+    content?: any;
 }
 const styles = {
     root: {
