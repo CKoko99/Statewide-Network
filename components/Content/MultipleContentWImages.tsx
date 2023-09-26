@@ -94,7 +94,10 @@ export default function MultipleContentWImages(props) {
                         {props.menuContent?.map((item, index) => {
                             return <React.Fragment key={index}>
                                 <Typography variant="h5" fontFamily={CustomFonts.Gustavo}
-                                    sx={index === contentIndex ? { ...styles.menuContentTitle.selected, ...styles.menuContentTitle }
+                                    sx={index === contentIndex ? {
+                                        ...styles.menuContentTitle,
+                                        ...styles.menuContentTitle.selected,
+                                    }
                                         : { ...styles.menuContentTitle }
                                     }
                                     onClick={
@@ -110,13 +113,13 @@ export default function MultipleContentWImages(props) {
                         )}
                     </Box>
                     <Box>
-                        <Typography variant="h4">{props.menuContent[contentIndex].subHeading}</Typography>
+                        <Typography fontWeight={"bold"} variant="h5">{props.menuContent[contentIndex].subHeading}</Typography>
                     </Box>
                     <Box
                         sx={{ ...styles.bodySection }}
                     >
                         {props.menuContent[contentIndex].body?.map((item, index) => {
-                            return <Typography fontWeight={"bold"} key={index} variant="h6">{item}</Typography>
+                            return <Typography key={index} variant="h6">{item}</Typography>
                         }
                         )}
                     </Box>
