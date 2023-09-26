@@ -163,13 +163,16 @@ export default function Footer() {
           </Typography>
           <Box sx={{ ...classes.section3content }}>
             {section3content.links.map((item, index) => {
-              return <Box key={index}
+              return <Box key={index} style={{ display: "flex", gap: ".3rem" }}
               >
                 <Link href={item.link}>
                   <Typography variant="body1" sx={{ ...classes.link }}>
-                    {item.text} {index !== section3content.links.length - 1 && "|"}
+                    {item.text}
                   </Typography>
                 </Link>
+                <Typography variant="body1" sx={{ ...classes.link }}>
+                  {index !== section3content.links.length - 1 && "|"}
+                </Typography>
               </Box>
             })}
           </Box>
