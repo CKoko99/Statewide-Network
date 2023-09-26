@@ -30,7 +30,8 @@ const styles = {
     sections: {
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
-
+        width: { xs: "95%", sm: "100%" },
+        margin: "auto",
     },
     section1: {
         width: { xs: "100%", md: "50%" },
@@ -68,7 +69,7 @@ export default function MultipleContentWImages(props) {
     return <>
         <Box sx={{ ...styles.root }}>
             <Box>
-                <Typography align="center" fontFamily={CustomFonts.Gustavo} variant="h4">{props.title}</Typography>
+                <Typography align="center" fontWeight={800} fontFamily={CustomFonts.Gustavo} variant="h4">{props.title}</Typography>
             </Box>
             <Box
                 sx={{ ...styles.sections }}
