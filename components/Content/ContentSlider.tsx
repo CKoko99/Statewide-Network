@@ -8,6 +8,8 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import SwipeableViews from 'react-swipeable-views-react-18-fix';
 
+
+
 interface ContentSliderProps {
     menuContent: {
         title: string;
@@ -103,17 +105,30 @@ function NonSlideContent(props) {
 }
 function SlideContent(props) {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [autoPlay, setAutoPlay] = useState(true);
 
-    function handleChangeIndex(index) {
-        if (index === props.menuContent.length) {
+
+    function handleChangeIndex(index, stopAutoPlay = false) {
+        if (index >= props.menuContent.length) {
             setCurrentSlide(0)
-        } else if (index === -1) {
+        } else if (index < 0) {
             setCurrentSlide(props.menuContent.length - 1)
         } else {
             setCurrentSlide(index)
         }
+        if (stopAutoPlay) {
+            setAutoPlay(false)
+        }
     }
-
+    //call the function to change the slide every 5 seconds
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            if (autoPlay) {
+                handleChangeIndex(currentSlide + 1);
+            }
+        }, 2000);
+        return () => clearInterval(interval);
+    }, [currentSlide, autoPlay]);
     return <>
         <Box
             sx={{
@@ -173,19 +188,19 @@ function SlideContent(props) {
                     props.menuContent.map((item, index) => {
                         if (index === currentSlide) {
                             return <FiberManualRecordIcon key={index} onClick={
-                                () => { setCurrentSlide(index) }
+                                () => { setCurrentSlide(index, true) }
                             } sx={{ fontSize: "1.5rem", cursor: "pointer" }} />
                         } else {
                             return <TripOriginIcon
                                 key={index}
                                 onClick={
-                                    () => { setCurrentSlide(index) }
+                                    () => { setCurrentSlide(index, true) }
                                 } sx={{ fontSize: "1.25rem", cursor: "pointer" }} />
                         }
                     })
                 }
                 <ArrowForwardIosIcon onClick={() => {
-                    handleChangeIndex(currentSlide + 1)
+                    handleChangeIndex(currentSlide + 1, true)
                 }
                 } sx={{ fontSize: "2rem", cursor: "pointer", marginLeft: "-.7rem" }} />
             </Box>
