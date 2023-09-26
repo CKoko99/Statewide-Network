@@ -1,4 +1,3 @@
-`use client`
 import type { NextPage } from 'next'
 import HeadComponent from "../components/Head";
 import MainBanner from "../components/Content/Banners/MainBanner";
@@ -215,7 +214,7 @@ const Home: NextPage = () => {
     <>
       <HeadComponent title={'Statewide Insurance'} metaData={'Statewide Insurance'} />
       <MainBanner {...bannerContent} />
-      <TextSection {...textSectionContent} />
+      <TextSection largeText {...textSectionContent} />
       <ContentSlider {...sliderContent} />
       <NumbersSection {...numberSection} />
       <Hero {...HeroContent} />
