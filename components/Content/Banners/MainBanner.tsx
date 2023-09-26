@@ -4,8 +4,8 @@ import { CustomFonts } from "../../../providers/theme";
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import CTASection from "./CTASection";
 interface BannerProps {
-    mainHeading: string;
-    subHeading: string;
+    mainHeading?: string;
+    subHeading?: string;
     image: {
         src: StaticImageData;
         alt: string;
