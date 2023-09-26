@@ -6,6 +6,8 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import TripOriginIcon from '@mui/icons-material/TripOrigin';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import SwipeableViews from 'react-swipeable-views-react-18-fix';
+
 interface ContentSliderProps {
     menuContent: {
         title: string;
@@ -36,10 +38,11 @@ const styles = {
         flexDirection: "row",
         width: "85%",
         margin: "0 auto",
-        justifyContent: "space-between",
+        justifyContent: { xs: "center", md: "space-between", }
     },
     contentItem: {
-        maxWidth: { md: "25vw" }
+        maxWidth: { md: "25vw" },
+        width: "100%",
     },
     contentImage: {
         height: "5rem",
@@ -100,18 +103,16 @@ function NonSlideContent(props) {
 }
 function SlideContent(props) {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [startX, setStartX] = useState(0);
-    const handleSwipe = (e) => {
-        const swipeDistance = e.clientX - startX;
-        console.log(e.clientX)
-        console.log(startX)
-        console.log(swipeDistance)
-        if (swipeDistance > 50) {
-            // Swipe to the right, load the next item
-            setCurrentSlide(currentSlide + 1)
-        }
-    };
 
+    function handleChangeIndex(index) {
+        if (index === props.menuContent.length) {
+            setCurrentSlide(0)
+        } else if (index === -1) {
+            setCurrentSlide(props.menuContent.length - 1)
+        } else {
+            setCurrentSlide(index)
+        }
+    }
 
     return <>
         <Box
@@ -119,44 +120,45 @@ function SlideContent(props) {
                 display: "flex",
                 alignItems: "center",
                 flexDirection: "column",
+
             }}
         >
-            <Box>
-
-                {
-                    props.menuContent.map((item, index) => {
-                        if (index !== currentSlide) {
-                            return <React.Fragment key={index}></React.Fragment>
-                        }
-                        return <Box
-                            sx={{ ...styles.contentItem }}
-                            key={index}
-                            onTouchStart={(e) => {
-                                setStartX(e.touches[0].clientX)
-                                //console.log(startX)
-                            }}
-                            onTouchEnd={(e) => { handleSwipe(e) }}
-                        >
-                            <Box
-                                sx={{
-                                    ...styles.contentImage,
-                                }}
+            <Box sx={{ width: "85%", margin: "auto" }}>
+                <SwipeableViews index={currentSlide} onChangeIndex={handleChangeIndex} slideStyle={{}} enableMouseEvents>
+                    {
+                        props.menuContent.map((item, index) => {
+                            {
+                                /*
+                                if (index !== currentSlide) {
+                                     return <React.Fragment key={index}></React.Fragment>
+                                 }
+                                */
+                            }
+                            return <Box
+                                sx={{ ...styles.contentItem }}
+                                key={index}
                             >
-                                <Image fill style={{ objectFit: "contain" }} src={item.img.src} alt={item.img.alt} />
+                                <Box
+                                    sx={{
+                                        ...styles.contentImage,
+                                    }}
+                                >
+                                    <Image fill style={{ objectFit: "contain" }} src={item.img.src} alt={item.img.alt} />
+                                </Box>
+                                <Typography variant="h4"
+                                    sx={{
+                                        ...styles.contentTitle,
+                                    }}
+                                >
+                                    {item.title}
+                                </Typography>
+                                <Typography variant="h6">
+                                    {item.body}
+                                </Typography>
                             </Box>
-                            <Typography variant="h4"
-                                sx={{
-                                    ...styles.contentTitle,
-                                }}
-                            >
-                                {item.title}
-                            </Typography>
-                            <Typography variant="h6">
-                                {item.body}
-                            </Typography>
-                        </Box>
-                    })
-                }
+                        })
+                    }
+                </SwipeableViews>
             </Box>
             <Box sx={{
                 display: "flex",
@@ -165,11 +167,7 @@ function SlideContent(props) {
                 margin: "1rem"
             }}>
                 <ArrowBackIosIcon onClick={() => {
-                    if (currentSlide === 0) {
-                        setCurrentSlide(props.menuContent.length - 1)
-                    } else {
-                        setCurrentSlide(currentSlide - 1)
-                    }
+                    handleChangeIndex(currentSlide - 1)
                 }} sx={{ fontSize: "2rem", cursor: "pointer", marginRight: "-1rem" }} />
                 {
                     props.menuContent.map((item, index) => {
@@ -187,11 +185,7 @@ function SlideContent(props) {
                     })
                 }
                 <ArrowForwardIosIcon onClick={() => {
-                    if (currentSlide === props.menuContent.length - 1) {
-                        setCurrentSlide(0)
-                    } else {
-                        setCurrentSlide(currentSlide + 1)
-                    }
+                    handleChangeIndex(currentSlide + 1)
                 }
                 } sx={{ fontSize: "2rem", cursor: "pointer", marginLeft: "-.7rem" }} />
             </Box>
