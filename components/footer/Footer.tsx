@@ -80,7 +80,8 @@ const classes = {
     cursor: "pointer",
     fontWeight: "600",
     marginRight: ".3rem",
-    whiteSpace: "nowrap"
+    whiteSpace: "nowrap",
+    fontSize: "1.3rem",
   },
   section3: {
     display: "flex",
@@ -90,6 +91,7 @@ const classes = {
   section3content: {
     display: "flex",
     flexWrap: "wrap",
+    gap: ".5rem",
   },
   copyright: {
     marginTop: "1rem",
