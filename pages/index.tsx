@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import HeadComponent from "../components/Head";
 import MainBanner from "../components/Content/Banners/MainBanner";
-import BannerImage from "../public/assets/images/home/CarHug.png";
+import BannerImage from "../public/assets/images/home/carsmile.png";
 import PATHCONSTANTS from '../constants/sitemap';
 import MotorcycleIcon from "../public/assets/images/home/icons/keys3.png"
 import CarIcon from "../public/assets/images/home/icons/car3.png"
@@ -21,8 +21,8 @@ import LaptopImg from "../public/assets/images/home/laptop.png"
 import PhoneImg from "../public/assets/images/home/Phone.png"
 import MultipleContentWImages from '../components/Content/MultipleContentWImages';
 const bannerContent = {
-  mainHeading: "Insurance Savings the Size of Texas",
-  subHeading: "A Better Tomorrow Starts Today",
+  mainHeading: "Insurance Savings Begin Today",
+  //subHeading: "A Better Tomorrow Starts Today",
   image: {
     src: BannerImage,
     alt: "Car Hug"
@@ -87,8 +87,9 @@ const sliderContent = {
   ]
 }
 const textSectionContent = {
-  heading: "Switching Made Simple: Embrace YOUR Savings Today!",
-  subHeading: "Our people and our technology are here to help our fellow Texans stop overpaying to cover their loved belongings",
+  heading: "Get your personalized quotes right away!",
+  //heading: "Switching Made Simple: Embrace YOUR Savings Today!",
+  //  subHeading: "Our people and our technology are here to help our fellow Texans stop overpaying to cover their loved belongings",
 }
 const numberSection = {
   title: "By the Numbers",

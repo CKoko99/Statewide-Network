@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import { CustomFonts } from "../../providers/theme";
 interface TextSectionProps {
-    heading: string;
-    subHeading: string;
+    heading?: string;
+    subHeading?: string;
     largeText?: boolean;
 }
 const styles = {

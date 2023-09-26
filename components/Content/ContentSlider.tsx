@@ -100,6 +100,18 @@ function NonSlideContent(props) {
 }
 function SlideContent(props) {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [startX, setStartX] = useState(0);
+    const handleSwipe = (e) => {
+        const swipeDistance = e.clientX - startX;
+        console.log(e.clientX)
+        console.log(startX)
+        console.log(swipeDistance)
+        if (swipeDistance > 50) {
+            // Swipe to the right, load the next item
+            setCurrentSlide(currentSlide + 1)
+        }
+    };
+
 
     return <>
         <Box
@@ -119,6 +131,11 @@ function SlideContent(props) {
                         return <Box
                             sx={{ ...styles.contentItem }}
                             key={index}
+                            onTouchStart={(e) => {
+                                setStartX(e.touches[0].clientX)
+                                //console.log(startX)
+                            }}
+                            onTouchEnd={(e) => { handleSwipe(e) }}
                         >
                             <Box
                                 sx={{
