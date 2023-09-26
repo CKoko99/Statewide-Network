@@ -1,4 +1,4 @@
-'use client'
+
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import GustavoFont from '../fonts/Gustavo/GustavoFont'
 import PoppinsFont from '../fonts/Poppins/PoppinsFont'
@@ -30,17 +30,20 @@ let theme = createTheme({
   typography: {
     fontFamily: [GustavoFonts.join(','), PoppinFonts.join(',')].join(','),
     h1: {
-      fontSize: '3.1rem',
+      fontSize: '2.5rem',
       fontWeight: 'bold',
     },
     h2: {
       fontFamily: [PoppinFonts.join(',')].join(','),
+      fontSize: '2.2rem',
     },
     h3: {
       fontFamily: [PoppinFonts.join(',')].join(','),
+      fontSize: '2rem',
     },
     h4: {
       fontFamily: [PoppinFonts.join(',')].join(','),
+      fontSize: '1.8rem',
     },
     h5: {
       fontFamily: [PoppinFonts.join(',')].join(','),
@@ -80,6 +83,5 @@ let theme = createTheme({
   },
 
 });
-theme = responsiveFontSizes(theme);
 export { CustomFonts }
 export default theme;
