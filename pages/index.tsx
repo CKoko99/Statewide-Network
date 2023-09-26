@@ -18,7 +18,7 @@ import Hero from '../components/Content/Banners/Hero';
 import HeroImg from "../public/assets/images/home/Hero.png"
 import HeroImg2 from "../public/assets/images/home/Hero2.png"
 import LaptopImg from "../public/assets/images/home/laptop1.png"
-import PhoneImg from "../public/assets/images/home/Phone1.png"
+import PhoneImg from "../public/assets/images/home/phone1.png"
 import MultipleContentWImages from '../components/Content/MultipleContentWImages';
 const bannerContent = {
   mainHeading: "Insurance Savings Begin Today",
