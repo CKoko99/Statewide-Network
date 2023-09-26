@@ -38,13 +38,13 @@ const sectionStyles = {
 const itemStyles = {
     ctaButtonBanner: {
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         border: "2px solid #b1b1b1",
         flex: 1,
         alignItems: "center",
-        padding: "1rem",
+        padding: ".5rem",
         margin: { xs: ".7rem", sm: ".7rem", md: "0 .7rem .7rem 0" },
-        minWidth: { xs: "", md: "20vw", xl: "25rem" },
+        minWidth: { xs: "", md: "15rem", xl: "15rem" },
         cursor: "pointer",
         transition: 'transform 0.2s',
 
@@ -57,24 +57,23 @@ const itemStyles = {
     ctaButtonOutside: {
         cursor: "pointer",
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "row", md: "column" },
         border: "1px solid black",
         flex: 1,
         alignItems: "center",
         padding: "1rem",
         margin: ".7rem",
-        minWidth: { xs: "", md: "33vw" },
+        minWidth: { xs: "", md: "20rem" },
         transition: 'transform 0.2s',
-
         "&:hover": {
             transform: 'scale(1.01)', // Increase the scale factor for a larger image on hover
             border: "2px solid #5c5c5c",
-
         },
     },
     ctaText: {
-        textAlign: "left",
-        marginLeft: "1.2rem",
+
+        textAlign: { xs: "left", md: "center" },
+        marginLeft: { xs: "1.2rem", md: "0" },
         transition: 'transform 0.3s',
     },
     ctaTextHover: {
@@ -83,6 +82,8 @@ const itemStyles = {
     iconContainer: {
         transition: 'transform 0.3s',
         width: "6rem",
+        minHeight: "6rem",
+        display: "flex"
     },
     imageHover: {
         //tilt will add a slight rotation
@@ -94,6 +95,9 @@ const itemStyles = {
             transform: 'scale(1.1)', // Increase the scale factor for a larger image on hover
         },
     },
+    subText: {
+        display: { xs: "block", md: "none" },
+    }
 }
 function CTAItem(props) {
     const router = useRouter()
@@ -132,7 +136,10 @@ function CTAItem(props) {
                     { ...itemStyles.ctaText }
             }>
                 <Typography variant="h5" fontFamily={CustomFonts.Gustavo} >{props.mainText}</Typography>
-                <Typography variant="h6" fontWeight={400} fontFamily={CustomFonts.Poppin} >{props.subText}</Typography>
+
+
+                <Typography variant="subtitle1" sx={{ ...itemStyles.subText }} fontWeight={400} fontFamily={CustomFonts.Poppin} >{props.subText}</Typography>
+
             </Box>
 
         </Box>
@@ -213,7 +220,7 @@ export default function CTASection(props: Props) {
                     width: "100%",
                 }}
             >
-                <CTASubLink>
+                {/*<CTASubLink>
                     <Box
                         sx={{
                             cursor: "pointer",
@@ -228,7 +235,7 @@ export default function CTASection(props: Props) {
                             View More Products
                         </Typography>
                     </Box>
-                </CTASubLink>
+                    </CTASubLink>*/}
                 <CTASubLink>
                     <Box
                         sx={{

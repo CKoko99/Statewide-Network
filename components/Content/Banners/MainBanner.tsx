@@ -41,13 +41,17 @@ const styles = {
         alignItems: "center",
         justifyContent: "space-around",
         maxWidth: "1200px",
+        gap: ".5rem"
     },
     mainText: {
         marginLeft: { xs: "auto", sm: "auto", md: "3rem", lg: "5rem", },
-        width: "100%"
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        gap: ".5rem",
     },
     bannerRight: {
-        width: '50%',
+        width: '80%',
         textAlign: 'right',
         display: { xs: "none", md: "block" },
     },
