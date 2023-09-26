@@ -11,17 +11,14 @@ import LogoImg from '../../public/assets/images/statewide_logo.png';
 import Image from "next/image";
 
 const section2content = [
+
   {
-    title: "Find an Agent",
-    link: PATHCONSTANTS.LOCATIONS.INDEX
+    title: "About Us",
+    link: PATHCONSTANTS.ABOUT.INDEX
   },
   {
     title: "Contact Us",
     link: PATHCONSTANTS.ABOUT.CONTACT
-  },
-  {
-    title: "About Us",
-    link: PATHCONSTANTS.ABOUT.INDEX
   },
   {
     title: "Careers",
@@ -29,15 +26,12 @@ const section2content = [
   }
 ]
 const section3content = {
-  title: "Ai United Insurance Products",
+  title: "Statewide Insurance Products",
   links: [
     { text: "Auto Insurance", link: PATHCONSTANTS.PRODUCTS.AUTO },
     { text: "Motorcycle Insurance", link: PATHCONSTANTS.PRODUCTS.MOTORCYCLE },
     { text: "Home Insurance", link: PATHCONSTANTS.PRODUCTS.HOME },
     { text: "Renters Insurance", link: PATHCONSTANTS.PRODUCTS.RENTERS },
-    { text: "Mexico Insruance", link: PATHCONSTANTS.PRODUCTS.MEXICO },
-    { text: "SR-22", link: PATHCONSTANTS.PRODUCTS.SR22 },
-    { text: "Surety Bonds", link: PATHCONSTANTS.PRODUCTS.SURETY },
   ]
 }
 

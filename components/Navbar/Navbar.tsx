@@ -171,7 +171,10 @@ function DrawerAppBar(props: any) {
   return (<>
 
     <Box
-      sx={{ bgcolor: "secondary.main", position: "fixed", width: "100%", zIndex: 999 }}
+      sx={{
+        bgcolor: "white", position: "fixed", width: "100%", zIndex: 999,
+        borderBottom: "1px solid #e0e0e0"
+      }}
     >
       <Box sx={{
         display: 'flex',
