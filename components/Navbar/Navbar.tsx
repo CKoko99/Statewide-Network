@@ -189,13 +189,13 @@ function DrawerAppBar(props: any) {
           edge="start"
           onClick={handleDrawerToggle}
           sx={{
-
+            color: "black",
             mr: 2, "@media (min-width: 880px)": {
               display: "none",
             },
           }}
         >
-          <MenuIcon sx={{ height: "3rem", width: "3rem", color: "white" }} />
+          <MenuIcon sx={{ height: "3rem", width: "3rem", color: "primary.main" }} />
 
         </IconButton>
         <Box
