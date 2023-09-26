@@ -25,7 +25,7 @@ const styles = {
         display: { xs: "none", md: "flex" },
         flexDirection: "row",
         width: {
-            md: "85%", lg: "65%", xl: "65%"
+            md: "85%", lg: "85%", xl: "75%"
         },
         margin: "0 auto",
         justifyContent: "space-between",

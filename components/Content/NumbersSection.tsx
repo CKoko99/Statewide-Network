@@ -108,14 +108,14 @@ export default function NumbersSection(props) {
                 sx={{ margin: "2rem auto", width: "90%", textAlign: "center" }}
             >
                 <FadeWrapper>
-                    <Typography variant="h2" gutterBottom fontFamily={CustomFonts.Gustavo}>{props.title}</Typography>
+                    <Typography variant="h2" gutterBottom fontWeight={800} fontFamily={CustomFonts.Gustavo}>{props.title}</Typography>
                 </FadeWrapper>
                 <Box
                     sx={{
                         display: "flex", flexDirection: { xs: "column", sm: "row" }, alignItems: "center", justifyContent: "space-around",
                         margin: "1rem auto", gap: "3rem",
                         width: {
-                            md: "85%", lg: "65%", xl: "65%"
+                            md: "85%", lg: "75%", xl: "75%"
                         },
                     }}
                 >
