@@ -120,7 +120,7 @@ function SlideContent(props) {
                 display: "flex",
                 alignItems: "center",
                 flexDirection: "column",
-
+                width: "100%",
             }}
         >
             <Box sx={{ width: "85%", margin: "auto" }}>
