@@ -6,6 +6,10 @@ import PictureWithText from "../../components/Content/PictureWithText";
 import TextSection from "../../components/Content/TextSection";
 import ScreenshotTool from "../../components/Screenshot/ScreenshotTool";
 import Cards from "../../components/Content/Cards/Cards";
+import PATHCONSTANTS from "../../constants/sitemap";
+import ContactImg from "../../public/assets/images/about/cards/contact.png";
+import CareersImg from "../../public/assets/images/about/cards/careers.png";
+import ReviewsImg from "../../public/assets/images/about/cards/reviews.png";
 const heroContent = {
     title: "About Us",
     subtitle: "As a part of the OSIX Insurance family we are experts in providing coverage to families all over Texas",
@@ -43,7 +47,33 @@ const contentSection3 = {
 }
 const cardsSection = {
     title: "Learn more",
-    subtitle: "Insights, Information, and Beyond"
+    subtitle: "Insights, Information, and Beyond",
+    content: [
+        {
+            title: "Contact Us",
+            link: PATHCONSTANTS.ABOUT.CONTACT,
+            img: {
+                src: ContactImg,
+                alt: "Phone"
+            }
+        },
+        {
+            title: "Careers",
+            link: PATHCONSTANTS.ABOUT.CONTACT,
+            img: {
+                src: CareersImg,
+                alt: "Careers"
+            }
+        },
+        {
+            title: "Reviews",
+            link: PATHCONSTANTS.ABOUT.CONTACT,
+            img: {
+                src: ReviewsImg,
+                alt: "Reviews"
+            }
+        },
+    ]
 }
 export default function Index() {
     return (<>
@@ -52,6 +82,6 @@ export default function Index() {
         <PictureWithText {...contentSection1} />
         <TextSection largeText {...contentSection2} />
         <PictureWithText reverse {...contentSection3} />
-        <Cards {...cardsSection} />
+        <Cards  {...cardsSection} />
     </>)
 }
