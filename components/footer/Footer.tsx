@@ -83,6 +83,12 @@ const classes = {
     whiteSpace: "nowrap",
     fontSize: "1.3rem",
   },
+  linkbar: {
+    fontWeight: "600",
+    marginRight: ".3rem",
+    whiteSpace: "nowrap",
+    fontSize: "1.3rem",
+  },
   section3: {
     display: "flex",
     flexDirection: "column",
@@ -147,13 +153,16 @@ export default function Footer() {
         </Box>
         <Box sx={{ ...classes.section2 }}>
           {section2content.map((item, index) => {
-            return <Box key={index}
+            return <Box key={index} style={{ display: "flex", gap: ".3rem" }}
             >
               <Link href={item.link}>
                 <Typography variant="body1" sx={{ ...classes.link }}>
-                  {item.title} {index !== section2content.length - 1 && "|"}
+                  {item.title}
                 </Typography>
               </Link>
+              <Typography variant="body1" sx={{ ...classes.linkbar }}>
+                {index !== section2content.length - 1 && "|"}
+              </Typography>
             </Box>
           })}
         </Box>
@@ -170,7 +179,9 @@ export default function Footer() {
                     {item.text}
                   </Typography>
                 </Link>
-                <Typography variant="body1" sx={{ ...classes.link }}>
+                <Typography variant="body1" sx={{
+                  ...classes.linkbar
+                }}>
                   {index !== section3content.links.length - 1 && "|"}
                 </Typography>
               </Box>
