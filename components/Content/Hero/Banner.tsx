@@ -10,7 +10,10 @@ interface BannerProps {
         link: string;
         text: string;
     };
-    image?: StaticImageData;
+    image?: {
+        src: StaticImageData;
+        alt: string;
+    };
 }
 const styles = {
     root: {
