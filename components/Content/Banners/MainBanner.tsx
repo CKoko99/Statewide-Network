@@ -54,10 +54,14 @@ const styles = {
         width: '80%',
         textAlign: 'right',
         display: { xs: "none", md: "block" },
+        minHeight: "23rem",
     },
     mainImageContainer: {
         //height: "60vh",
         zIndex: -1,
+        position: "relative",
+        width: "100%",
+        height: "100%",
     },
     ctaButtonContainerBanner: {
         display: "flex",
@@ -118,7 +122,7 @@ export default function MainBanner(props: BannerProps) {
                 </Box>
                 <Box sx={{ ...styles.bannerRight }}>
                     <Box sx={{ ...styles.mainImageContainer }}>
-                        <Image layout="responsive" style={{ objectFit: "contain" }} alt={props.image.alt} src={props.image.src} />
+                        <Image fill style={{ objectFit: "contain" }} alt={props.image.alt} src={props.image.src} />
                     </Box>
                 </Box>
 

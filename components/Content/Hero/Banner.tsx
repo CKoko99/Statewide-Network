@@ -1,6 +1,6 @@
 import { Box, Typography, Button } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
-import theme from "../../../providers/theme";
+import theme, { CustomFonts } from "../../../providers/theme";
 
 
 interface BannerProps {
@@ -34,7 +34,7 @@ const styles = {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
-        padding: "1rem",
+        padding: "3rem",
     },
     ctaButton: {
         backgroundColor: theme.palette.primary.light,
@@ -53,13 +53,20 @@ const styles = {
             xs: "auto", sm: "auto", md: "0",
         }
     },
-    imageContainer: {
+    imageSection: {
         width: {
             xs: "100%", sm: "100%", md: "55%", lg: "55%",
         },
-        padding: "1rem",
-        display: "flex", justifyContent: "center", alignItems: "center",
+        padding: "2rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         flexDirection: "column",
+    },
+    imageContainer: {
+        width: "100%",
+        height: "100%",
+        position: "relative",
     }
 }
 
@@ -72,7 +79,7 @@ export default function Banner(props: BannerProps) {
                     ...styles.textSection,
                 }}
             >
-                <Typography variant="h2" fontWeight="bold" gutterBottom>{props.title}</Typography>
+                <Typography variant="h1" fontFamily={CustomFonts.Gustavo} fontWeight="bold" gutterBottom>{props.title}</Typography>
 
                 <Typography sx={{
 
@@ -85,11 +92,15 @@ export default function Banner(props: BannerProps) {
                 )}
             </Box>
             <Box
-                sx={{ ...styles.imageContainer }}
+                sx={{ ...styles.imageSection }}
             >
-                {props.image && <Image
-
-                    src={props?.image} alt={props.title} />}
+                <Box
+                    sx={{ ...styles.imageContainer }}
+                >
+                    {props.image && <Image fill style={{ objectFit: "contain" }}
+                        {...props.image}
+                    />}
+                </Box>
                 <Typography sx={{
                     display: "none",
                 }} variant="h4" gutterBottom>{props.subtitle}</Typography>

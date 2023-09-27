@@ -83,7 +83,8 @@ const itemStyles = {
         transition: 'transform 0.3s',
         width: "6rem",
         minHeight: "6rem",
-        display: "flex"
+        display: "flex",
+        position: "relative",
     },
     imageHover: {
         //tilt will add a slight rotation
@@ -128,7 +129,7 @@ function CTAItem(props) {
                     ...itemStyles.iconContainer,
                 }
             }>
-                < Image layout="responsive" style={{ objectFit: "contain" }} alt={props.mainText} src={props.icon} />
+                < Image fill style={{ objectFit: "contain" }} alt={props.mainText} src={props.icon} />
             </Box>
             <Box sx={
                 isHovered ?
