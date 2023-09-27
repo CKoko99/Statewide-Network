@@ -188,13 +188,13 @@ function SlideContent(props) {
                     props.menuContent.map((item, index) => {
                         if (index === currentSlide) {
                             return <FiberManualRecordIcon key={index} onClick={
-                                () => { setCurrentSlide(index, true) }
+                                () => { handleChangeIndex(index, true) }
                             } sx={{ fontSize: "1.5rem", cursor: "pointer" }} />
                         } else {
                             return <TripOriginIcon
                                 key={index}
                                 onClick={
-                                    () => { setCurrentSlide(index, true) }
+                                    () => { handleChangeIndex(index, true) }
                                 } sx={{ fontSize: "1.25rem", cursor: "pointer" }} />
                         }
                     })
