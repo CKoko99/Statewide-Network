@@ -6,7 +6,7 @@ const heroContent = {
     title: "Auto Insurance",
     subtitle: "Get a free quote today",
     image: {
-        src: "",
+        src: null,
         alt: "City"
     },
     align: "left",
