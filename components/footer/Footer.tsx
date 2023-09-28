@@ -28,10 +28,10 @@ const section2content = [
 const section3content = {
   title: "Statewide Insurance Products",
   links: [
-    { text: "Auto Insurance", link: PATHCONSTANTS.PRODUCTS.AUTO },
-    { text: "Motorcycle Insurance", link: PATHCONSTANTS.PRODUCTS.MOTORCYCLE },
-    { text: "Home Insurance", link: PATHCONSTANTS.PRODUCTS.HOME },
-    { text: "Renters Insurance", link: PATHCONSTANTS.PRODUCTS.RENTERS },
+    { text: "Auto Insurance", link: PATHCONSTANTS.PRODUCTS.AUTO.INDEX },
+    { text: "Motorcycle Insurance", link: PATHCONSTANTS.PRODUCTS.MOTORCYCLE.INDEX },
+    { text: "Home Insurance", link: PATHCONSTANTS.PRODUCTS.HOME.INDEX },
+    { text: "Renters Insurance", link: PATHCONSTANTS.PRODUCTS.RENTERS.INDEX },
   ]
 }
 

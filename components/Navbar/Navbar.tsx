@@ -43,13 +43,11 @@ const navItems = [
     label: 'Our Products',
     link: '/products',
     menuItems: [
-      { title: "Auto Insurance", link: PATHCONSTANTS.PRODUCTS.AUTO },
-      { title: "Motorcycle Insurance", link: PATHCONSTANTS.PRODUCTS.MOTORCYCLE },
-      { title: "Mexico Insurance", link: PATHCONSTANTS.PRODUCTS.MEXICO },
-      { title: "Home Insurance", link: PATHCONSTANTS.PRODUCTS.HOME },
-      { title: "Renters Insurance", link: PATHCONSTANTS.PRODUCTS.RENTERS },
-      { title: "SR-22 Insurance", link: PATHCONSTANTS.PRODUCTS.SR22 },
-      { title: "Surety Bonds", link: PATHCONSTANTS.PRODUCTS.SURETY },
+      { title: "Auto Insurance", link: PATHCONSTANTS.PRODUCTS.AUTO.INDEX },
+      { title: "Home Insurance", link: PATHCONSTANTS.PRODUCTS.HOME.INDEX },
+      { title: "Renters Insurance", link: PATHCONSTANTS.PRODUCTS.RENTERS.INDEX },
+      { title: "Motorcycle Insurance", link: PATHCONSTANTS.PRODUCTS.MOTORCYCLE.INDEX },
+
     ]
   },
   {

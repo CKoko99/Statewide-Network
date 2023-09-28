@@ -75,7 +75,7 @@ function SimpleMenu(props: any) {
                     color: props.item.main ? "white" : "primary.main",
                 }}
             >
-                <Link href={props.item.link || ""} style={{ color: "inherit", textDecoration: "none" }}>
+                <Link href={props.item.link} style={{ color: "inherit", textDecoration: "none" }}>
                     <Typography variant="h6"
                         style={{ fontSize: "1.1rem", fontWeight: props.item.bold ? "bold" : "normal" }}
                     >
