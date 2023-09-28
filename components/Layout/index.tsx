@@ -14,6 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Box
         sx={{
           maxWidth: "1320px", margin: "auto",
+          boxShadow: "0 0 40px 10px rgba(204,204,204,.4)",
           borderLeft: "1px solid #dfdfdf", borderRight: "1px solid #dfdfdf"
         }}
       >
