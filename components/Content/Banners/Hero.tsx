@@ -34,7 +34,7 @@ const styles = {
         fontFamily: CustomFonts.Gustavo,
     },
     glowText: {
-        textShadow: " 0 0 10px #c1c1c1, 0 0 10px #a1a1a1, 0 0 30px #a8a8a8, 0 0 40px #a38d8f, 0 0 50px #b25e65, 0 0 60px #bb4a53, 0 0 70px #e27b83;"
+        textShadow: " 0 0 10px #c1c1c1, 0 0 1px #a1a1a1, 0 0 30px #a8a8a8, 0 0 40px #a38d8f, 0 0 50px #b25e65, 0 0 60px #bb4a53, 0 0 70px #e27b83;"
 
     },
     glowTextSub: {
