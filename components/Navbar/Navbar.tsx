@@ -63,10 +63,17 @@ const navItems = [
 ];
 
 function DrawerAppBar(props: any) {
+  const router = useRouter();
   const { drawerWindow } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [onQuotePage, setOnQuotePage] = React.useState(false);
+  React.useEffect(() => {
+    //if window location pathname starts with /quotes/ then set onQuotePage to true
+
+    setOnQuotePage(router.asPath.startsWith("/quotes/"));
+
+  }, [router.asPath]);
   //const history = useHistory();
-  const router = useRouter();
 
   const [openItem, setOpenItem] = useState(null);
 
@@ -167,91 +174,114 @@ function DrawerAppBar(props: any) {
 
 
   return (<>
+    {onQuotePage ? <Box sx={{
+      textAlign: "center",
+      width: "100%",
+    }}>
+      <Box
+        sx={{
+          maxWidth: '14rem', // Set the maximum width for the image
+          minHeight: '5rem',   // Automatically adjust height to maintain aspect ratio
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          margin: "auto"
+        }}
+      >
 
-    <Box
-      sx={{
-        bgcolor: "white", position: "fixed", width: "100%", zIndex: 999,
-        borderBottom: "1px solid #e0e0e0"
-      }}
-    >
-      <Box sx={{
-        display: 'flex',
-        width: { xs: "92%", sm: "95%", md: "90%", lg: "80%" },
-        maxWidth: "1800px",
-        flexDirection: "row", justifyContent: "space-between", alignItems: "center",
-        margin: "auto"
-      }}>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={handleDrawerToggle}
-          sx={{
-            color: "black",
-            mr: 2, "@media (min-width: 880px)": {
-              display: "none",
-            },
-          }}
-        >
-          <MenuIcon sx={{ height: "3rem", width: "3rem", color: "primary.main" }} />
+        <Image onClick={handleLogoClick}
+          //style={{ maxWidth: '120px', height: 'auto', cursor: 'pointer' }}
+          src={LogoImg}
+          alt="Statewide Insurance" />
+      </Box>
 
-        </IconButton>
+    </Box> :
+      <>
         <Box
           sx={{
-            maxWidth: '14rem', // Set the maximum width for the image
-            minHeight: '5rem',   // Automatically adjust height to maintain aspect ratio
-            cursor: 'pointer',
+            bgcolor: "white", position: "fixed", width: "100%", zIndex: 999,
+            borderBottom: "1px solid #e0e0e0"
+          }}
+        >
+          <Box sx={{
             display: 'flex',
-            alignItems: 'center',
-          }}
-        >
+            width: { xs: "92%", sm: "95%", md: "90%", lg: "80%" },
+            maxWidth: "1800px",
+            flexDirection: "row", justifyContent: "space-between", alignItems: "center",
+            margin: "auto"
+          }}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{
+                color: "black",
+                mr: 2, "@media (min-width: 880px)": {
+                  display: "none",
+                },
+              }}
+            >
+              <MenuIcon sx={{ height: "3rem", width: "3rem", color: "primary.main" }} />
 
-          <Image onClick={handleLogoClick}
-            //style={{ maxWidth: '120px', height: 'auto', cursor: 'pointer' }}
-            src={LogoImg}
-            alt="Statewide Insurance" />
-        </Box>
-        <Box sx={{
-          "@media (min-width: 880px)": {
-            display: "flex",
-          },
-          "@media (max-width: 880px)": {
-            display: "none",
-          }
-          , alignItems: 'center',
-          gap: "1.5rem"
-        }}>
-          {navItems.map((item, index) => (
-            <React.Fragment key={index}>{
-              item.main ? (<MainNavbarItem item={item} />) : (
-                <NavbarItem
-                  item={item}
-                />)
-            }</React.Fragment>
-          ))}
-        </Box>
+            </IconButton>
+            <Box
+              sx={{
+                maxWidth: '14rem', // Set the maximum width for the image
+                minHeight: '5rem',   // Automatically adjust height to maintain aspect ratio
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
 
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            "@media (min-width: 880px)": {
-              display: "none",
-            },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box >
-    </Box >
-    <Box sx={{ height: "5rem" }}
-    ></Box >
+              <Image onClick={handleLogoClick}
+                //style={{ maxWidth: '120px', height: 'auto', cursor: 'pointer' }}
+                src={LogoImg}
+                alt="Statewide Insurance" />
+            </Box>
+            <Box sx={{
+              "@media (min-width: 880px)": {
+                display: "flex",
+              },
+              "@media (max-width: 880px)": {
+                display: "none",
+              }
+              , alignItems: 'center',
+              gap: "1.5rem"
+            }}>
+              {navItems.map((item, index) => (
+                <React.Fragment key={index}>{
+                  item.main ? (<MainNavbarItem item={item} />) : (
+                    <NavbarItem
+                      item={item}
+                    />)
+                }</React.Fragment>
+              ))}
+            </Box>
+
+            <Drawer
+              container={container}
+              variant="temporary"
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+              }}
+              sx={{
+                "@media (min-width: 880px)": {
+                  display: "none",
+                },
+                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+              }}
+            >
+              {drawer}
+            </Drawer>
+          </Box >
+        </Box >
+        <Box sx={{ height: "5rem" }}
+        ></Box >
+      </>}
   </>
   );
 }
