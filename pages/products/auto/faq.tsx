@@ -1,12 +1,13 @@
 import Hero from "../../../components/Content/Banners/Hero";
 import SubNavBar from "../../../components/Navbar/SubNavBar";
 import AutoSubNav from "./AutoSubNav";
+import BannerImage from "../../../public/assets/images/products/auto/indexbanner.png";
 
 const heroContent = {
     title: "Frequently Asked Auto Insurance Questions",
     subtitle: "Get a free quote today",
     image: {
-        src: null,
+        src: BannerImage,
         alt: "City"
     },
     align: "left",

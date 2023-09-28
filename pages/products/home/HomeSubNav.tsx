@@ -1,5 +1,6 @@
 import SubNavBar from "../../../components/Navbar/SubNavBar";
 import PATHCONSTANTS from "../../../constants/sitemap";
+
 const SubNavBarContent = {
     shortTitle: "Learn More About Home Insurance",
     content: [
