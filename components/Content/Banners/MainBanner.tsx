@@ -51,7 +51,7 @@ const styles = {
         gap: ".5rem",
     },
     bannerRight: {
-        width: '80%',
+        width: '65%',
         textAlign: 'right',
         display: { xs: "none", md: "block" },
         minHeight: "23rem",

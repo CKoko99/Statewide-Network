@@ -45,6 +45,7 @@ const itemStyles = {
         padding: ".5rem",
         margin: { xs: ".7rem", sm: ".7rem", md: "0 .7rem .7rem 0" },
         minWidth: { xs: "", md: "15rem", xl: "15rem" },
+        maxWidth: { xl: "16rem" },
         cursor: "pointer",
         transition: 'transform 0.2s',
 
