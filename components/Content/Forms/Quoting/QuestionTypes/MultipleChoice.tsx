@@ -6,7 +6,6 @@ export default function MultipleChoice(props) {
     const [selectedAnswer, setSelectedAnswer] = useState("");
 
     function handleAnswer(answer) {
-        console.log("Answered question " + props.question.question + " with " + answer);
         setSelectedAnswer(answer);
         props.setAnswer(answer)
     }

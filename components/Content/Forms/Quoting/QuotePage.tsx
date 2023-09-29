@@ -1,12 +1,12 @@
 import { Box, Button, Fade, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { CustomFonts } from "../../../providers/theme";
+import { CustomFonts } from "../../../../providers/theme";
 import MultipleChoice from "./QuestionTypes/MultipleChoice";
 
 export default function QuotePage(props) {
     //set initial state to be an array of the same length as the number of questions
     const [answerIndex, setAnswerIndex] = useState(0);
-    const [validatedAnswers, setValidatedAnswers] = useState(Array(props.questions.length).fill(false));
+    const [validatedAnswers, setValidatedAnswers] = useState(Array(props.questions?.length).fill(false));
     const [validated, setValidated] = useState(false);
     useEffect(() => {
         //if all answers are validated, then submit
@@ -21,11 +21,13 @@ export default function QuotePage(props) {
         }
         if (allValidated) setValidated(true);
         setAnswerIndex(newAnswerIndex);
-        console.log(newAnswerIndex)
     }, [validatedAnswers])
 
+    useEffect(() => {
+        setValidated(false);
+        setValidatedAnswers(Array(props.questions?.length).fill(false));
+    }, [props.currentIndex])
     const handleAnswer = (index, answer) => {
-        console.log("Answered question " + index + " with " + answer);
         let newValidatedAnswers = [...validatedAnswers];
         newValidatedAnswers[index] = true;
         setValidatedAnswers(newValidatedAnswers);
@@ -36,9 +38,9 @@ export default function QuotePage(props) {
             <Box
             >
 
-                {props.questions.map((question, index) => {
-                    return <> {answerIndex >= index && <Fade in={true} timeout={1000}>
-                        <Box textAlign={"center"} key={index} >
+                {props.questions?.map((question, index) => {
+                    return <> {answerIndex >= index && <Fade key={index} in={true} timeout={1000}>
+                        <Box textAlign={"center"}  >
                             <Typography fontFamily={CustomFonts.Gustavo} fontWeight={800} variant="h3">
                                 {question.question}
                             </Typography>
@@ -58,11 +60,22 @@ export default function QuotePage(props) {
                 }
             </Box>
             <Box
+                sx={{
+                    width: "90%",
+                    display: "flex", justifyContent: "space-between", margin: "1rem auto",
+                    flexDirection: props.currentIndex < 1 ? "row-reverse" : "row",
+                }}
             >
-                {validated && <Box
-                    sx={{ width: "90%", textAlign: "right" }}
+                {props.currentIndex > 0 && <Box
+
                 >
-                    <Button sx={{ minWidth: "10rem" }} variant="contained" color="primary">Submit</Button>
+                    <Button onClick={props.decrementPage} sx={{ minWidth: "10rem" }} variant="contained" color="primary">Back</Button>
+                </Box>
+                }
+                {validated && <Box
+
+                >
+                    <Button onClick={props.incrementPage} sx={{ minWidth: "10rem", textAlign: "right" }} variant="contained" color="primary">Submit</Button>
                 </Box>
                 }
             </Box>
