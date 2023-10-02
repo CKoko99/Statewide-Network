@@ -58,6 +58,7 @@ export default function QuoteForm(props) {
     const [maxPageIndex, setMaxPageIndex] = useState(0);
     const [maxQuestionIndex, setMaxQuestionIndex] = useState(Array(props.quotePages.length).fill(0));
     const [formData, setFormData] = useState(initializeFormData(props.quotePages));
+    const [pageValidated, setPageValidated] = useState(false);
     useEffect(() => {
         if (pageIndex > maxPageIndex) setMaxPageIndex(pageIndex)
     }, [pageIndex])
@@ -68,19 +69,47 @@ export default function QuoteForm(props) {
         }
     }
     function setAnswerHandler(answer) {
-        console.log(answer)
         const newFormData = [...formData];
+        let replace = false;
         if (answer.level === 0) {
+            //check to see if the old formData answerchoice is the same as the new one
+            if (newFormData[answer.pageIndex].questions[answer.questionIndex].answerChoice !== answer.answerChoice) {
+                replace = true;
+            }
             newFormData[answer.pageIndex].questions[answer.questionIndex] = answer;
+            console.log(answer)
         } else {
+            if (newFormData[answer.pageIndex].questions[answer.questionIndex].subQuestion.answerChoice !== answer.answerChoice) {
+                replace = true;
+            }
             newFormData[answer.pageIndex].questions[answer.questionIndex].subQuestion = answer;
         }
         //go deeper into the object based on the level
-
-        setFormData(newFormData);
         console.log(newFormData[0])
+        if (replace) {
+            setFormData(newFormData);
+        }
     }
-
+    useEffect(() => {
+        //everytime formData changes, check to see if the page is validated
+        //loop through the questions and see if there is an answer, if so, set the validated to true
+        //also check to see if the question has a subquestion, if so, check to see if the subquestion is answered
+        let allValidated = true;
+        for (let i = 0; i < formData[pageIndex].questions.length; i++) {
+            if (formData[pageIndex].questions[i].answerChoice) {
+                if (formData[pageIndex].questions[i].hasSubQuestion) {
+                    if (!formData[pageIndex].questions[i].subQuestion.answerChoice) {
+                        allValidated = false;
+                        break;
+                    }
+                }
+            } else {
+                allValidated = false;
+                break;
+            }
+        }
+        setPageValidated(allValidated);
+    }, [formData])
     return (
         <>
             <Box sx={{ minHeight: "60vh", padding: "1rem" }}>
@@ -93,12 +122,38 @@ export default function QuoteForm(props) {
                             incrementPage={() => { setPageIndex(pageIndex + 1) }}
                             key={index} {...page}
                             setAnswer={setAnswerHandler}
-                            pageData={formData[index]}
+                            pageData={formData}
                             pageIndex={index}
                         />}
                     </React.Fragment>
                 }
                 )}
+                <Box
+                    sx={{
+                        width: "90%",
+                        display: "flex", justifyContent: "space-between", margin: "1rem auto",
+                        flexDirection: pageIndex < 1 ? "row-reverse" : "row",
+                    }}
+                >
+                    {pageIndex > 0 && <Box
+
+                    >
+                        <Button onClick={() => { setPageIndex(pageIndex - 1) }} sx={{ minWidth: "10rem" }} variant="contained" color="primary">Back</Button>
+                    </Box>
+                    }
+                    {pageValidated && <Box
+
+                    >
+                        <Button onClick={() => {
+                            setPageIndex(pageIndex + 1)
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth" // Smooth scrolling behavior
+                            });
+                        }} sx={{ minWidth: "10rem", textAlign: "right" }} variant="contained" color="primary">Submit</Button>
+                    </Box>
+                    }
+                </Box>
             </Box>
         </>
     )

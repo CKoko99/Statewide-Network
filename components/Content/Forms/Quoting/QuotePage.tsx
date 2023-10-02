@@ -7,21 +7,39 @@ import React from "react";
 import { init } from "next/dist/compiled/@vercel/og/satori";
 
 function intializeAnswers(pageData) {
-    const newAnswers = [];
+    const newInitialAnswers = [];
+
     for (let i = 0; i < pageData.questions.length; i++) {
-        newAnswers.push(pageData.questions[i].answerChoice || "")
+        //check to see if the question has a subquestion
+        const questionAnswers = [];
+        //if answer choice is a string
+        if (typeof pageData?.questions[i].answerChoice === "string") {
+            questionAnswers.push(pageData?.questions[i].answerChoice)
+            if (pageData.questions[i].hasSubQuestion) {
+                //if so, set the answer to the subquestion
+                questionAnswers.push(pageData.questions[i].subQuestion.answerChoice)
+            }
+        } else if (typeof pageData?.questions[i].answerChoice === "object") {
+            //if answer choice is an array
+            questionAnswers.push(pageData?.questions[i].answerChoice[0])
+        }
+
+        newInitialAnswers.push(questionAnswers)
     }
-    return newAnswers;
+
+    console.log("newInitialAnswers")
+    console.log(newInitialAnswers)
+    return newInitialAnswers;
 }
 export default function QuotePage(props) {
 
     //set initial state to be an array of the same length as the number of questions
     const [pageQuestions, setPageQuestions] = useState(props.questions)
     const [answerIndex, setAnswerIndex] = useState(0);
+    const [levelArray, setLevelArray] = useState(Array(props.questions?.length).fill(0));
     const [validatedAnswers, setValidatedAnswers] = useState(Array(props.questions?.length).fill(false));
-    const [validated, setValidated] = useState(false);
-    const [initialAnswers, setInitialAnswers] = useState(() => intializeAnswers(props.pageData));
-
+    const [initialAnswers, setInitialAnswers] = useState(() => intializeAnswers(props.pageData[props.pageIndex]));
+    const [subQuestions, setSubQuestions] = useState(Array(props.questions?.length).fill(null));
     useEffect(() => {
         //if all answers are validated, then submit
         let newAnswerIndex = 0
@@ -33,12 +51,13 @@ export default function QuotePage(props) {
             }
             newAnswerIndex++;
         }
-        if (allValidated) setValidated(true);
-        setAnswerIndex(newAnswerIndex);
+
+        if (newAnswerIndex > answerIndex) {
+            setAnswerIndex(newAnswerIndex);
+        }
     }, [validatedAnswers])
 
     useEffect(() => {
-        setValidated(false);
         setValidatedAnswers(Array(pageQuestions?.length).fill(false));
     }, [props.currentIndex])
 
@@ -51,13 +70,24 @@ export default function QuotePage(props) {
             newValidatedAnswers[index] = true;
             setValidatedAnswers(newValidatedAnswers);
             props.setAnswer(questionData)
-
+            if (subQuestions[index]) {
+                let newSubQuestions = [...subQuestions];
+                newSubQuestions[index] = null;
+                setSubQuestions(newSubQuestions);
+            }
         } else {
             let newValidatedAnswers = [...validatedAnswers];
-
             newValidatedAnswers[index] = !questionData.hasSubQuestion;
             setValidatedAnswers(newValidatedAnswers);
             props.setAnswer(questionData)
+            if (questionData.hasSubQuestion) {
+                let newSubQuestions = [...subQuestions];
+                newSubQuestions[index] = questionData.subQuestion;
+                //wait ha;f a second before setting the subquestion
+                setTimeout(() => {
+                    setSubQuestions(newSubQuestions);
+                }, 50)
+            }
         }
     }
 
@@ -69,38 +99,28 @@ export default function QuotePage(props) {
 
                 {pageQuestions?.map((question, index) => {
                     return <React.Fragment key={index} > {answerIndex >= index &&
-
-                        <Question level={0}
-                            setAnswer={(answer) => handleAnswer(answer, index)}
-                            questionIndex={index}
-                            question={question}
-                            pageIndex={props.pageIndex}
-                            initialAnswer={initialAnswers[index]}
-                        />
-
+                        <>
+                            <Question level={0}
+                                setAnswer={(answer) => handleAnswer(answer, index)}
+                                questionIndex={index}
+                                question={question}
+                                pageIndex={props.pageIndex}
+                                initialAnswer={initialAnswers[index]}
+                            />
+                            {
+                                subQuestions[index] && <Question level={1}
+                                    setAnswer={(answer) => handleAnswer(answer, index)}
+                                    questionIndex={index}
+                                    question={subQuestions[index]}
+                                    pageIndex={props.pageIndex}
+                                    initialAnswer={initialAnswers[index]}
+                                />
+                            }
+                        </>
                     }</React.Fragment>
                 })}
             </Box>
-            <Box
-                sx={{
-                    width: "90%",
-                    display: "flex", justifyContent: "space-between", margin: "1rem auto",
-                    flexDirection: props.currentIndex < 1 ? "row-reverse" : "row",
-                }}
-            >
-                {props.currentIndex > 0 && <Box
 
-                >
-                    <Button onClick={props.decrementPage} sx={{ minWidth: "10rem" }} variant="contained" color="primary">Back</Button>
-                </Box>
-                }
-                {validated && <Box
-
-                >
-                    <Button onClick={props.incrementPage} sx={{ minWidth: "10rem", textAlign: "right" }} variant="contained" color="primary">Submit</Button>
-                </Box>
-                }
-            </Box>
         </Box>
     </>
 }

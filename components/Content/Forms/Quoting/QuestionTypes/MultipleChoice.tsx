@@ -6,19 +6,21 @@ export default function MultipleChoice(props) {
     const [selectedAnswer, setSelectedAnswer] = useState(["", null]);
     function handleAnswer(answer, index) {
         //this is where question type validation should occur
-        console.log(answer, index)
+        //console.log(answer, index)
+        if (selectedAnswer[1] === index) { return }
         setSelectedAnswer([answer, index]);
         props.setAnswer([answer, index])
     }
 
     useEffect(() => {
         //loop through the answers and see if props.initialAnswer is one of them
+        // console.log(props.initialAnswer)
         for (let i = 0; i < props.question.answers.length; i++) {
-            if (props.question.answers[i].text === props.initialAnswer) {
-                console.log("initial answer found")
+            if (props.question.answers[i].text === props.initialAnswer[props.level]) {
+                //console.log("initial answer found")
                 setTimeout(() => {
                     //set the selected answer to the initial answer
-                    handleAnswer(props.initialAnswer, i)
+                    handleAnswer(props.initialAnswer[props.level], i)
                 }, 250)
 
             }
