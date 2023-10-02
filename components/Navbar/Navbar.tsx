@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import { Box } from '@mui/material';
+import { Box, Modal } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -24,6 +24,7 @@ import { useRouter } from 'next/router';
 import Image from "next/image";
 import MainNavbarItem from './MainNavbarItem';
 import PATHCONSTANTS from '../../constants/sitemap';
+import ReturnHome from '../Modals/ReturnHome';
 
 
 
@@ -67,6 +68,7 @@ function DrawerAppBar(props: any) {
   const { drawerWindow } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [onQuotePage, setOnQuotePage] = React.useState(false);
+  const [openReturnHome, setOpenReturnHome] = React.useState(false);
   React.useEffect(() => {
     //if window location pathname starts with /quotes/ then set onQuotePage to true
 
@@ -82,6 +84,9 @@ function DrawerAppBar(props: any) {
     setOpenItem(null);
   };
 
+  const handleReturnHome = () => {
+    setOpenReturnHome((prevState) => !prevState);
+  }
   const handleLogoClick = () => {
     //history.push('/');
     router.push('/'); // Replace '/new-page' with the actual URL of the new page
@@ -189,10 +194,18 @@ function DrawerAppBar(props: any) {
         }}
       >
 
-        <Image onClick={handleLogoClick}
+        <Image onClick={handleReturnHome}
           //style={{ maxWidth: '120px', height: 'auto', cursor: 'pointer' }}
           src={LogoImg}
           alt="Statewide Insurance" />
+        {openReturnHome &&
+          <Modal open={openReturnHome} setOpen={setOpenReturnHome}
+            onClose={() => setOpenReturnHome(false)}
+          >
+            <ReturnHome
+              onClose={() => setOpenReturnHome(false)}
+            />
+          </Modal>}
       </Box>
 
     </Box> :
