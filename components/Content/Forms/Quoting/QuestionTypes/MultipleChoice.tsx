@@ -1,31 +1,62 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Fade } from "@mui/material";
 import { useEffect, useState } from "react";
+import Question from "./Question";
 
 export default function MultipleChoice(props) {
-
-    const [selectedAnswer, setSelectedAnswer] = useState("");
-
-    function handleAnswer(answer) {
-        setSelectedAnswer(answer);
-        props.setAnswer(answer)
+    const [selectedAnswer, setSelectedAnswer] = useState(["", null]);
+    function handleAnswer(answer, index) {
+        //this is where question type validation should occur
+        console.log(answer, index)
+        setSelectedAnswer([answer, index]);
+        props.setAnswer([answer, index])
     }
+
+    useEffect(() => {
+        //loop through the answers and see if props.initialAnswer is one of them
+        for (let i = 0; i < props.question.answers.length; i++) {
+            if (props.question.answers[i].text === props.initialAnswer) {
+                console.log("initial answer found")
+                setTimeout(() => {
+                    //set the selected answer to the initial answer
+                    handleAnswer(props.initialAnswer, i)
+                }, 250)
+
+            }
+        }
+    }, [])
+
+
 
     return <>
 
         <Box
             sx={{
-                display: "flex", justifyContent: "space-around", width: "50%", margin: "1rem auto",
+                display: "flex", justifyContent: "space-around", width: { md: "50%" }, margin: "1rem auto",
                 gap: "1rem",
-                flexWrap: "wrap"
+                flexWrap: "wrap",
+                flexDirection: "column",
             }}
         >
-            {props.question.answers.map((answer, index) => (
-                <Button sx={{ minWidth: "12rem" }} key={index} variant="contained"
-                    onClick={() => handleAnswer(answer.text)}
-                    color={selectedAnswer === answer.text ? "primary" : "secondary"}>
-                    {answer.text}
-                </Button>
-            ))}
+            <Question {...props.question} />
+            <Box
+                sx={{ display: "flex", gap: "1.5rem", justifyContent: "space-around", flexWrap: "wrap" }}
+            >
+                {props.question?.answers?.map((answer, index) => (
+                    <Button sx={{ minWidth: "20rem" }} key={index} variant="contained"
+                        onClick={() => handleAnswer(answer.text, index)}
+                        color={selectedAnswer[1] === index ? "primary" : "secondary"}>
+                        {answer.text}
+                    </Button>
+                ))}
+            </Box>
         </Box>
+
+        {/*
+            selectedAnswer[0] && props.question.answers[selectedAnswer[1]].subQuestion &&
+            <Box sx={{ width: "100%" }}>
+                <MultipleChoice setAnswer={props.setAnswer} question={props.question.answers[selectedAnswer[1]].subQuestion} />
+            </Box>
+                */ }
+
     </>
 }

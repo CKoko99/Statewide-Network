@@ -1,6 +1,8 @@
 import QuoteForm from "../../components/Content/Forms/Quoting/QuoteForm";
 import GrayStartImg from "../../public/assets/images/quotes/auto/startgray.png";
 import ColorStartImg from "../../public/assets/images/quotes/auto/startcolor.png";
+import GrayVehiclesImg from "../../public/assets/images/quotes/auto/vehiclesgray.png";
+import ColorVehiclesImg from "../../public/assets/images/quotes/auto/vehiclescolor.png";
 import GrayDriversImg from "../../public/assets/images/quotes/auto/driversgray.png";
 import ColorDriversImg from "../../public/assets/images/quotes/auto/driverscolor.png";
 import GrayCoverageImg from "../../public/assets/images/quotes/auto/coveragegray.png";
@@ -30,6 +32,37 @@ const quoteForm = {
                     answers: [
                         {
                             text: "Yes",
+                            subQuestion: {
+                                question: "That's Awesome!",
+                                type: "multipleChoice",
+                                answers: [
+                                    {
+                                        text: "I'm looking for a better rate",
+
+                                    },
+                                    {
+                                        text: "I'm looking for better coverage",
+                                    },
+                                    {
+                                        text: "I'm looking for both",
+                                        /*  subQuestion: {
+                                              question: "That's Awesome part2!",
+                                              type: "multipleChoice",
+                                              answers: [
+                                                  {
+                                                      text: "I'm looking for a lil better rate",
+                                                  },
+                                                  {
+                                                      text: "I'm looking for better coverage",
+                                                  },
+                                                  {
+                                                      text: "I'm looking for both sub",
+                                                  },
+                                              ]
+                                          }*/
+                                    },
+                                ]
+                            }
                         },
                         {
                             text: "No",
@@ -52,8 +85,8 @@ const quoteForm = {
         },
         {
             title: "Vehicles",
-            grayIcon: GrayStartImg,
-            colorIcon: ColorStartImg,
+            grayIcon: GrayVehiclesImg,
+            colorIcon: ColorVehiclesImg,
             questions: [
                 /* {
                      question: "Lets get started",
