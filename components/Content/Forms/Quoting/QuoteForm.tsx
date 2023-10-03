@@ -189,17 +189,20 @@ export default function QuoteForm(props) {
                     sx={{
                         width: "90%",
                         display: "flex", justifyContent: "space-between", margin: "1rem auto",
-                        flexDirection: pageIndex < 1 ? "row-reverse" : "row",
+                        flexDirection: "row"
                     }}
                 >
-                    {pageIndex > 0 && <Box
+                    <Box
 
+                        sx={{ opacity: pageIndex > 0 ? "100%" : "0%", }}
                     >
-                        <Button onClick={() => { setPageIndex(pageIndex - 1) }} sx={{ minWidth: "10rem" }} variant="contained" color="primary">Back</Button>
+                        <Button
+                            disabled={pageIndex > 0 ? false : true}
+                            onClick={() => { setPageIndex(pageIndex - 1) }} sx={{ minWidth: "10rem" }} variant="contained" color="primary">Back</Button>
                     </Box>
-                    }
-                    {pageValidated && <Box
 
+                    <Box
+                        sx={{ opacity: pageValidated ? "100%" : "0%", }}
                     >
                         <Button onClick={() => {
                             setPageIndex(pageIndex + 1)
@@ -207,9 +210,10 @@ export default function QuoteForm(props) {
                                 top: 0,
                                 behavior: "smooth" // Smooth scrolling behavior
                             });
-                        }} sx={{ minWidth: "10rem", textAlign: "right" }} variant="contained" color="primary">Submit</Button>
+                        }} disabled={pageValidated ? false : true}
+                            sx={{ minWidth: "10rem", textAlign: "right" }} variant="contained" color="primary">Submit</Button>
                     </Box>
-                    }
+
                 </Box>
             </Box>
         </>
