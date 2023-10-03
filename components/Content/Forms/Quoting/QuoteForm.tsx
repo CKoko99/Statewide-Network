@@ -44,10 +44,11 @@ function PageIcons(props) {
 function initializeFormData(quotePages) {
     const newFormData = [];
     for (let i = 0; i < quotePages.length; i++) {
-        const newPageData = {}
-        newPageData.currentQuestionIndex = 0;
-        newPageData.questionCount = quotePages[i]?.questions?.length;
-        newPageData.questions = Array(quotePages[i]?.questions?.length).fill({});
+        const newPageData = {
+            currentQuestionIndex: 0,
+            questionCount: quotePages[i]?.questions?.length,
+            questions: Array(quotePages[i]?.questions?.length).fill({}),
+        }
         newFormData.push(newPageData)
     }
     return newFormData;

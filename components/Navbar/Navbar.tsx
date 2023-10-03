@@ -199,7 +199,7 @@ function DrawerAppBar(props: any) {
           src={LogoImg}
           alt="Statewide Insurance" />
         {openReturnHome &&
-          <Modal open={openReturnHome} setOpen={setOpenReturnHome}
+          <Modal open={openReturnHome}
             onClose={() => setOpenReturnHome(false)}
           >
             <ReturnHome
