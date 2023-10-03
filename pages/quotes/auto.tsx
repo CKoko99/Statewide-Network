@@ -45,21 +45,21 @@ const quoteForm = {
                                     },
                                     {
                                         text: "I'm looking for both",
-                                        /*  subQuestion: {
-                                              question: "That's Awesome part2!",
-                                              type: "multipleChoice",
-                                              answers: [
-                                                  {
-                                                      text: "I'm looking for a lil better rate",
-                                                  },
-                                                  {
-                                                      text: "I'm looking for better coverage",
-                                                  },
-                                                  {
-                                                      text: "I'm looking for both sub",
-                                                  },
-                                              ]
-                                          }*/
+                                        subQuestion: {
+                                            question: "That's Awesome part2!",
+                                            type: "multipleChoice",
+                                            answers: [
+                                                {
+                                                    text: "I'm looking for a lil better rate",
+                                                },
+                                                {
+                                                    text: "I'm looking for better coverage",
+                                                },
+                                                {
+                                                    text: "I'm looking for both sub",
+                                                },
+                                            ]
+                                        }
                                     },
                                 ]
                             }

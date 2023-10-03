@@ -52,7 +52,7 @@ export default function Question(props) {
             </Box>
         </Fade>
         {
-            false && <Question pageIndex={props.pageIndex}
+            subQuestion && <Question pageIndex={props.pageIndex}
                 questionIndex={props.questionIndex}
                 initialAnswer={props.initialAnswer}
                 setAnswer={props.setAnswer} level={props.level + 1} question={subQuestion} />

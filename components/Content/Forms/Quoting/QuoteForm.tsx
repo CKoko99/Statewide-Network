@@ -78,15 +78,23 @@ export default function QuoteForm(props) {
                 replace = true;
             }
             newFormData[answer.pageIndex].questions[answer.questionIndex] = answer;
-            console.log(answer)
+            // console.log(answer)
         } else {
-            if (newFormData[answer.pageIndex].questions[answer.questionIndex].subQuestion.answerChoice !== answer.answerChoice) {
+            let question = newFormData[answer.pageIndex].questions[answer.questionIndex];
+            for (let i = 1; i < answer.level; i++) {
+                question = question.subQuestion;
+            }
+            console.log(" parent")
+            console.log(question)
+            //check to see if the old formData answerchoice is the same as the new one
+            if (question.answerChoice !== answer.answerChoice) {
                 replace = true;
             }
-            newFormData[answer.pageIndex].questions[answer.questionIndex].subQuestion = answer;
+            question.subQuestion = answer;
         }
         //go deeper into the object based on the level
-        console.log(newFormData[0])
+        // console.log(newFormData[0])
+
         if (replace) {
             setFormData(newFormData);
         }
@@ -109,8 +117,51 @@ export default function QuoteForm(props) {
                 break;
             }
         }
+        allValidated = true;
+        //go through the questions and see if they are validated
+        for (let i = 0; i < formData[pageIndex].questions.length; i++) {
+            //we need to check to see if the question has a subquestion
+            //and make sure it has an answer
+            //use a while loop to keep checking if the question has a subquestion
+            let questionValidated = false;
+            let questionIndex = i;
+            let level = 0;
+            let max = 10
+            let currentQuestion = formData[pageIndex].questions[questionIndex];
+            if (!currentQuestion.hasSubQuestion && currentQuestion.answerChoice) {
+                questionValidated = true;
+            }
+            else {
+                while (currentQuestion.hasSubQuestion) {
+                    //check to see if the subquestion has an answer
+                    if (currentQuestion.subQuestion.answerChoice) {
+                        questionValidated = true;
+                    } else {
+                        questionValidated = false;
+                        break;
+                    }
+                    //set the questionIndex to the subquestion
+                    questionIndex = formData[pageIndex].questions[questionIndex].subQuestion.questionIndex;
+                    currentQuestion = currentQuestion.subQuestion;
+                    level++;
+                    if (level > max) {
+                        console.log("max level reached")
+                        break;
+                    }
+                }
+            }
+            //if the question is not validated, break
+            if (!questionValidated) {
+                allValidated = false;
+                break;
+            }
+        }
         setPageValidated(allValidated);
-    }, [formData])
+    }, [formData, pageIndex])
+    useEffect(() => {
+        console.log("formData")
+        console.log(formData)
+    }, [pageIndex, formData])
     return (
         <>
             <Box sx={{ minHeight: "60vh", padding: "1rem" }}>
@@ -123,8 +174,13 @@ export default function QuoteForm(props) {
                             incrementPage={() => { setPageIndex(pageIndex + 1) }}
                             key={index} {...page}
                             setAnswer={setAnswerHandler}
-                            pageData={formData}
+                            pageData={formData[pageIndex]}
                             pageIndex={index}
+                            getFormData={() => {
+                                console.log("get form data")
+                                console.log(formData[index])
+                                return formData[index]
+                            }}
                         />}
                     </React.Fragment>
                 }

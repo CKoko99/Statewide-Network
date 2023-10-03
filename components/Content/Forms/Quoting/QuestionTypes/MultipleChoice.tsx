@@ -14,7 +14,8 @@ export default function MultipleChoice(props) {
 
     useEffect(() => {
         //loop through the answers and see if props.initialAnswer is one of them
-        // console.log(props.initialAnswer)
+
+        console.log(props.initialAnswer)
         for (let i = 0; i < props.question.answers.length; i++) {
             if (props.question.answers[i].text === props.initialAnswer[props.level]) {
                 //console.log("initial answer found")
@@ -25,6 +26,7 @@ export default function MultipleChoice(props) {
 
             }
         }
+
     }, [])
 
 
