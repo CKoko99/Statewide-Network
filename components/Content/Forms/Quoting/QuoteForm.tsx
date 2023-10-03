@@ -93,7 +93,7 @@ export default function QuoteForm(props) {
             question.subQuestion = answer;
         }
         //go deeper into the object based on the level
-        // console.log(newFormData[0])
+        // console.log(newFormData[0])ƒ
 
         if (replace) {
             setFormData(newFormData);
@@ -159,9 +159,10 @@ export default function QuoteForm(props) {
         setPageValidated(allValidated);
     }, [formData, pageIndex])
     useEffect(() => {
-        console.log("formData")
-        console.log(formData)
-    }, [pageIndex, formData])
+        if (!pageValidated) {
+            setMaxPageIndex(pageIndex)
+        }
+    }, [pageValidated])
     return (
         <>
             <Box sx={{ minHeight: "60vh", padding: "1rem" }}>

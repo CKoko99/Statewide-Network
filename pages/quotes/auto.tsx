@@ -17,15 +17,15 @@ const quoteForm = {
             grayIcon: GrayStartImg,
             colorIcon: ColorStartImg,
             questions: [
-                /* {
-                     question: "Lets get started",
-                     helperText: "Enter your zip code to find rates",
-                     type: "input",
-                     format: "attached",
-                     label: "Zip Code",
-                     submit: true,
-                     submitText: "Unlock Savings",
-                 },*/
+                {
+                    question: "Lets get started",
+                    helperText: "Enter your zip code to find rates",
+                    type: "input",
+                    format: "attached",
+                    label: "Zip Code",
+                    submit: true,
+                    submitText: "Unlock Savings",
+                },
                 {
                     question: "Do you currently have auto insurance?",
                     type: "multipleChoice",
