@@ -204,14 +204,17 @@ export default function QuoteForm(props) {
                     <Box
                         sx={{ opacity: pageValidated ? "100%" : "0%", }}
                     >
-                        <Button onClick={() => {
-                            setPageIndex(pageIndex + 1)
-                            window.scrollTo({
-                                left: 0,
-                                top: 0,
-                                behavior: "smooth" // Smooth scrolling behavior
-                            });
-                        }} disabled={pageValidated ? false : true}
+                        <Button
+                            onClick={() => {
+                                setPageIndex(pageIndex + 1);
+                                setTimeout(() => {
+                                    window.scrollTo({
+                                        left: 0,
+                                        top: 0,
+                                        behavior: "smooth" // Smooth scrolling behavior
+                                    });
+                                }, 100);
+                            }} disabled={pageValidated ? false : true}
                             sx={{ minWidth: "10rem", textAlign: "right" }} variant="contained" color="primary">Submit</Button>
                     </Box>
 
