@@ -207,6 +207,7 @@ export default function QuoteForm(props) {
                         <Button onClick={() => {
                             setPageIndex(pageIndex + 1)
                             window.scrollTo({
+                                left: 0,
                                 top: 0,
                                 behavior: "smooth" // Smooth scrolling behavior
                             });
