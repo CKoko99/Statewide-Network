@@ -47,36 +47,13 @@ const quoteItems = [
         },
         link: PATHCONSTANTS.QUOTES.MOTORCYCLE
     },
-    {
-        title: "Mexico",
-        link: PATHCONSTANTS.QUOTES.MEXICO,
-        image: {
-            src: MexicoIcon,
-            alt: "Mexico"
-        },
-    },
-    {
-        title: "Surety Bonds",
-        link: PATHCONSTANTS.QUOTES.SURETY,
-        image: {
-            src: HandshakeIcon,
-            alt: "Surety Bonds"
-        },
-    },
-    {
-        title: "SR-22",
-        link: PATHCONSTANTS.QUOTES.SR22,
-        image: {
-            src: CarkeyIcon,
-            alt: "SR-22"
-        },
-    }
+
 ]
 
 const styles = {
     title: {
         textAlign: "center",
-        fontFamily: CustomFonts.Gustavo,
+
     },
     quoteItem: {
         display: "flex",
@@ -90,6 +67,7 @@ const styles = {
         transition: 'transform 0.3s',
         flex: "1",
         gap: ".5rem",
+        minHeight: "4rem",
         minWidth: { xs: "45%" },
         maxWidth: { xs: "400px" },
         textAlign: "left",
@@ -100,8 +78,8 @@ const styles = {
     },
     imageContainer: {
         position: "relative",
-        minWidth: { xs: "2rem", sm: "3rem", md: "4rem" },
-        minHeight: { xs: "2rem", sm: "3rem", md: "3rem" },
+        minWidth: { xs: "3rem", sm: "3rem", md: "4rem" },
+        minHeight: { xs: "3rem", sm: "3rem", md: "3rem" },
         maxHeight: "50%",
         borderRadius: "50%",
         backgroundColor: "#F5F5F5",
@@ -128,7 +106,7 @@ function QuoteItem(props) {
             onClick={() => router.push(props.link)}
             sx={
                 isHovered ? { ...styles.quoteItem, ...styles.quoteItemHovered } : { ...styles.quoteItem }}>
-            <Typography variant="subtitle2">{props.title}</Typography>
+            <Typography fontFamily={CustomFonts.Gustavo} variant="subtitle1">{props.title}</Typography>
             {props.image ? <Box
                 sx={
                     !isHovered ? { ...styles.imageContainer } : {
@@ -143,8 +121,8 @@ function QuoteItem(props) {
 function GetAQuote(props, ref) {
     return (
         <Base ref={ref}>
-            <Typography sx={{ ...styles.title }} variant="h4">Unlock your savings today!</Typography>
-            <Typography sx={{ ...styles.title }} variant="h6">Select a product below</Typography>
+            <Typography sx={{ ...styles.title, fontWeight: "bold", }} fontFamily={CustomFonts.Gustavo} variant="h3">Unlock your savings today!</Typography>
+            <Typography sx={{ ...styles.title }} variant="h5">Select a product below</Typography>
             <Box style={{
                 display: "flex", justifyContent: "center", flexWrap: "wrap",
                 overflowY: "scroll", padding: ".5rem", overflowX: "hidden"
