@@ -189,32 +189,12 @@ export default function QuoteForm(props) {
         <>
             <Box sx={{ minHeight: "60vh", padding: "1rem" }}>
                 <PageIcons setPageIndex={setPageIndexHandler} quotePages={props.quotePages} pageIndex={pageIndex} maxPageIndex={maxPageIndex} />
-                {/*props.quotePages[pageIndex].subPages.map((page, index) => {
-                    return <React.Fragment key={index}>
-                        {subPageIndex === index ? <QuotePage
-                            currentIndex={pageIndex}
-                            key={index} {...page}
-                            setAnswer={setAnswerHandler}
-                            pageData={formData[pageIndex]}
-                            pageIndex={pageIndex}
-                            getFormData={() => {
-                                console.log("get form data")
-                                console.log(formData)
-                                console.log(formData[pageIndex])
-                                console.log(formData[pageIndex].subPages)
-                                console.log(subPageIndex)
-                                console.log(formData[pageIndex].subPages[subPageIndex])
-                                return formData[pageIndex].subPages[subPageIndex]
-                            }}
-                        /> : null}
-                    </React.Fragment>
-                }
-            )*/}<>
+                <>
                     {props.quotePages.map((page, mapPageIndex) => (
                         <>
                             {
                                 pageIndex === mapPageIndex ? <>
-                                    {page.subPages.map((subPage, mapSubPageIndex) => {
+                                    {page.subPages?.map((subPage, mapSubPageIndex) => {
                                         return <React.Fragment key={mapSubPageIndex}>
                                             {subPageIndex === mapSubPageIndex ? <QuotePage
                                                 currentIndex={pageIndex}
@@ -251,11 +231,11 @@ export default function QuoteForm(props) {
                 >
                     <Box
 
-                        sx={{ opacity: pageIndex > 0 ? "100%" : "0%", }}
+                        sx={{ opacity: (pageIndex < 1 && subPageIndex < 1) ? "0%" : "100%", }}
                     >
                         <Button
-                            disabled={pageIndex > 0 ? false : true}
-                            onClick={() => { setPageIndex(pageIndex - 1) }} sx={{ minWidth: "10rem" }} variant="contained" color="primary">Back</Button>
+                            disabled={(pageIndex < 1 && subPageIndex < 1) ? true : false}
+                            onClick={() => { decrementPage() }} sx={{ minWidth: "10rem" }} variant="contained" color="primary">Back</Button>
                     </Box>
 
                     <Box
