@@ -8,9 +8,9 @@ import { init } from "next/dist/compiled/@vercel/og/satori";
 
 function intializeAnswers(pageData) {
     const newInitialAnswers = [];
-    console.log("pageData")
-    console.log(pageData)
-    for (let i = 0; i < pageData.questions.length; i++) {
+    // console.log("pageData")
+    //console.log(pageData)
+    for (let i = 0; i < pageData.questions?.length; i++) {
         //check to see if the question has a subquestion
         const questionAnswers = [];
         //if answer choice is a string
@@ -32,9 +32,6 @@ function intializeAnswers(pageData) {
 
         newInitialAnswers.push(questionAnswers)
     }
-
-    console.log("newInitialAnswers")
-    console.log(newInitialAnswers)
     return newInitialAnswers;
 }
 export default function QuotePage(props) {
@@ -45,7 +42,10 @@ export default function QuotePage(props) {
     const [levelArray, setLevelArray] = useState(Array(props.questions?.length).fill(0));
     const [validatedAnswers, setValidatedAnswers] = useState(Array(props.questions?.length).fill(false));
     const [initialAnswers, setInitialAnswers] = useState(() => intializeAnswers(props.getFormData()));
-    const [subQuestions, setSubQuestions] = useState(Array(props.questions?.length).fill(null));
+    useEffect(() => {
+        console.log("new page")
+        console.log(props)
+    }, [])
     useEffect(() => {
         //if all answers are validated, then submit
         let newAnswerIndex = 0
@@ -76,11 +76,7 @@ export default function QuotePage(props) {
             newValidatedAnswers[index] = true;
             setValidatedAnswers(newValidatedAnswers);
             props.setAnswer(questionData)
-            if (subQuestions[index]) {
-                let newSubQuestions = [...subQuestions];
-                newSubQuestions[index] = null;
-                setSubQuestions(newSubQuestions);
-            }
+
         } else {
 
             let newValidatedAnswers = [...validatedAnswers];
@@ -106,15 +102,6 @@ export default function QuotePage(props) {
                                 pageIndex={props.pageIndex}
                                 initialAnswer={initialAnswers[index]}
                             />
-                            {
-                                false && <Question level={1}
-                                    setAnswer={(answer) => handleAnswer(answer, index)}
-                                    questionIndex={index}
-                                    question={subQuestions[index]}
-                                    pageIndex={props.pageIndex}
-                                    initialAnswer={initialAnswers[index]}
-                                />
-                            }
                         </>
                     }</React.Fragment>
                 })}

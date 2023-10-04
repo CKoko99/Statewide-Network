@@ -14,6 +14,7 @@ export default function MultipleChoice(props) {
 
     useEffect(() => {
         //loop through the answers and see if props.initialAnswer is one of them
+        if (!props.initialAnswer) return;
 
         console.log(props.initialAnswer)
         for (let i = 0; i < props.question.answers.length; i++) {

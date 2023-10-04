@@ -44,21 +44,32 @@ function PageIcons(props) {
 function initializeFormData(quotePages) {
     const newFormData = [];
     for (let i = 0; i < quotePages.length; i++) {
+
         const newPageData = {
             currentQuestionIndex: 0,
             questionCount: quotePages[i]?.questions?.length,
-            questions: Array(quotePages[i]?.questions?.length).fill({}),
+            subPages: Array(quotePages[i]?.subPages?.length).fill({}),
+        }
+        //fill every sub page with empty questions
+        for (let j = 0; j < quotePages[i]?.subPages?.length; j++) {
+            newPageData.subPages[j] = {
+                currentQuestionIndex: 0,
+                questionCount: quotePages[i]?.subPages[j]?.questions?.length,
+                questions: Array(quotePages[i]?.subPages[j]?.questions?.length).fill({}),
+            }
         }
         newFormData.push(newPageData)
     }
+
     return newFormData;
 }
 export default function QuoteForm(props) {
     const [pageIndex, setPageIndex] = useState(0);
+    const [subPageIndex, setSubPageIndex] = useState(0);
     //fill max Page index with an array of 0 to the length of the quote pages
     const [maxPageIndex, setMaxPageIndex] = useState(0);
     const [maxQuestionIndex, setMaxQuestionIndex] = useState(Array(props.quotePages.length).fill(0));
-    const [formData, setFormData] = useState(initializeFormData(props.quotePages));
+    const [formData, setFormData] = useState(() => (initializeFormData(props.quotePages)));
     const [pageValidated, setPageValidated] = useState(false);
     useEffect(() => {
         if (pageIndex > maxPageIndex) setMaxPageIndex(pageIndex)
@@ -67,6 +78,7 @@ export default function QuoteForm(props) {
     function setPageIndexHandler(index) {
         if (index <= maxPageIndex) {
             setPageIndex(index);
+            setSubPageIndex(0);
         }
     }
     function setAnswerHandler(answer) {
@@ -74,13 +86,16 @@ export default function QuoteForm(props) {
         let replace = false;
         if (answer.level === 0) {
             //check to see if the old formData answerchoice is the same as the new one
-            if (newFormData[answer.pageIndex].questions[answer.questionIndex].answerChoice !== answer.answerChoice) {
+            console.log("Page index " + answer.pageIndex)
+            console.log("Sub Page index " + subPageIndex)
+
+            if (newFormData[answer.pageIndex].subPages[subPageIndex].questions[answer.questionIndex].answerChoice !== answer.answerChoice) {
                 replace = true;
             }
-            newFormData[answer.pageIndex].questions[answer.questionIndex] = answer;
+            newFormData[answer.pageIndex].subPages[subPageIndex].questions[answer.questionIndex] = answer;
             // console.log(answer)
         } else {
-            let question = newFormData[answer.pageIndex].questions[answer.questionIndex];
+            let question = newFormData[answer.pageIndex].subPages[subPageIndex].questions[answer.questionIndex];
             for (let i = 1; i < answer.level; i++) {
                 question = question.subQuestion;
             }
@@ -104,10 +119,10 @@ export default function QuoteForm(props) {
         //loop through the questions and see if there is an answer, if so, set the validated to true
         //also check to see if the question has a subquestion, if so, check to see if the subquestion is answered
         let allValidated = true;
-        for (let i = 0; i < formData[pageIndex].questions.length; i++) {
-            if (formData[pageIndex].questions[i].answerChoice) {
-                if (formData[pageIndex].questions[i].hasSubQuestion) {
-                    if (!formData[pageIndex].questions[i].subQuestion.answerChoice) {
+        for (let i = 0; i < formData[pageIndex].subPages[subPageIndex].questions.length; i++) {
+            if (formData[pageIndex].subPages[subPageIndex].questions[i].answerChoice) {
+                if (formData[pageIndex].subPages[subPageIndex].questions[i].hasSubQuestion) {
+                    if (!formData[pageIndex].subPages[subPageIndex].questions[i].subQuestion.answerChoice) {
                         allValidated = false;
                         break;
                     }
@@ -119,73 +134,114 @@ export default function QuoteForm(props) {
         }
         allValidated = true;
         //go through the questions and see if they are validated
-        for (let i = 0; i < formData[pageIndex].questions.length; i++) {
-            //we need to check to see if the question has a subquestion
-            //and make sure it has an answer
-            //use a while loop to keep checking if the question has a subquestion
-            let questionValidated = false;
-            let questionIndex = i;
-            let level = 0;
-            let max = 10
-            let currentQuestion = formData[pageIndex].questions[questionIndex];
-            if (!currentQuestion.hasSubQuestion && currentQuestion.answerChoice) {
-                questionValidated = true;
-            }
-            else {
-                while (currentQuestion.hasSubQuestion) {
-                    //check to see if the subquestion has an answer
-                    if (currentQuestion.subQuestion.answerChoice) {
-                        questionValidated = true;
-                    } else {
-                        questionValidated = false;
-                        break;
-                    }
-                    //set the questionIndex to the subquestion
-                    questionIndex = formData[pageIndex].questions[questionIndex].subQuestion.questionIndex;
-                    currentQuestion = currentQuestion.subQuestion;
-                    level++;
-                    if (level > max) {
-                        console.log("max level reached")
-                        break;
-                    }
-                }
-            }
-            //if the question is not validated, break
-            if (!questionValidated) {
+
+        //see if current subpage is validated
+        //if not, set pageValidated to false
+        for (let i = 0; i < formData[pageIndex].subPages[subPageIndex].questions.length; i++) {
+            if (!formData[pageIndex].subPages[subPageIndex].questions[i].answerChoice) {
                 allValidated = false;
                 break;
             }
         }
+
         setPageValidated(allValidated);
-    }, [formData, pageIndex])
+
+    }, [formData, pageIndex, subPageIndex])
     useEffect(() => {
         if (!pageValidated) {
             setMaxPageIndex(pageIndex)
         }
     }, [pageValidated])
+    // when subpage changes log all data for that subpage
+    useEffect(() => {
+        console.log("subpage changed")
+        console.log(formData[pageIndex].subPages[subPageIndex])
+    }, [subPageIndex])
+    //when page changes log all data for that page
+    useEffect(() => {
+        console.log("page changed")
+        console.log(formData[pageIndex].subPages[subPageIndex])
+    }, [pageIndex])
+    function incrementPage() {
+        //if subpage index is less than the max subpage index, increment the subpage index
+        if (subPageIndex < props.quotePages[pageIndex].subPages.length - 1) {
+            console.log("Now on page " + pageIndex + " and subpage " + (subPageIndex + 1))
+            setSubPageIndex(subPageIndex + 1)
+        } else {
+            //if not, increment the page index
+            console.log("Now on page " + (pageIndex + 1) + " and subpage " + subPageIndex)
+            setPageIndex(pageIndex + 1);
+            setSubPageIndex(0);
+        }
+    }
+    function decrementPage() {
+        //if subpage index is greater than 0, decrement the subpage index
+        if (subPageIndex > 0) {
+            setSubPageIndex(subPageIndex - 1)
+        } else {
+            //if not, decrement the page index
+            setPageIndex(pageIndex - 1);
+            setSubPageIndex(props.quotePages[pageIndex - 1].subPages.length - 1);
+        }
+    }
+
     return (
         <>
             <Box sx={{ minHeight: "60vh", padding: "1rem" }}>
                 <PageIcons setPageIndex={setPageIndexHandler} quotePages={props.quotePages} pageIndex={pageIndex} maxPageIndex={maxPageIndex} />
-                {props.quotePages.map((page, index) => {
+                {/*props.quotePages[pageIndex].subPages.map((page, index) => {
                     return <React.Fragment key={index}>
-                        {pageIndex === index && <QuotePage
+                        {subPageIndex === index ? <QuotePage
                             currentIndex={pageIndex}
-                            decrementPage={() => { setPageIndex(pageIndex - 1) }}
-                            incrementPage={() => { setPageIndex(pageIndex + 1) }}
                             key={index} {...page}
                             setAnswer={setAnswerHandler}
                             pageData={formData[pageIndex]}
-                            pageIndex={index}
+                            pageIndex={pageIndex}
                             getFormData={() => {
                                 console.log("get form data")
-                                console.log(formData[index])
-                                return formData[index]
+                                console.log(formData)
+                                console.log(formData[pageIndex])
+                                console.log(formData[pageIndex].subPages)
+                                console.log(subPageIndex)
+                                console.log(formData[pageIndex].subPages[subPageIndex])
+                                return formData[pageIndex].subPages[subPageIndex]
                             }}
-                        />}
+                        /> : null}
                     </React.Fragment>
                 }
-                )}
+            )*/}<>
+                    {props.quotePages.map((page, mapPageIndex) => (
+                        <>
+                            {
+                                pageIndex === mapPageIndex ? <>
+                                    {page.subPages.map((subPage, subPageIndex) => {
+                                        return <React.Fragment key={subPageIndex}>
+                                            {subPageIndex === subPageIndex ? <QuotePage
+                                                currentIndex={pageIndex}
+                                                key={subPageIndex} {...subPage}
+                                                setAnswer={setAnswerHandler}
+                                                pageData={formData[pageIndex]}
+                                                pageIndex={pageIndex}
+                                                getFormData={() => {
+                                                    console.log("get form data")
+                                                    console.log(formData)
+                                                    console.log(formData[pageIndex])
+                                                    console.log(formData[pageIndex].subPages)
+                                                    console.log(subPageIndex)
+                                                    console.log(formData[pageIndex].subPages[subPageIndex])
+                                                    return formData[pageIndex].subPages[subPageIndex]
+                                                }}
+                                            /> : null}
+                                        </React.Fragment>
+                                    }
+                                    )}
+                                </> : null
+                            }
+                        </>
+                    )
+                    )}
+                </>
+
                 <Box
                     sx={{
                         width: "90%",
@@ -207,20 +263,13 @@ export default function QuoteForm(props) {
                     >
                         <Button
                             onClick={() => {
-                                setPageIndex(pageIndex + 1);
-                                setTimeout(() => {
-                                    window.scrollTo({
-                                        left: 0,
-                                        top: 0,
-                                        behavior: "smooth" // Smooth scrolling behavior
-                                    });
-                                }, 100);
+                                incrementPage()
                             }} disabled={pageValidated ? false : true}
                             sx={{ minWidth: "10rem", textAlign: "right" }} variant="contained" color="primary">Submit</Button>
                     </Box>
 
                 </Box>
-            </Box>
+            </Box >
         </>
     )
 }

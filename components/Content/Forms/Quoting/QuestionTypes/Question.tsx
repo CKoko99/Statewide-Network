@@ -3,6 +3,7 @@ import { CustomFonts } from "../../../../../providers/theme";
 import MultipleChoice from "./MultipleChoice";
 import { useState } from "react";
 import Fade from "@mui/material/Fade";
+import Input from "./Input";
 
 export default function Question(props) {
 
@@ -13,15 +14,32 @@ export default function Question(props) {
         //check to see if the selected answer has a subquestion
         let hasSubQuestion = false;
         // console.log(props.question.answers)
-        if (props.question.answers[answer[1]].subQuestion) {
+        console.log("handle answer")
+        console.log(answer)
+        console.log(props.question)
+        if (props.question.type?.toLowerCase() === "input") {
             //if so, set the answerIndex to the index of the subquestion
-            setSubQuestion(props.question.answers[answer[1]].subQuestion)
-            hasSubQuestion = true;
-        } else {
-            //if not, set the answerIndex to the next question
-            setSubQuestion(null)
+            const QA = {
+                question: props.question.question,
+                pageIndex: props.pageIndex,
+                questionIndex: props.questionIndex,
+                answerChoice: answer[0],
+                answerIndex: answer[1],
+                level: props.level,
+                hasSubQuestion: false,
+                subQuestion: null
+            }
+            props.setAnswer(QA)
         }
         if (props.question.type?.toLowerCase() === "multiplechoice") {
+            if (props.question.answers[answer[1]].subQuestion) {
+                //if so, set the answerIndex to the index of the subquestion
+                setSubQuestion(props.question.answers[answer[1]].subQuestion)
+                hasSubQuestion = true;
+            } else {
+                //if not, set the answerIndex to the next question
+                setSubQuestion(null)
+            }
             const QA = {
                 question: props.question.question,
                 pageIndex: props.pageIndex,
@@ -48,6 +66,14 @@ export default function Question(props) {
                     <MultipleChoice level={props.level} initialAnswer={props.initialAnswer} setAnswer={(answer) => handleAnswer(answer)} question={...props.question} />
                 </>
                     : null
+                }
+                {
+                    props.question.type?.toLowerCase() === "input" ? <>
+                        <Input
+                            {...props.question}
+                            level={props.level} initialAnswer={props.initialAnswer} setAnswer={(answer) => handleAnswer(answer)} question={...props.question} />
+                    </>
+                        : null
                 }
             </Box>
         </Fade>

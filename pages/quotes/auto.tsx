@@ -16,102 +16,112 @@ const quoteForm = {
             title: "Start",
             grayIcon: GrayStartImg,
             colorIcon: ColorStartImg,
-            questions: [
+            subPages: [
                 {
-                    question: "Lets get started",
-                    helperText: "Enter your zip code to find rates",
-                    type: "input",
-                    format: "attached",
-                    label: "Zip Code",
-                    submit: true,
-                    submitText: "Unlock Savings",
-                },
-                {
-                    question: "Do you currently have auto insurance?",
-                    type: "multipleChoice",
-                    answers: [
-                        {
-                            text: "Yes",
-                            subQuestion: {
-                                question: "That's Awesome!",
-                                type: "multipleChoice",
-                                answers: [
-                                    {
-                                        text: "I'm looking for a better rate",
 
-                                    },
-                                    {
-                                        text: "I'm looking for better coverage",
-                                    },
-                                    {
-                                        text: "I'm looking for both",
-                                        subQuestion: {
-                                            question: "That's Awesome part2!",
-                                            type: "multipleChoice",
-                                            answers: [
-                                                {
-                                                    text: "I'm looking for a lil better rate",
-                                                },
-                                                {
-                                                    text: "I'm looking for better coverage",
-                                                },
-                                                {
-                                                    text: "I'm looking for both sub",
-                                                },
-                                            ]
-                                        }
-                                    },
-                                ]
-                            }
+                    questions: [
+                        {
+                            question: "Lets get started",
+                            helperText: "Enter your zip code to find rates",
+                            type: "input",
+                            format: "attached",
+                            label: "Zip Code",
+                            submit: true,
+                            submitText: "Unlock Savings",
+                            validation: "zipcode"
                         },
                         {
-                            text: "No",
+                            question: "Do you currently have auto insurance?",
+                            type: "multipleChoice",
+                            answers: [
+                                {
+                                    text: "Yes",
+                                    subQuestion: {
+                                        question: "That's Awesome!",
+                                        type: "multipleChoice",
+                                        answers: [
+                                            {
+                                                text: "I'm looking for a better rate",
+
+                                            },
+                                            {
+                                                text: "I'm looking for better coverage",
+                                            },
+                                            {
+                                                text: "I'm looking for both",
+                                                subQuestion: {
+                                                    question: "That's Awesome part2!",
+                                                    type: "multipleChoice",
+                                                    answers: [
+                                                        {
+                                                            text: "I'm looking for a lil better rate",
+                                                        },
+                                                        {
+                                                            text: "I'm looking for better coverage",
+                                                        },
+                                                        {
+                                                            text: "I'm looking for both sub",
+                                                        },
+                                                    ]
+                                                }
+                                            },
+                                        ]
+                                    }
+                                },
+                                {
+                                    text: "No",
+                                },
+                            ],
                         },
-                    ],
-                },
-                {
-                    question: "Have you had an accident in the last 2 years?",
-                    type: "multipleChoice",
-                    answers: [
                         {
-                            text: "Yes",
+                            question: "Have you had an accident in the last 2 years?",
+                            type: "multipleChoice",
+                            answers: [
+                                {
+                                    text: "Yes",
+                                },
+                                {
+                                    text: "No",
+                                },
+                            ],
                         },
-                        {
-                            text: "No",
-                        },
-                    ],
-                },
+                    ]
+                }
             ]
         },
         {
             title: "Vehicles",
             grayIcon: GrayVehiclesImg,
             colorIcon: ColorVehiclesImg,
-            questions: [
-                /* {
-                     question: "Lets get started",
-                     helperText: "Enter your zip code to find rates",
-                     type: "input",
-                     format: "attached",
-                     label: "Zip Code",
-                     submit: true,
-                     submitText: "Unlock Savings",
-                 },*/
+            subPages: [
                 {
-                    question: "Do you currently own the vehicle?",
-                    type: "multipleChoice",
-                    answers: [
+                    questions: [
+                        /* {
+                             question: "Lets get started",
+                             helperText: "Enter your zip code to find rates",
+                             type: "input",
+                             format: "attached",
+                             label: "Zip Code",
+                             submit: true,
+                             submitText: "Unlock Savings",
+                         },*/
                         {
-                            text: "Yes, I own the vehicle",
+                            question: "Do you currently own the vehicle?",
+                            type: "multipleChoice",
+                            answers: [
+                                {
+                                    text: "Yes, I own the vehicle",
+                                },
+                                {
+                                    text: "Yes, I am financing the vehicle",
+                                },
+                                {
+                                    text: "No, I am leasing the vehicle",
+                                }
+                            ],
                         },
-                        {
-                            text: "Yes, I am financing the vehicle",
-                        },
-                        {
-                            text: "No, I am leasing the vehicle",
-                        }
-                    ],
-                },
+                    ]
+                }
             ]
         },
         {
