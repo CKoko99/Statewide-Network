@@ -78,88 +78,11 @@ export default function SubNavBar(props: any) {
         setOpenItem(null);
     };
 
-
-
-
     // Function to toggle the menu item's open/close state
     const handleMenuItemToggle = (label: any, event: any) => {
         event.stopPropagation();
         setOpenItem((prevOpenItem) => (prevOpenItem === label ? null : label));
     };
-    const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <Divider />
-            <List sx={{ textAlign: "left" }}>
-                {navItems.map((item) => (
-                    item.menuItems.length === 0 ? (
-                        <Link key={item.label} href={item.link || ""} style={{ color: "inherit", textDecoration: "none" }}>
-                            <ListItem disablePadding>
-                                <ListItemButton
-                                    sx={{ textAlign: "center" }}
-                                    onClick={(event) => handleMenuItemToggle(item.label, event)}
-                                >
-                                    <ListItemText
-                                        primary={
-                                            <Typography
-                                                style={{ display: "flex", fontWeight: "700" }}
-                                            >
-                                                {item.label}
-                                            </Typography>
-                                        }
-                                    />
-                                </ListItemButton>
-                            </ListItem>
-                        </Link>
-                    ) : (
-                        <React.Fragment key={item.label}>
-                            <ListItem disablePadding>
-                                <ListItemButton
-                                    sx={{ textAlign: "center" }}
-                                    onClick={(event) => handleMenuItemToggle(item.label, event)}
-                                >
-                                    <ListItemText
-                                        primary={
-                                            <Typography
-                                                style={{ display: "flex", fontWeight: "700" }}
-                                            >
-                                                {item.label} {item.menuItems.length > 0 ? openItem === item.label ? <ExpandLessIcon /> : <ExpandMoreIcon /> : ""}
-                                            </Typography>
-                                        }
-                                    />
-                                </ListItemButton>
-                            </ListItem>
-                            <Collapse in={openItem === item.label} timeout="auto" unmountOnExit>
-                                <List component="div" disablePadding>
-                                    {item.menuItems.map((menu) => (
-                                        <Link key={menu.title} href={menu.link || ""} style={{ color: "inherit", textDecoration: "none" }}>
-                                            <ListItem >
-                                                <ListItemText
-                                                    primary={
-                                                        <Typography>
-                                                            •{" "}
-                                                            {menu.title}
-                                                        </Typography>
-                                                    }
-                                                />
-                                            </ListItem>
-                                        </Link>
-                                    ))}
-                                </List>
-                            </Collapse>
-                        </React.Fragment>
-                    )
-                ))}
-
-
-
-            </List>
-
-        </Box>
-    );
-
-    const container = drawerWindow !== undefined ? () => drawerWindow().document.body : undefined;
-
-
 
     return (<>
 
@@ -170,7 +93,7 @@ export default function SubNavBar(props: any) {
             }}
         >
             <Box sx={{
-                display: 'flex',
+                display: { xs: "none", md: "flex", },
                 width: { xs: "92%", sm: "95%", md: "90%", lg: "80%" },
                 maxWidth: "1800px",
                 flexDirection: "row", justifyContent: "space-between", alignItems: "center",
@@ -202,24 +125,55 @@ export default function SubNavBar(props: any) {
                     ))}
                 </Box>
 
-                <Drawer
-                    container={container}
-                    variant="temporary"
-                    open={mobileOpen}
-                    onClose={handleDrawerToggle}
-                    ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
-                    }}
-                    sx={{
-                        "@media (min-width: 880px)": {
-                            display: "none",
-                        },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-                    }}
-                >
-                    {drawer}
-                </Drawer>
+
             </Box >
+            <Box
+                sx={{
+                    display: { xs: "flex", md: "none", },
+                    flexDirection: "column",
+                    margin: "auto",
+                    textAlign: "center",
+                    width: "100%",
+                }}
+            >
+                <ListItem disablePadding>
+                    <ListItemButton
+                        sx={{ textAlign: "center" }}
+                        onClick={(event) => handleMenuItemToggle(props.shortTitle, event)}
+                    >
+                        <ListItemText
+                            primary={
+                                <Typography
+                                    style={{ display: "flex", fontWeight: "700", justifyContent: "center" }}
+                                >
+                                    {props.shortTitle} {props.content.length > 0 ? openItem === props.shortTitle ? <ExpandLessIcon /> : <ExpandMoreIcon /> : ""}
+                                </Typography>
+                            }
+                        />
+                    </ListItemButton>
+                </ListItem>
+                <Collapse in={openItem === props.shortTitle} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        {props.content.map((menu) => (
+                            <Link key={menu.title} href={menu.link || ""} style={{ color: "inherit", textDecoration: "none" }}>
+                                <ListItem >
+                                    <ListItemText
+                                        primary={
+                                            <Typography
+                                                fontWeight={router.pathname === menu.link ? "700" : "400"}
+                                            >
+                                                •{" "}
+                                                {menu.text}
+                                            </Typography>
+                                        }
+                                    />
+                                </ListItem>
+                            </Link>
+                        ))}
+                    </List>
+                </Collapse>
+
+            </Box>
         </Box >
         <Box sx={{ height: "5rem" }}
         ></Box >

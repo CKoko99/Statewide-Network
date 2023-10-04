@@ -5,7 +5,7 @@ const SubNavBarContent = {
     shortTitle: "Learn More About Home Insurance",
     content: [
         {
-            link: PATHCONSTANTS.PRODUCTS.HOME,
+            link: PATHCONSTANTS.PRODUCTS.HOME.INDEX,
             text: "Home Insurance"
         },
         {
