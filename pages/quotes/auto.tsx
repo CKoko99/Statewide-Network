@@ -86,6 +86,34 @@ const quoteForm = {
                             ],
                         },
                     ]
+                },
+                {
+                    questions: [
+                        /* {
+                             question: "Lets get started",
+                             helperText: "Enter your zip code to find rates",
+                             type: "input",
+                             format: "attached",
+                             label: "Zip Code",
+                             submit: true,
+                             submitText: "Unlock Savings",
+                         },*/
+                        {
+                            question: "Sub page?",
+                            type: "multipleChoice",
+                            answers: [
+                                {
+                                    text: "Yes, I own the vehicle",
+                                },
+                                {
+                                    text: "Yes, I am financing the vehicle",
+                                },
+                                {
+                                    text: "No, I am leasing the vehicle",
+                                }
+                            ],
+                        },
+                    ]
                 }
             ]
         },

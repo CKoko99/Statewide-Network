@@ -214,9 +214,9 @@ export default function QuoteForm(props) {
                         <>
                             {
                                 pageIndex === mapPageIndex ? <>
-                                    {page.subPages.map((subPage, subPageIndex) => {
-                                        return <React.Fragment key={subPageIndex}>
-                                            {subPageIndex === subPageIndex ? <QuotePage
+                                    {page.subPages.map((subPage, mapSubPageIndex) => {
+                                        return <React.Fragment key={mapSubPageIndex}>
+                                            {subPageIndex === mapSubPageIndex ? <QuotePage
                                                 currentIndex={pageIndex}
                                                 key={subPageIndex} {...subPage}
                                                 setAnswer={setAnswerHandler}
