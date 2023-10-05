@@ -5,6 +5,26 @@ import MultipleChoice from "./QuestionTypes/MultipleChoice";
 import Question from "./QuestionTypes/Question";
 import React from "react";
 import { init } from "next/dist/compiled/@vercel/og/satori";
+function initialPageQuestions(questions) {
+    const newPageData = [];
+    for (let i = 0; i < questions.length; i++) {
+        const newQuestionsData = {
+            question: questions[i].question,
+            type: questions[i].type,
+            level: questions[i].level,
+            answers: questions[i].answers,
+            pageIndex: questions[i].pageIndex,
+            questionIndex: questions[i].questionIndex,
+            hasSubQuestion: questions[i].hasSubQuestion,
+            subQuestion: questions[i].subQuestion,
+            answerChoice: questions[i].answerChoice,
+            answerIndex: questions[i].answerIndex,
+        }
+        newPageData.push(newQuestionsData)
+    }
+    console.log("newPageData")
+    console.log(newPageData)
+}
 
 function intializeAnswers(pageData) {
     const newInitialAnswers = [];
@@ -27,7 +47,20 @@ function intializeAnswers(pageData) {
 
         } else if (typeof pageData?.questions[i].answerChoice === "object") {
             //if answer choice is an array
-            questionAnswers.push(pageData?.questions[i].answerChoice[0])
+            console.log("else object")
+            if (pageData?.questions[i].answerChoice[0]) {
+                questionAnswers.push(pageData?.questions[i].answerChoice[0])
+            } else {
+                questionAnswers.push(pageData?.questions[i].answerChoice)
+            }
+
+        } else if (typeof pageData?.questions[i].answerChoice === undefined) {
+        } else {
+            console.log("else summen")
+            console.log(typeof pageData?.questions[i].answerChoice)
+            console.log(pageData?.questions[i].answerChoice)
+            //  questionAnswers.push(pageData?.questions[i].answerChoice)
+
         }
 
         newInitialAnswers.push(questionAnswers)
@@ -85,7 +118,13 @@ export default function QuotePage(props) {
             props.setAnswer(questionData)
         }
     }
-
+    useEffect(() => {
+        console.log("pageQuestions")
+        console.log(pageQuestions)
+        console.log(pageQuestions[0].answers)
+        //console.log(pageQuestions[0].answers[0].subQuestions)
+        initialPageQuestions(pageQuestions)
+    }, [])
     //console.log(props.questions[0])
     return <>
         <Box sx={{ display: "flex", flexDirection: "column", minHeight: "inherit", justifyContent: "space-between" }}>

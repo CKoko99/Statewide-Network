@@ -37,7 +37,7 @@ const quoteForm = {
                                 {
                                     text: "Yes",
                                     subQuestion: {
-                                        question: "That's Awesome!",
+                                        question: "That's awesome why are you switching?",
                                         type: "multipleChoice",
                                         answers: [
                                             {
@@ -49,21 +49,6 @@ const quoteForm = {
                                             },
                                             {
                                                 text: "I'm looking for both",
-                                                subQuestion: {
-                                                    question: "That's Awesome part2!",
-                                                    type: "multipleChoice",
-                                                    answers: [
-                                                        {
-                                                            text: "I'm looking for a lil better rate",
-                                                        },
-                                                        {
-                                                            text: "I'm looking for better coverage",
-                                                        },
-                                                        {
-                                                            text: "I'm looking for both sub",
-                                                        },
-                                                    ]
-                                                }
                                             },
                                         ]
                                     }
@@ -89,15 +74,6 @@ const quoteForm = {
                 },
                 {
                     questions: [
-                        /* {
-                             question: "Lets get started",
-                             helperText: "Enter your zip code to find rates",
-                             type: "input",
-                             format: "attached",
-                             label: "Zip Code",
-                             submit: true,
-                             submitText: "Unlock Savings",
-                         },*/
                         {
                             question: "Sub page?",
                             type: "multipleChoice",
@@ -124,17 +100,12 @@ const quoteForm = {
             subPages: [
                 {
                     questions: [
-                        /* {
-                             question: "Lets get started",
-                             helperText: "Enter your zip code to find rates",
-                             type: "input",
-                             format: "attached",
-                             label: "Zip Code",
-                             submit: true,
-                             submitText: "Unlock Savings",
-                         },*/
                         {
-                            question: "Do you currently own the vehicle?",
+                            question: "Add a vehicle",
+                            type: "vehicleSelect",
+                        },
+                        {
+                            question: "Do you own this vehicle?",
                             type: "multipleChoice",
                             answers: [
                                 {
@@ -148,6 +119,64 @@ const quoteForm = {
                                 }
                             ],
                         },
+                        {
+                            question: "How many miles do you drive per day?",
+                            type: "input",
+                            format: "attached",
+                            label: "Miles",
+                            submit: true,
+                            submitText: "Next",
+                        },
+
+                    ]
+                },
+                {
+                    questions: [
+                        {
+                            question: "Would you like to add a second vehicle?",
+                            type: "multipleChoice",
+                            answers: [
+                                {
+                                    text: "Yes",
+                                    subQuestion: {
+                                        question: "Add a vehicle",
+                                        type: "vehicleSelect",
+                                        subQuestions: [
+                                            {
+                                                question: "Do you own this vehicle?",
+                                                type: "multipleChoice",
+                                                answers: [
+                                                    {
+                                                        text: "Yes, I own the vehicle",
+                                                    },
+                                                    {
+                                                        text: "Yes, I am financing the vehicle",
+                                                    },
+                                                    {
+                                                        text: "No, I am leasing the vehicle",
+                                                    }
+                                                ],
+                                            },
+                                        ]
+                                    },
+                                },
+                                {
+                                    text: "No",
+                                },
+                            ],
+                        },
+                        {
+                            question: "Question 2?",
+                            type: "multipleChoice",
+                            answers: [
+                                {
+                                    text: "Yes",
+                                },
+                                {
+                                    text: "No",
+                                },
+                            ],
+                        }
                     ]
                 }
             ]
@@ -156,6 +185,26 @@ const quoteForm = {
             title: "Drivers",
             grayIcon: GrayDriversImg,
             colorIcon: ColorDriversImg,
+            subPages: [
+                {
+
+                    questions: [
+                        {
+                            question: "Add a driver",
+                            type: "multipleChoice",
+                            answers: [
+                                {
+                                    text: "Yes",
+                                },
+                                {
+                                    text: "No",
+                                },
+                            ],
+                        }
+                    ]
+                }
+            ]
+
         },
         {
             title: "Coverage",

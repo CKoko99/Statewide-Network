@@ -47,7 +47,7 @@ export default function MultipleChoice(props) {
                 sx={{ display: "flex", gap: "1.5rem", justifyContent: "space-around", flexWrap: "wrap" }}
             >
                 {props.question?.answers?.map((answer, index) => (
-                    <Button sx={{ minWidth: "20rem" }} key={index} variant="contained"
+                    <Button sx={{ width: "20rem", maxWidth: "90%" }} key={index} variant="contained"
                         onClick={() => handleAnswer(answer.text, index)}
                         color={selectedAnswer[1] === index ? "primary" : "secondary"}>
                         {answer.text}

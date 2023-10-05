@@ -1,18 +1,19 @@
 import { Box, Typography } from "@mui/material";
 import { CustomFonts } from "../../../../../providers/theme";
 import MultipleChoice from "./MultipleChoice";
-import { useState } from "react";
+import React, { useState } from "react";
 import Fade from "@mui/material/Fade";
 import Input from "./Input";
+import VehicleSelect from "./VehicleSelect";
 
 export default function Question(props) {
 
     const [validatedAnswers, setValidatedAnswers] = useState(Array(props.questions?.length).fill(false));
     const [validated, setValidated] = useState(false);
     const [subQuestion, setSubQuestion] = useState(null);
+
     const handleAnswer = (answer) => {
         //check to see if the selected answer has a subquestion
-        let hasSubQuestion = false;
         // console.log(props.question.answers)
         console.log("handle answer")
         console.log(answer)
@@ -32,13 +33,16 @@ export default function Question(props) {
             props.setAnswer(QA)
         }
         if (props.question.type?.toLowerCase() === "multiplechoice") {
+            let hasSubQuestion = false;
             if (props.question.answers[answer[1]].subQuestion) {
-                //if so, set the answerIndex to the index of the subquestion
-                setSubQuestion(props.question.answers[answer[1]].subQuestion)
                 hasSubQuestion = true;
-            } else {
-                //if not, set the answerIndex to the next question
-                setSubQuestion(null)
+                if (props.question.answers[answer[1]].subQuestion) {
+                    //if so, set the answerIndex to the index of the subquestion
+                    setSubQuestion(props.question.answers[answer[1]].subQuestion)
+                } else {
+                    //if not, set the answerIndex to the next question
+                    setSubQuestion(null)
+                }
             }
             const QA = {
                 question: props.question.question,
@@ -49,6 +53,20 @@ export default function Question(props) {
                 level: props.level,
                 hasSubQuestion: hasSubQuestion,
                 subQuestion: hasSubQuestion ? props.question.answers[answer[1]].subQuestion : null
+            }
+            props.setAnswer(QA)
+        }
+        if (props.question.type?.toLowerCase() === "vehicleselect") {
+            let hasSubQuestion = false;
+            const QA = {
+                question: props.question.question,
+                pageIndex: props.pageIndex,
+                questionIndex: props.questionIndex,
+                answerChoice: answer[0],
+                answerIndex: answer[1],
+                level: props.level,
+                hasSubQuestion: false,
+                subQuestion: null
             }
             props.setAnswer(QA)
         }
@@ -75,6 +93,14 @@ export default function Question(props) {
                     </>
                         : null
                 }
+                {
+                    props.question.type?.toLowerCase() === "vehicleselect" ? <>
+                        <VehicleSelect
+                            {...props.question}
+                            level={props.level} initialAnswer={props.initialAnswer} setAnswer={(answer) => handleAnswer(answer)} question={...props.question} />
+                    </>
+                        : null
+                }
             </Box>
         </Fade>
         {
@@ -83,5 +109,6 @@ export default function Question(props) {
                 initialAnswer={props.initialAnswer}
                 setAnswer={props.setAnswer} level={props.level + 1} question={subQuestion} />
         }
+
     </>
 }

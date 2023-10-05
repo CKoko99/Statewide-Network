@@ -40,6 +40,18 @@ export default function Input(props) {
                 setErrorText("Please enter a valid zipcode")
                 props.setAnswer([null, props.questionIndex,])
             }
+        } else {
+            if (value?.length > 0) {
+                setOnceValid(true)
+                setIsError(false)
+                setErrorText("")
+                props.setAnswer([value, props.questionIndex,])
+            }
+            else if (value?.length === 0 && onceValid) {
+                setIsError(true)
+                setErrorText("Please enter a valid answer")
+                props.setAnswer([null, props.questionIndex,])
+            }
         }
     }, [value])
     return <>

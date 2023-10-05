@@ -42,9 +42,9 @@ function PageIcons(props) {
     </Box>
 }
 function initializeFormData(quotePages) {
-    const newFormData = [];
+    let newFormData = [];
     for (let i = 0; i < quotePages.length; i++) {
-
+        //fill every page with empty questions
         const newPageData = {
             currentQuestionIndex: 0,
             questionCount: quotePages[i]?.questions?.length,
@@ -52,15 +52,55 @@ function initializeFormData(quotePages) {
         }
         //fill every sub page with empty questions
         for (let j = 0; j < quotePages[i]?.subPages?.length; j++) {
+            // if (!formData[pageIndex].subPages[subPageIndex].questions[i].subQuestions[j].answerChoice) {
+
             newPageData.subPages[j] = {
                 currentQuestionIndex: 0,
                 questionCount: quotePages[i]?.subPages[j]?.questions?.length,
                 questions: Array(quotePages[i]?.subPages[j]?.questions?.length).fill({}),
             }
+
         }
+
         newFormData.push(newPageData)
     }
+    console.log("initializeFormData")
+    //console.log(newFormData)
+    let newFormData2 = [];
+    console.log(quotePages)
 
+    for (let i = 0; i < quotePages.length; i++) {
+        let subPages = [];
+        for (let j = 0; j < quotePages[i]?.subPages?.length; j++) {
+            let questions = [];
+            for (let k = 0; k < quotePages[i]?.subPages[j]?.questions?.length; k++) {
+                for (let l = 0; l < quotePages[i]?.subPages[j]?.questions[k]?.answers?.length; l++) {
+                    questions.push({
+                        question: quotePages[i]?.subPages[j]?.questions[k]?.question,
+                        pageIndex: i,
+                        questionIndex: k,
+                        answerChoice: null,
+                        answerIndex: null,
+                        level: 0,
+                        hasSubQuestion: quotePages[i]?.subPages[j]?.questions[k]?.answers[l]?.subQuestions?.length > 0 ? true : false,
+                        subQuestion: null
+                    })
+                }
+            }
+            subPages.push({
+                currentQuestionIndex: 0,
+                questionCount: quotePages[i]?.subPages[j]?.questions?.length,
+                questions: questions,
+            })
+        }
+        console.log(subPages)
+        newFormData2.push({
+            currentQuestionIndex: 0,
+            questionCount: quotePages[i]?.questions?.length,
+            subPages: Array(quotePages[i]?.subPages?.length).fill({}),
+        })
+    }
+    console.log(newFormData2)
     return newFormData;
 }
 export default function QuoteForm(props) {
@@ -86,10 +126,11 @@ export default function QuoteForm(props) {
         let replace = false;
         if (answer.level === 0) {
             //check to see if the old formData answerchoice is the same as the new one
-            console.log("Page index " + answer.pageIndex)
-            console.log("Sub Page index " + subPageIndex)
 
             if (newFormData[answer.pageIndex].subPages[subPageIndex].questions[answer.questionIndex].answerChoice !== answer.answerChoice) {
+                console.log("level 1 replace")
+                console.log(newFormData[answer.pageIndex].subPages[subPageIndex].questions[answer.questionIndex])
+                console.log(answer.answerChoice)
                 replace = true;
             }
             newFormData[answer.pageIndex].subPages[subPageIndex].questions[answer.questionIndex] = answer;
@@ -99,10 +140,11 @@ export default function QuoteForm(props) {
             for (let i = 1; i < answer.level; i++) {
                 question = question.subQuestion;
             }
-            console.log(" parent")
-            console.log(question)
             //check to see if the old formData answerchoice is the same as the new one
             if (question.answerChoice !== answer.answerChoice) {
+                console.log("level 2 replace")
+                console.log(question)
+                console.log(answer.answerChoice)
                 replace = true;
             }
             question.subQuestion = answer;
@@ -113,34 +155,31 @@ export default function QuoteForm(props) {
         if (replace) {
             setFormData(newFormData);
         }
+        console.log("newFormData")
+        console.log(newFormData)
     }
     useEffect(() => {
         //everytime formData changes, check to see if the page is validated
         //loop through the questions and see if there is an answer, if so, set the validated to true
         //also check to see if the question has a subquestion, if so, check to see if the subquestion is answered
         let allValidated = true;
-        for (let i = 0; i < formData[pageIndex].subPages[subPageIndex].questions.length; i++) {
-            if (formData[pageIndex].subPages[subPageIndex].questions[i].answerChoice) {
-                if (formData[pageIndex].subPages[subPageIndex].questions[i].hasSubQuestion) {
-                    if (!formData[pageIndex].subPages[subPageIndex].questions[i].subQuestion.answerChoice) {
-                        allValidated = false;
-                        break;
-                    }
-                }
-            } else {
-                allValidated = false;
-                break;
-            }
-        }
-        allValidated = true;
         //go through the questions and see if they are validated
 
         //see if current subpage is validated
         //if not, set pageValidated to false
         for (let i = 0; i < formData[pageIndex].subPages[subPageIndex].questions.length; i++) {
+
             if (!formData[pageIndex].subPages[subPageIndex].questions[i].answerChoice) {
                 allValidated = false;
                 break;
+            }
+            let currentQuestion = formData[pageIndex].subPages[subPageIndex].questions[i];
+            while (currentQuestion.hasSubQuestion) {
+                if (!currentQuestion.subQuestion.answerChoice) {
+                    allValidated = false;
+                    break;
+                }
+                currentQuestion = currentQuestion.subQuestion;
             }
         }
 
@@ -154,13 +193,11 @@ export default function QuoteForm(props) {
     }, [pageValidated])
     // when subpage changes log all data for that subpage
     useEffect(() => {
-        console.log("subpage changed")
-        console.log(formData[pageIndex].subPages[subPageIndex])
+
     }, [subPageIndex])
     //when page changes log all data for that page
     useEffect(() => {
-        console.log("page changed")
-        console.log(formData[pageIndex].subPages[subPageIndex])
+
     }, [pageIndex])
     function incrementPage() {
         //if subpage index is less than the max subpage index, increment the subpage index
@@ -191,7 +228,7 @@ export default function QuoteForm(props) {
                 <PageIcons setPageIndex={setPageIndexHandler} quotePages={props.quotePages} pageIndex={pageIndex} maxPageIndex={maxPageIndex} />
                 <>
                     {props.quotePages.map((page, mapPageIndex) => (
-                        <>
+                        <React.Fragment key={mapPageIndex}>
                             {
                                 pageIndex === mapPageIndex ? <>
                                     {page.subPages?.map((subPage, mapSubPageIndex) => {
@@ -217,7 +254,7 @@ export default function QuoteForm(props) {
                                     )}
                                 </> : null
                             }
-                        </>
+                        </React.Fragment>
                     )
                     )}
                 </>
