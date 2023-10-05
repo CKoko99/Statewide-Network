@@ -26,7 +26,11 @@ export default function VehicleSelect(props) {
     const [vehicleComplete, setVehicleComplete] = useState(false);
     const [completeAnswer, setCompleteAnswer] = useState(null);
     const [submittedVehicle, setSubmittedVehicle] = useState(false);
-    const [completedVehicle, setCompletedVehicle] = useState({});
+    const [completedVehicle, setCompletedVehicle] = useState({
+        year: "",
+        make: "",
+        model: ""
+    });
 
     useEffect(() => {
         //loop through the answers and see if props.initialAnswer is one of them
@@ -54,7 +58,11 @@ export default function VehicleSelect(props) {
         setVehicleComplete(false)
         setCompleteAnswer(null)
         setSubmittedVehicle(false)
-        setCompletedVehicle({})
+        setCompletedVehicle({
+            year: "",
+            make: "",
+            model: ""
+        })
         props.setAnswer([null, props.questionIndex])
     }
     function submitVehicle() {
@@ -196,7 +204,7 @@ export default function VehicleSelect(props) {
                     sx={{ display: "flex", gap: "1rem" }}
                 >
                     <Typography variant="subtitle1">
-                        {completedVehicle.year} {completedVehicle.make} {completedVehicle.model}
+                        {completedVehicle?.year} {completedVehicle?.make} {completedVehicle?.model}
                     </Typography>
                     <EditIcon onClick={() => {
                         setSubmittedVehicle(false)
