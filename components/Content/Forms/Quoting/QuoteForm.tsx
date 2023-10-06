@@ -210,6 +210,14 @@ export default function QuoteForm(props) {
             setPageIndex(pageIndex + 1);
             setSubPageIndex(0);
         }
+        //timeout
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            })
+        }, 100)
     }
     function decrementPage() {
         //if subpage index is greater than 0, decrement the subpage index
