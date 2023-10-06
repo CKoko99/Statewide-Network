@@ -213,7 +213,9 @@ const HeroContent2 = {
 const Home: NextPage = () => {
   return (
     <>
-      <HeadComponent title={'Statewide Insurance'} metaData={'Statewide Insurance'} />
+      <HeadComponent title={'Statewide Insurance - Get A Free Insurance Quote Today!'} metaData={`
+Statewide Insurance provides you with coverage options, benefits and discounts at a price you can afford. Call us toll free at (877) 248-8632.
+      `} />
       <MainBanner {...bannerContent} />
       <TextSection largeText {...textSectionContent} />
       <ContentSlider {...sliderContent} />

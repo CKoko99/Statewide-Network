@@ -1,4 +1,4 @@
-import { Box, TextField } from "@mui/material"
+import { Box, FormControl, TextField } from "@mui/material"
 import { useEffect, useState } from "react";
 
 export default function Input(props) {
@@ -11,14 +11,9 @@ export default function Input(props) {
     const [onceValid, setOnceValid] = useState(false)
 
     //handle initial answer
-    useEffect(() => {
-        console.log(props)
-        if (props.initialAnswer) {
-            setValue(props.initialAnswer[props.level])
-        }
-    }, [])
 
     const handleValueChange = (targetValue) => {
+        if (!targetValue) return
         if (props.validation?.toLowerCase() === "zipcode") {
             //remove all non numbers from string
             targetValue = targetValue.replace(/\D/g, '')
@@ -28,6 +23,11 @@ export default function Input(props) {
 
         }
     }
+    useEffect(() => {
+        if (props.initialAnswer) {
+            handleValueChange(props.initialAnswer[props.level])
+        }
+    }, [])
     useEffect(() => {
         if (props.validation?.toLowerCase() === "zipcode") {
             if (value?.length === 5) {
@@ -56,18 +56,20 @@ export default function Input(props) {
     }, [value])
     return <>
         <Box sx={{ margin: "1rem" }}>
+            <FormControl>
 
-            <TextField
-                error={isError}
-                id="outlined-error-helper-text"
-                label={props.label}
-                //type={props.inputType}
-                value={value}
-                onChange={(e) => {
-                    handleValueChange(e.target.value)
-                }}
-                helperText={errorText}
-            />
+                <TextField
+                    error={isError}
+                    id="outlined-error-helper-text"
+                    label={props.label}
+                    //type={props.inputType}
+                    value={value}
+                    onChange={(e) => {
+                        handleValueChange(e.target.value)
+                    }}
+                    helperText={errorText}
+                />
+            </FormControl>
         </Box>
 
     </>

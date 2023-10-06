@@ -75,19 +75,37 @@ const quoteForm = {
                 {
                     questions: [
                         {
-                            question: "Sub page?",
-                            type: "multipleChoice",
-                            answers: [
-                                {
-                                    text: "Yes, I own the vehicle",
-                                },
-                                {
-                                    text: "Yes, I am financing the vehicle",
-                                },
-                                {
-                                    text: "No, I am leasing the vehicle",
-                                }
-                            ],
+                            question: "First Name",
+                            type: "input",
+                        },
+                        {
+                            question: "Last Name",
+                            type: "input",
+                        },
+                        /*{
+                            question: "Name",
+                            type: "groupedInput",
+                            groups: [{
+                                question: "First Name",
+                                type: "input",
+                            }, ,
+                            {
+                                question: "Last Name",
+                                type: "input",
+                            },
+                            ]
+                        },*/
+                        {
+                            question: "Street Address",
+                            type: "input",
+                        },
+                        {
+                            question: "City",
+                            type: "input",
+                        },
+                        {
+                            question: "State",
+                            type: "input",
                         },
                     ]
                 }
