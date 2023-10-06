@@ -141,23 +141,45 @@ const quoteForm = {
                                     subQuestion: {
                                         question: "Add a vehicle",
                                         type: "vehicleSelect",
-                                        subQuestions: [
-                                            {
-                                                question: "Do you own this vehicle?",
-                                                type: "multipleChoice",
-                                                answers: [
-                                                    {
-                                                        text: "Yes, I own the vehicle",
+                                        subQuestion: {
+                                            question: "Do you own this vehicle?",
+                                            type: "multipleChoice",
+                                            answers: [
+                                                {
+                                                    text: "Yes, I own the vehicle",
+                                                    subQuestion: {
+                                                        question: "How many miles do you drive per day?",
+                                                        type: "input",
+                                                        format: "attached",
+                                                        label: "Miles",
+                                                        submit: true,
+                                                        submitText: "Next",
                                                     },
-                                                    {
-                                                        text: "Yes, I am financing the vehicle",
+                                                },
+                                                {
+                                                    text: "Yes, I am financing the vehicle",
+                                                    subQuestion: {
+                                                        question: "How many miles do you drive per day?",
+                                                        type: "input",
+                                                        format: "attached",
+                                                        label: "Miles",
+                                                        submit: true,
+                                                        submitText: "Next",
                                                     },
-                                                    {
-                                                        text: "No, I am leasing the vehicle",
-                                                    }
-                                                ],
-                                            },
-                                        ]
+                                                },
+                                                {
+                                                    text: "No, I am leasing the vehicle",
+                                                    subQuestion: {
+                                                        question: "How many miles do you drive per day?",
+                                                        type: "input",
+                                                        format: "attached",
+                                                        label: "Miles",
+                                                        submit: true,
+                                                        submitText: "Next",
+                                                    },
+                                                }
+                                            ],
+                                        },
                                     },
                                 },
                                 {
@@ -165,18 +187,6 @@ const quoteForm = {
                                 },
                             ],
                         },
-                        {
-                            question: "Question 2?",
-                            type: "multipleChoice",
-                            answers: [
-                                {
-                                    text: "Yes",
-                                },
-                                {
-                                    text: "No",
-                                },
-                            ],
-                        }
                     ]
                 }
             ]

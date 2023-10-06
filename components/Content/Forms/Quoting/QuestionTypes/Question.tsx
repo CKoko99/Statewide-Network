@@ -34,15 +34,16 @@ export default function Question(props) {
         }
         if (props.question.type?.toLowerCase() === "multiplechoice") {
             let hasSubQuestion = false;
+            console.log("here")
+            console.log(props.question)
+            console.log(answer)
             if (props.question.answers[answer[1]].subQuestion) {
                 hasSubQuestion = true;
-                if (props.question.answers[answer[1]].subQuestion) {
-                    //if so, set the answerIndex to the index of the subquestion
-                    setSubQuestion(props.question.answers[answer[1]].subQuestion)
-                } else {
-                    //if not, set the answerIndex to the next question
-                    setSubQuestion(null)
-                }
+                setSubQuestion(props.question.answers[answer[1]].subQuestion)
+
+            } else {
+                //if not, set the answerIndex to the next question
+                setSubQuestion(null)
             }
             const QA = {
                 question: props.question.question,
@@ -58,6 +59,12 @@ export default function Question(props) {
         }
         if (props.question.type?.toLowerCase() === "vehicleselect") {
             let hasSubQuestion = false;
+            console.log(props.question)
+            console.log(answer)
+            if (props.question.subQuestion) {
+                hasSubQuestion = true;
+                setSubQuestion(props.question.subQuestion)
+            }
             const QA = {
                 question: props.question.question,
                 pageIndex: props.pageIndex,
@@ -65,8 +72,8 @@ export default function Question(props) {
                 answerChoice: answer[0],
                 answerIndex: answer[1],
                 level: props.level,
-                hasSubQuestion: false,
-                subQuestion: null
+                hasSubQuestion: hasSubQuestion,
+                subQuestion: hasSubQuestion ? props.question.subQuestion : null
             }
             props.setAnswer(QA)
         }
