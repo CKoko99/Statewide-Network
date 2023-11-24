@@ -10,6 +10,7 @@ import PATHCONSTANTS from "../../constants/sitemap";
 import ContactImg from "../../public/assets/images/about/cards/contact.png";
 import CareersImg from "../../public/assets/images/about/cards/careers.png";
 import ReviewsImg from "../../public/assets/images/about/cards/reviews.png";
+import { useEffect } from "react";
 const heroContent = {
     title: "About Us",
     subtitle: "As a part of the OSIX Insurance family we are experts in providing coverage to families all over Texas",
@@ -76,6 +77,20 @@ const cardsSection = {
     ]
 }
 export default function Index() {
+
+    useEffect(() => {
+        //calculate with compound interest at 10% per year
+
+        function calculateMoney(dollarsPerYear, years) {
+            let total = 0;
+            for (let i = 0; i < years; i++) {
+                total += dollarsPerYear;
+                total += total * 0.1;
+            }
+            return total;
+        }
+        console.log(calculateMoney(20000, 35));
+    }, [])
     return (<>
 
         <Hero {...heroContent} />

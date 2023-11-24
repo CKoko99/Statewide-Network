@@ -22,7 +22,7 @@ export default function CTAButton(props: CTAButtonProps) {
                         setOpenModal(true);
                     }
                 }}
-                href={props.link ? props.link : null}
+                href={props.link ? props.link : ""}
                 sx={{ fontSize: "1.1rem", fontFamily: CustomFonts.Gustavo, textAlign: "center", margin: "1rem" }}
             >
                 {props.text}
