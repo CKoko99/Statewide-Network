@@ -1,5 +1,7 @@
 const PATHCONSTANTS = {
     PHONE: "tel:555555555",
+    PHONETEXT: "555-555-555",
+    BACKEND: process.env.NODE_ENV === "development" ? "http://localhost:8080" : "https://insurancehubbackend-uc3v53rceq-ue.a.run.app",
     HOME: '/',
     QUOTES: {
         INDEX: '/quotes',
