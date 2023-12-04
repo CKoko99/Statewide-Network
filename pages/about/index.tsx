@@ -87,10 +87,12 @@ export default function Index() {
                 total += dollarsPerYear;
                 total += total * 0.1;
             }
-            return total;
+            const results = [total, total * .04 / 12]
+            return results;
         }
-        console.log(calculateMoney(20000, 35));
+        console.log(calculateMoney(10000, 35))
     }, [])
+
     return (<>
 
         <Hero {...heroContent} />

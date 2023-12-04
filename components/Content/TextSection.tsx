@@ -7,7 +7,8 @@ interface TextSectionProps {
 }
 const styles = {
     root: {
-        margin: "2rem auto",
+        margin: "auto",
+        padding: "2rem 0 1rem",
         width: { xs: "90%", sm: "80%", md: "70%", lg: "70%" },
         display: "flex",
         flexDirection: "column",
@@ -19,8 +20,8 @@ export default function TextSection(props: TextSectionProps) {
         <Box sx={{
             ...styles.root,
         }}>
-            <Typography variant={props.largeText ? "h2" : "h5"} sx={{ textAlign: "center", fontFamily: CustomFonts.Gustavo, fontWeight: "800" }}>{props.heading}</Typography>
-            <Typography variant={props.largeText ? "h5" : "subtitle1"} sx={{ textAlign: "center" }}>{props.subHeading}</Typography>
+            {props.heading && <Typography variant={props.largeText ? "h2" : "h5"} sx={{ textAlign: "center", fontFamily: CustomFonts.Gustavo, fontWeight: "800" }}>{props.heading}</Typography>}
+            {props.subHeading && <Typography variant={props.largeText ? "h5" : "subtitle1"} sx={{ textAlign: "center" }}>{props.subHeading}</Typography>}
         </Box>
     </>)
 }
