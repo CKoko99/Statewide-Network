@@ -64,18 +64,18 @@ let theme = createTheme({
     MuiButton: {
       styleOverrides: {
         outlinedSecondary: {
-          color: 'black',
-          borderColor: 'black',
+          color: '#474747',
+          borderColor: '#474747',
           '&:hover': {
             borderColor: 'black',
             color: 'black',
-            fontWeight: 'bold',
+            //fontWeight: 'bold',
           },
         },
         containedSecondary: {
           '&:hover': {
 
-            fontWeight: 'bold',
+            color: 'black',
           },
         },
       },
