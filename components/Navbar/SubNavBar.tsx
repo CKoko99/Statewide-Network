@@ -175,8 +175,7 @@ export default function SubNavBar(props: any) {
 
             </Box>
         </Box >
-        <Box sx={{ height: "5rem" }}
-        ></Box >
+
     </>
     );
 }

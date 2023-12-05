@@ -87,7 +87,7 @@ const sliderContent = {
   ]
 }
 const textSectionContent = {
-  heading: "Get your personalized quotes right away!",
+  title: "Get your personalized quotes right away!",
   //heading: "Switching Made Simple: Embrace YOUR Savings Today!",
   //  subHeading: "Our people and our technology are here to help our fellow Texans stop overpaying to cover their loved belongings",
 }
