@@ -1,7 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
-import { useRouter } from "next/router";
-import { Lang } from "../locale/LocaleSwitcher";
 import { useState } from "react";
 import { CustomFonts } from "../../providers/theme";
 

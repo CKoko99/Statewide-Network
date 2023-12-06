@@ -169,7 +169,7 @@ const privacy = {
 }
 export default function () {
     return <>
-        <TextSection heading={"Privacy Policy"} />
+        <TextSection title={"Privacy Policy"} />
         <Box
             sx={{ width: { xs: "100%", md: "90%" }, margin: "auto" }}
         >

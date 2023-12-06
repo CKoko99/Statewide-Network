@@ -1,4 +1,3 @@
-import DOMPurify from 'dompurify';
 
 export function blogText(inputStrings) {
     if (!inputStrings) return [];

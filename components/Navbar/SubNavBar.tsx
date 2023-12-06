@@ -155,7 +155,7 @@ export default function SubNavBar(props: any) {
                 <Collapse in={openItem === props.shortTitle} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {props.content.map((menu) => (
-                            <Link key={menu.title} href={menu.link || ""} style={{ color: "inherit", textDecoration: "none" }}>
+                            <Link key={menu.text} href={menu.link || ""} style={{ color: "inherit", textDecoration: "none" }}>
                                 <ListItem >
                                     <ListItemText
                                         primary={

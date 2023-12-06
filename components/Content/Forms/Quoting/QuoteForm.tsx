@@ -42,7 +42,7 @@ function PageIcons(props) {
     </Box>
 }
 function initializeFormData(quotePages) {
-    let newFormData = [];
+    let newFormData = [] as any;
     for (let i = 0; i < quotePages.length; i++) {
         //fill every page with empty questions
         const newPageData = {

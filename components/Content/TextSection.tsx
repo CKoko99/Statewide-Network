@@ -1,15 +1,34 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, TypographyPropsVariantOverrides, TypographyVariants } from "@mui/material";
 import { CustomFonts } from "../../providers/theme";
 import CTAButtons from "./CTA/CTAButtons";
 import { blogText } from "functions/functions";
-interface TextSectionProps {
+import { TypographyVariant } from "../../providers/theme";
+
+
+type TextSectionProps = {
     title?: string;
     subtitle?: string;
     largeText?: boolean;
     alignTitle?: string;
     alignSubtitle?: string;
-    titleVariant?: string;
-    subtitleVariant?: string;
+    titleVariant?: TypographyVariant;
+    subtitleVariant?: TypographyVariant;
+    noPadding?: boolean;
+    CTAButtons?: {
+        Buttons: {
+            text: string;
+            link: string;
+            variant?: "contained" | "outlined" | "text";
+            color?: "primary" | "secondary" | "inherit";
+            size?: "small" | "medium" | "large";
+            fullWidth?: boolean;
+        }[];
+        align?: string;
+        variant?: "contained" | "outlined" | "text";
+        color?: "primary" | "secondary" | "inherit";
+        size?: "small" | "medium" | "large";
+        fullWidth?: boolean;
+    }
 }
 const styles = {
     root: {
@@ -26,7 +45,10 @@ export default function TextSection(props: TextSectionProps) {
         <Box sx={{
             ...styles.root, padding: props.noPadding ? "0" : "1rem 0",
         }}>
-            {props.title && <Typography variant={props.titleVariant ? props.titleVariant : "h2"} sx={{ textAlign: props.alignTitle ? props.alignTitle : "center", fontFamily: CustomFonts.Gustavo, fontWeight: "800" }}>{props.title}</Typography>}
+            {props.title && <Typography variant={props.titleVariant ? props.titleVariant : "h2"} sx={{
+                textAlign: props.alignTitle ? props.alignTitle : "center",
+                fontFamily: CustomFonts.Gustavo, fontWeight: "800"
+            }}>{props.title}</Typography>}
             {props.subtitle && <>
 
                 {blogText(props.subtitle).map((item, index) => (<Typography key={index} variant={props.subtitleVariant ? props.subtitleVariant : "h5"}

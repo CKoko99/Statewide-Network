@@ -97,7 +97,7 @@ const contentSection5 = {
 }
 const contentSection6 = {
     subtitle: `LINK: [Learn More About Auto Insurance Coverages](${PATHCONSTANTS.PRODUCTS.AUTO.COVERAGE})`,
-    subtitleVariant: "body1",
+    subtitleVariant: "body1" as const,
     noPadding: true
 }
 const contentSection7 = {
@@ -109,13 +109,13 @@ const contentSection7 = {
             {
                 text: "Get a Quote",
                 link: PATHCONSTANTS.QUOTES.AUTO,
-                color: "primary",
-                variant: "contained"
+                color: "primary" as const,
+                variant: "contained" as const
             },
             {
                 text: `Contact Us`,
                 link: PATHCONSTANTS.ABOUT.CONTACT,
-                color: "secondary",
+                color: "secondary" as const,
             }
         ]
     }

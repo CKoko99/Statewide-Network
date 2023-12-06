@@ -2,9 +2,20 @@ import { Box, Typography } from "@mui/material";
 import CTAButtons from "./CTAButtons";
 import Image from "next/image";
 import { CustomFonts } from "providers/theme";
-
+import { StaticImageData } from "next/image";
 interface ComponentProps {
-
+    title: string;
+    subtitle: string;
+    img: {
+        src: StaticImageData;
+        alt: string;
+    },
+    CTAButtons: {
+        text: string;
+        link: string;
+        color: string;
+        variant: string;
+    }[]
 }
 
 export default function (props: ComponentProps) {

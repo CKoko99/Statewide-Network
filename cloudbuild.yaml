@@ -1,33 +1,22 @@
 steps:
-  # Build the container image
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
         "-t",
-        "us-west2-docker.pkg.dev/insurance-hub-397016/nextjs-statewide-docker-repo/nextjs-docker-gcr-image:tag1",
+        "gcr.io/insurance-hub-397016/${_SERVICE_NAME}:$SHORT_SHA",
         ".",
       ]
-  # Push the container image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/insurance-hub-397016/${_SERVICE_NAME}:$SHORT_SHA"]
+  - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
-        "push",
-        "us-west2-docker.pkg.dev/insurance-hub-397016/nextjs-statewide-docker-repo/nextjs-docker-gcr-image:tag1",
+        "beta",
+        "run",
+        "deploy",
+        "${_SERVICE_NAME}",
+        "--region=us-east1",
+        "--platform=managed",
+        "--image=gcr.io/insurance-hub-397016/${_SERVICE_NAME}:$SHORT_SHA",
       ]
-  # Deploy container image to Cloud Run
-  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    entrypoint: gcloud
-    args:
-      - "run"
-      - "deploy"
-      - "nextjs-docker-gcr-image"
-      - "--image"
-      - "us-west2-docker.pkg.dev/insurance-hub-397016/nextjs-statewide-docker-repo/nextjs-docker-gcr-image:tag1"
-      - "--region"
-      - "us-central1"
-      - "--platform"
-      - "managed"
-      - "--allow-unauthenticated"
-images:
-  - "us-west2-docker.pkg.dev/insurance-hub-397016/nextjs-statewide-docker-repo/nextjs-docker-gcr-image:tag1"
