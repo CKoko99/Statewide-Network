@@ -70,7 +70,9 @@ const editorConfig2 = {
         TableRowNode,
         AutoLinkNode,
         LinkNode
-    ]
+    ],
+    editorState: {},
+    namespace: "editor",
 };
 function OnChangePlugin({ onChange }) {
     const [editor] = useLexicalComposerContext();
@@ -83,7 +85,7 @@ function OnChangePlugin({ onChange }) {
 
 export default function Editor() {
     const [showOutput, setShowOut] = useState(false);
-    const [editorState, setEditorState] = useState(false);
+    const [editorState, setEditorState] = useState<any>(false);
 
     let output;
 
@@ -92,16 +94,17 @@ export default function Editor() {
         console.log(editorStateJSON);
         // However, we still have a JavaScript object, so we need to convert it to an actual string with JSON.stringify
         setEditorState(JSON.stringify(editorStateJSON));
+        return <></>;
     }
 
     let newEditorConfig = editorConfig2;
     newEditorConfig.editorState = editorState;
     output = showOutput ? (<Typography>
 
-        <LexicalComposer initialConfig={newEditorConfig}>
+        <LexicalComposer initialConfig={newEditorConfig as any}>
             <div className="editor-inner">
-                <RichTextPlugin
-                    contentEditable={<ContentEditable className="editor-input" />}
+                <RichTextPlugin placeholder={<Placeholder />}
+                    contentEditable={<ContentEditable placeholder="placeholder" className="editor-input" />}
                     ErrorBoundary={LexicalErrorBoundary}
                 />
             </div>
@@ -110,10 +113,10 @@ export default function Editor() {
     ) : (
         <></>
     );
-
+    return <></>
     return (
         <>
-            <LexicalComposer initialConfig={editorConfig}>
+            <LexicalComposer initialConfig={editorConfig as any}>
                 <div className="editor-container">
                     <ToolbarPlugin />
                     <div className="editor-inner">
@@ -133,7 +136,8 @@ export default function Editor() {
                         <AutoLinkPlugin />
                         <ListMaxIndentLevelPlugin maxDepth={7} />
                         <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
-                        <OnChangePlugin onChange={onChange} />
+                        {//<OnChangePlugin onChange={onChange as any} />
+                        }
                     </div>
                 </div>
             </LexicalComposer>

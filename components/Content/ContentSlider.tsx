@@ -69,7 +69,7 @@ function NonSlideContentItem(props) {
         onMouseLeave={() => { setIsHovered(false) }}
         sx={{ ...styles.contentItem }}
     >
-        <Box
+        {props.img && <Box
             sx={
                 isHovered ?
                     { ...styles.contentImage, ...styles.contentImageHover } :
@@ -77,7 +77,7 @@ function NonSlideContentItem(props) {
             }
         >
             <Image fill style={{ objectFit: "contain" }} src={props.img.src} alt={props.img.alt} />
-        </Box>
+        </Box>}
         <Typography variant="h4"
             sx={{
                 ...styles.contentTitle,
@@ -153,13 +153,13 @@ function SlideContent(props) {
                                 sx={{ ...styles.contentItem }}
                                 key={index}
                             >
-                                <Box
+                                {item.img && <Box
                                     sx={{
                                         ...styles.contentImage,
                                     }}
                                 >
                                     <Image fill style={{ objectFit: "contain" }} src={item.img.src} alt={item.img.alt} />
-                                </Box>
+                                </Box>}
                                 <Typography variant="h4"
                                     sx={{
                                         ...styles.contentTitle,

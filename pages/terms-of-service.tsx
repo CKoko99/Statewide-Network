@@ -157,7 +157,7 @@ const term = {
 }
 export default function () {
     return <>
-        <TextSection heading={"Terms of Service"} />
+        <TextSection title={"Terms of Service"} />
         <Box
             sx={{ width: { xs: "100%", md: "90%" }, margin: "auto" }}
         >

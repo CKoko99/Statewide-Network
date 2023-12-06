@@ -4,15 +4,11 @@ const PATHCONSTANTS = {
     BACKEND: process.env.NODE_ENV === "development" ? "http://localhost:8080" : "https://insurancehubbackend-uc3v53rceq-ue.a.run.app",
     HOME: '/',
     QUOTES: {
-        INDEX: '/quotes',
+        //INDEX: '/quotes',
         AUTO: '/quotes/auto',
         HOME: '/quotes/home',
-        MEXICO: '/quotes/mexico',
         MOTORCYCLE: '/quotes/motorcycle',
         RENTERS: '/quotes/renter',
-        SURETY: '/quotes/surety-bond',
-        SR22: '/quotes/sr22',
-        LIABILITY: '/quotes/liability',
     },
     PRODUCTS: {
         INDEX: '/products',
@@ -28,7 +24,6 @@ const PATHCONSTANTS = {
             CLAIMS: '/products/home/claims',
             FAQ: '/products/home/faq',
         },
-        MEXICO: { INDEX: '/products/mexico', },
         MOTORCYCLE: {
             INDEX: '/products/motorcycle',
             FAQ: '/products/motorcycle/faq',
@@ -37,17 +32,6 @@ const PATHCONSTANTS = {
             INDEX: '/products/renters',
             FAQ: '/products/renters/faq',
         },
-        SURETY: { INDEX: '/products/surety-bond', },
-        SR22: { INDEX: '/products/sr22', },
-    },
-    LOCATIONS: {
-        INDEX: '/locations',
-        AUSTIN: '/locations/austin',
-        HOUSTON: '/locations/houston',
-        SAN_ANTONIO: '/locations/san-antonio',
-        DALLAS: '/locations/dallas',
-        CORPUS_CHRISTI: '/locations/corpus-christi',
-        VICTORIA: '/locations/victoria',
     },
     ABOUT: {
         INDEX: '/about',

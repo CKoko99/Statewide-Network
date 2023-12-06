@@ -64,18 +64,18 @@ let theme = createTheme({
     MuiButton: {
       styleOverrides: {
         outlinedSecondary: {
-          color: 'black',
-          borderColor: 'black',
+          color: '#474747',
+          borderColor: '#474747',
           '&:hover': {
             borderColor: 'black',
             color: 'black',
-            fontWeight: 'bold',
+            //fontWeight: 'bold',
           },
         },
         containedSecondary: {
           '&:hover': {
 
-            fontWeight: 'bold',
+            color: 'black',
           },
         },
       },
@@ -83,5 +83,23 @@ let theme = createTheme({
   },
 
 });
+
+
+
+export type TypographyVariant =
+  | "button"
+  | "caption"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "inherit"
+  | "overline"
+  | "subtitle1"
+  | "subtitle2"
+  | "body1"
+  | "body2"
 export { CustomFonts }
 export default theme;

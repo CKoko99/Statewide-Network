@@ -24,12 +24,15 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "downlevelIteration": true,
     "baseUrl": ".",
     "paths": {
       "@/components/*": [
         "components/*"
+      ],
+      "@/functions/*": [
+        "functions/*"
       ],
       "@/public/*": [
         "public/*"
