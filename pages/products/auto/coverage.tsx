@@ -12,13 +12,13 @@ import PATHCONSTANTS from "constants/sitemap";
 
 const pageLinks = {
     liability: {
-        link: "/products/auto/coverage#Liability-Coverage",
+        link: `${PATHCONSTANTS.PRODUCTS.AUTO.COVERAGE}#Liability-Coverage`,
         id: "Liability-Coverage"
     },
-    collision: { id: "Collision-Coverage", link: "/products/auto/coverage#Collision-Coverage" },
-    comprehensive: { id: "Comprehensive-Coverage", link: "/products/auto/coverage#Comprehensive-Coverage" },
-    personalInjury: { id: "Personal-Injury-Protection", link: "/products/auto/coverage#Personal-Injury-Protection" },
-    uninsured: { id: "Uninsured-Underinsured-Motorist-Coverage", link: "/products/auto/coverage#Uninsured-Underinsured-Motorist-Coverage" },
+    collision: { id: "Collision-Coverage", link: `${PATHCONSTANTS.PRODUCTS.AUTO.COVERAGE}#Collision-Coverage` },
+    comprehensive: { id: "Comprehensive-Coverage", link: `${PATHCONSTANTS.PRODUCTS.AUTO.COVERAGE}#Comprehensive-Coverage` },
+    personalInjury: { id: "Personal-Injury-Protection", link: `${PATHCONSTANTS.PRODUCTS.AUTO.COVERAGE}#Personal-Injury-Protection` },
+    uninsured: { id: "Uninsured-Underinsured-Motorist-Coverage", link: `${PATHCONSTANTS.PRODUCTS.AUTO.COVERAGE}#Uninsured-Underinsured-Motorist-Coverage` },
 }
 const heroContent = {
     title: "Auto Coverage",

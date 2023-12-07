@@ -12,12 +12,12 @@ import AutoImg3 from "../../../public/assets/images/products/auto/driving1.png";
 import CenterImage from "@/components/Content/CenterImage";
 const pageLinks = {
     minimum: {
-        link: "/products/auto/affordable#Minimum-Coverage",
+        link: `${PATHCONSTANTS.PRODUCTS.AUTO.AFFORDABLE}#Minimum-Coverage`,
         id: "Minimum-Coverage"
     },
-    optional: { id: "Optional-Coverages", link: "/products/auto/affordable#Optional-Coverages" },
-    penalties: { id: "Penalties-for-Driving-Without-Insurance", link: "/products/auto/affordable#Penalties-for-Driving-Without-Insurance" },
-    discounts: { id: "Insurance-Discounts", link: "/products/auto/affordable#Insurance-Discounts" },
+    optional: { id: "Optional-Coverages", link: `${PATHCONSTANTS.PRODUCTS.AUTO.AFFORDABLE}#Optional-Coverages` },
+    penalties: { id: "Penalties-for-Driving-Without-Insurance", link: `${PATHCONSTANTS.PRODUCTS.AUTO.AFFORDABLE}#Penalties-for-Driving-Without-Insurance` },
+    discounts: { id: "Insurance-Discounts", link: `${PATHCONSTANTS.PRODUCTS.AUTO.AFFORDABLE}#Insurance-Discounts` },
 }
 const heroContent = {
     title: "Affordable Auto Coverage",
