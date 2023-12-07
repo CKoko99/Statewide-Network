@@ -94,7 +94,7 @@ export default function SubNavBar(props: any) {
         >
             <Box sx={{
                 display: { xs: "none", md: "flex", },
-                width: { xs: "92%", sm: "95%", md: "90%", lg: "80%" },
+                width: { xs: "92%", sm: "95%", md: "95%", lg: "80%" },
                 maxWidth: "1800px",
                 flexDirection: "row", justifyContent: "space-between", alignItems: "center",
                 margin: "auto"
