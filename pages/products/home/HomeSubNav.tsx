@@ -9,6 +9,10 @@ const SubNavBarContent = {
             text: "Home Insurance"
         },
         {
+            link: PATHCONSTANTS.PRODUCTS.HOME.COVERAGE,
+            text: "Coverage Details"
+        },
+        {
             text: "Cost / Bundle Discounts",
             link: PATHCONSTANTS.PRODUCTS.HOME.COST
         },
