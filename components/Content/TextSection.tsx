@@ -8,7 +8,7 @@ import { TypographyVariant } from "../../providers/theme";
 type TextSectionProps = {
     id?: string;
     title?: string;
-    subtitle?: string;
+    subtitle?: string | string[];
     largeText?: boolean;
     alignTitle?: string;
     alignSubtitle?: string;
