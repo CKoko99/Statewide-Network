@@ -25,7 +25,7 @@ export default function (props: ComponentProps) {
                 display: "flex",
                 width: { xs: "90%", sm: "80%", md: "80%", lg: "80%" },
                 margin: "auto",
-                padding: "1rem 0",
+                padding: "0",
                 flexDirection: { xs: "column", md: "row-reverse" },
                 alignItems: "center",
                 gap: { xs: "1rem", md: "4rem" },

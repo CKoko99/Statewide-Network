@@ -20,6 +20,7 @@ const PATHCONSTANTS = {
         },
         HOME: {
             INDEX: '/products/home',
+            COVERAGE: '/products/home/coverage',
             COST: '/products/home/cost',
             CLAIMS: '/products/home/claims',
             FAQ: '/products/home/faq',

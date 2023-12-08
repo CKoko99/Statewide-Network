@@ -6,8 +6,9 @@ import { TypographyVariant } from "../../providers/theme";
 
 
 type TextSectionProps = {
+    id?: string;
     title?: string;
-    subtitle?: string;
+    subtitle?: string | string[];
     largeText?: boolean;
     alignTitle?: string;
     alignSubtitle?: string;
@@ -38,19 +39,22 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         gap: "1rem",
+        position: "relative",
     }
 }
 export default function TextSection(props: TextSectionProps) {
     return (<>
-        <Box sx={{
-            ...styles.root, padding: props.noPadding ? "0" : "1rem 0",
-        }}>
+        <Box
+            //id={props.id}
+            sx={{
+                ...styles.root, padding: props.noPadding ? "0" : "1rem 0",
+            }}>
+            <Box id={props.id} sx={{ position: "absolute", top: "-5rem" }}></Box>
             {props.title && <Typography variant={props.titleVariant ? props.titleVariant : "h2"} sx={{
                 textAlign: props.alignTitle ? props.alignTitle : "center",
                 fontFamily: CustomFonts.Gustavo, fontWeight: "800"
             }}>{props.title}</Typography>}
             {props.subtitle && <>
-
                 {blogText(props.subtitle).map((item, index) => (<Typography key={index} variant={props.subtitleVariant ? props.subtitleVariant : "h5"}
                     sx={{ textAlign: props.alignSubtitle ? props.alignSubtitle : "center" }}
                     dangerouslySetInnerHTML={{ __html: item }} />))}

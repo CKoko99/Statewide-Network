@@ -4,7 +4,8 @@ const SubNavBarContent = {
     shortTitle: "Learn More About Auto Insurance",
     content: [
         {
-            link: PATHCONSTANTS.PRODUCTS.MOTORCYCLE,
+
+            link: PATHCONSTANTS.PRODUCTS.MOTORCYCLE.INDEX,
             text: "Motorcycle Insurance"
         },
         {
