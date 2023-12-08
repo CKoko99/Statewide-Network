@@ -61,7 +61,7 @@ const contentSection4 = {
         },
         {
             title: `Discount Opportunities`,
-            body: `We pffer varopis discount opportunities to help you save on your premium, rewarding factors such as
+            body: `We offer various discount opportunities to help you save on your premium, rewarding factors such as
              home security features, bundled policies, and more.`,
         },
         {

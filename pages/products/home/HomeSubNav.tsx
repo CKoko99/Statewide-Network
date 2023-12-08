@@ -17,10 +17,6 @@ const SubNavBarContent = {
             link: PATHCONSTANTS.PRODUCTS.HOME.COST
         },
         {
-            text: "Claims",
-            link: PATHCONSTANTS.PRODUCTS.HOME.CLAIMS
-        },
-        {
             text: "Frequently Asked Questions",
             link: PATHCONSTANTS.PRODUCTS.HOME.FAQ
         }
