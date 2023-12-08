@@ -1,6 +1,6 @@
 import Script from "next/script"
 
-const GtagID = process.env.NODE_ENV === "development" ? "" : ""
+const GtagID = process.env.NODE_ENV === "development" ? "" : "GTM-P4S9C93V"
 export function GTMHead() {
     return <Script async
         strategy='lazyOnload'
