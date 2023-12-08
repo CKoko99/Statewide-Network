@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../footer/Footer";
 import { ReactNode } from "react"; // Import ReactNode type
+import { GTMBody } from "../Scripts/GoogleTag";
 
 interface LayoutProps {
   children: ReactNode; // Define the children prop with ReactNode type
@@ -10,6 +11,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
+      <GTMBody />
       <Navbar />
       <Box
         sx={{
