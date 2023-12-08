@@ -94,10 +94,10 @@ export default function Editor() {
         console.log(editorStateJSON);
         // However, we still have a JavaScript object, so we need to convert it to an actual string with JSON.stringify
         setEditorState(JSON.stringify(editorStateJSON));
-        return <></>;
+        //   return <></>;
     }
 
-    let newEditorConfig = editorConfig2;
+    let newEditorConfig = { ...editorConfig2 };
     newEditorConfig.editorState = editorState;
     output = showOutput ? (<Typography>
 
@@ -113,7 +113,6 @@ export default function Editor() {
     ) : (
         <></>
     );
-    return <></>
     return (
         <>
             <LexicalComposer initialConfig={editorConfig as any}>
