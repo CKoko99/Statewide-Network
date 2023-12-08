@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { GTMHead } from "../Scripts/GoogleTag";
 
 type HeadComponentPropsType = {
   title: string;
@@ -8,6 +9,7 @@ type HeadComponentPropsType = {
 const HeadComponent = ({ title, metaData }: HeadComponentPropsType) => {
   return (
     <Head>
+      <GTMHead />
       <title>{title || "Statewide Insurance"}</title>
       <meta name="creator" content="Statewide Insurance" />
       <meta name="publisher" content="Statewide Insurance" />
